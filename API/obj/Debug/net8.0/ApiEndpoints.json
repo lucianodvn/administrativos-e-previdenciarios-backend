@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "API.Controllers.EnderecoExternoController",
+    "Method": "ConsultarCep",
+    "RelativePath": "EnderecoExterno/consultar-cep/{cep}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cep",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

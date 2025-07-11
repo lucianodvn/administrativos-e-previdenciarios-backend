@@ -13,3 +13,4 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Deb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\refint\Application.dll
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\Application.pdb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\ref\Application.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\Application.sourcelink.json

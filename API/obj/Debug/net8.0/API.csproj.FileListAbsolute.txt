@@ -39,3 +39,15 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\obj\Debug\net8.
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\obj\Debug\net8.0\API.pdb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\obj\Debug\net8.0\ref\API.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\API\obj\Debug\net8.0\API.sourcelink.json

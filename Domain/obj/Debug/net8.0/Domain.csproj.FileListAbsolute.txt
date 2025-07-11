@@ -9,3 +9,4 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\ne
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.pdb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.sourcelink.json
