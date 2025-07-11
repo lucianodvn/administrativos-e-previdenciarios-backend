@@ -1,0 +1,11 @@
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\bin\Debug\net8.0\Domain.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\bin\Debug\net8.0\Domain.pdb
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\Domain.pdb
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\net8.0\ref\Domain.dll
