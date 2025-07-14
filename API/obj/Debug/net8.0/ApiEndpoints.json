@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "API.Controllers.EnderecoExternoController",
-    "Method": "ConsultarCep",
-    "RelativePath": "EnderecoExterno/consultar-cep/{cep}",
-    "HttpMethod": "GET",
+    "ContainingType": "API.Controllers.ClienteController",
+    "Method": "SalvarCliente",
+    "RelativePath": "cliente/salvar",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "cep",
-        "Type": "System.String",
+        "Name": "clienteRequest",
+        "Type": "Application.DTOs.Clientes.ClienteRequest",
         "IsRequired": true
       }
     ],

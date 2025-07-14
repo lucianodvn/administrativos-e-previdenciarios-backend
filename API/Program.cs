@@ -1,21 +1,27 @@
+
+
+using Application.Interfaces;
+using Application.Mappings;
 using Application.Services;
 using Application.UseCases;
-using Infrastructure.ExternalServices;
+using Domain.Interfaces;
+using Infrastructure.Context;
+using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ConsultarEnderecoExternoUseCase>();
-builder.Services.AddHttpClient<IEnderecoExternoService, EnderecoExternoService>(client =>
-{
-    client.BaseAddress = new Uri("https://viacep.com.br/");
-});
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<ClienteUseCase>();
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ClienteProfile>());
 
 builder.Services.AddCors(options =>
 {
@@ -25,7 +31,14 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddDbContext<DataDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

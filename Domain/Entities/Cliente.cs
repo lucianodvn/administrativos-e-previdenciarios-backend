@@ -20,8 +20,8 @@ namespace Domain.Entities
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string TipoDeBeneficio { get; set; }
-        public DateTime DateDeNascimento { get; set; }
-        public string Idade { get; set; }
+        public DateTime DataDeNascimento { get; set; }
+        public int Idade { get; set; }
         public string Rg { get; set; }
         public string Cpf { get; set; }
     }

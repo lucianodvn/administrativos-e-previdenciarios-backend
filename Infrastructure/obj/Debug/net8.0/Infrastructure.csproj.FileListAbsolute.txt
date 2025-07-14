@@ -16,3 +16,5 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\obj\
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json
+C:\projeto-atitude-backend\administrativos-e-previdenciarios\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
