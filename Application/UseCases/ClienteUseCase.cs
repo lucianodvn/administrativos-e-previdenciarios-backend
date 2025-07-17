@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Clientes;
+using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -12,16 +13,22 @@ namespace Application.UseCases
 {
     public class ClienteUseCase
     {
-        private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteService _clienteService;
+        private readonly IMapper _mapper;
 
-        public ClienteUseCase(IClienteRepository clienteRepository)
+        public ClienteUseCase(IClienteService clienteService, IMapper mapper)
         {
-            _clienteRepository = clienteRepository;
+            _clienteService = clienteService;
+            _mapper = mapper;
         }
 
-        public async Task<Cliente> SalvarAsync(Cliente cliente)
+        public async Task<ClienteResponse> Salvar(ClienteRequest clienteRequest)
         {
-            return await _clienteRepository.SalvarAsync(cliente);
+            var cliente = _mapper.Map<Cliente>(clienteRequest);
+
+            var clienteSalvo = await _clienteService.Salvar(cliente);
+
+            return _mapper.Map<ClienteResponse>(clienteSalvo);
         }
     }
 }

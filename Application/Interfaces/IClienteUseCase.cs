@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Clientes;
-using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IClienteService
+    public interface IClienteUseCase
     {
-        Task<Cliente> Salvar(Cliente cliente);
+        Task<ClienteResponse> Salvar(ClienteRequest request);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Clientes;
 using Application.Interfaces;
+using Application.UseCases;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +10,11 @@ namespace API.Controllers
     [Route("cliente")]
     public class ClienteController : ControllerBase
     {
-        private readonly IClienteService _clienteService;
+        private readonly IUseCaseGeneric<ClienteRequest, ClienteResponse> _useCaseGeneric;
 
-        public ClienteController(IClienteService clienteService)
+        public ClienteController(IUseCaseGeneric<ClienteRequest, ClienteResponse> useCaseGeneric)
         {
-            _clienteService = clienteService;
+            _useCaseGeneric = useCaseGeneric;
         }
 
         [HttpPost("salvar")]
@@ -24,7 +25,7 @@ namespace API.Controllers
                 return BadRequest(ModelState);
             }
                 
-            var clienteResponse = await _clienteService.SalvarAsync(clienteRequest);
+            var clienteResponse = await _useCaseGeneric.Salvar(clienteRequest);
             return Ok(clienteResponse);
         }
 

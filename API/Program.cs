@@ -1,9 +1,11 @@
 
 
+using Application.DTOs.Clientes;
 using Application.Interfaces;
 using Application.Mappings;
 using Application.Services;
 using Application.UseCases;
+using Domain.Entities;
 using Domain.Interfaces;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
@@ -20,8 +22,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
-builder.Services.AddScoped<ClienteUseCase>();
+builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, UseCaseGeneric<Cliente, ClienteRequest, ClienteResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ClienteProfile>());
+builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
+builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));
 
 builder.Services.AddCors(options =>
 {

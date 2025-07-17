@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.UseCases;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +14,16 @@ namespace Application.Services
 {
     public class ClienteService : IClienteService
     {
-        private readonly ClienteUseCase _clienteUseCase;
-        private readonly IMapper _mapper;
+        private readonly IClienteRepository _clienteRepository;
 
-        public ClienteService(ClienteUseCase clienteUseCase, IMapper mapper)
+        public ClienteService(IClienteRepository clienteRepository)
         {
-            _mapper = mapper;
-            _clienteUseCase = clienteUseCase;
+            _clienteRepository = clienteRepository;
         }
 
-        public async Task<ClienteResponse> SalvarAsync(ClienteRequest clienteRequest)
+        public async Task<Cliente> Salvar(Cliente cliente)
         {
-            var cliente = _mapper.Map<Cliente>(clienteRequest);
-            var resultado = await _clienteUseCase.SalvarAsync(cliente);
-            return _mapper.Map<ClienteResponse>(resultado);
+            return await _clienteRepository.SalvarAsync(cliente);
         }
     }
 }
