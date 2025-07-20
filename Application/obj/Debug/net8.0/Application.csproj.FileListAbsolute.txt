@@ -14,3 +14,19 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Deb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\Application.pdb
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\ref\Application.dll
 C:\projeto-atitude-backend\administrativos-e-previdenciarios\Application\obj\Debug\net8.0\Application.sourcelink.json
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\bin\Debug\net8.0\Application.deps.json
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\bin\Debug\net8.0\Application.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\bin\Debug\net8.0\Application.pdb
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\bin\Debug\net8.0\Domain.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\bin\Debug\net8.0\Domain.pdb
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.sourcelink.json
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\refint\Application.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\Application.pdb
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Application\obj\Debug\net8.0\ref\Application.dll

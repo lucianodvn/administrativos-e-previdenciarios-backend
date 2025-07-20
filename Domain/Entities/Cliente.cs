@@ -24,5 +24,13 @@ namespace Domain.Entities
         public int Idade { get; set; }
         public string Rg { get; set; }
         public string Cpf { get; set; }
+        public string Email { get; set; }
+        public string EtapdaDeServico { get; set; } 
+        public string SenhaGov { get; set; }
+        public string NumeroDoProcesso { get; set; }
+        public string Celular { get; set; }
+        public string Outros { get; set; }
+        public bool IsProprioCliente { get; set; }
+
     }
 }
