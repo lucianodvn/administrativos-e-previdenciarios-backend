@@ -35,10 +35,222 @@
           }
         }
       }
+    },
+    "/representantelegal/salvar": {
+      "post": {
+        "tags": [
+          "ControllerRepresentanteLegal"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/representantelegal/{id}": {
+      "get": {
+        "tags": [
+          "ControllerRepresentanteLegal"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ControllerRepresentanteLegal"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepresentanteLegalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ControllerRepresentanteLegal"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeCompleto": {
+            "type": "string",
+            "nullable": true
+          },
+          "nacionalidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "profissao": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "complemento": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDeBeneficio": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataDeNascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rg": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "etapaDeServico": {
+            "type": "string",
+            "nullable": true
+          },
+          "senhaGov": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDoProcesso": {
+            "type": "string",
+            "nullable": true
+          },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
+          "outros": {
+            "type": "string",
+            "nullable": true
+          },
+          "isProprioCliente": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "ClienteRequest": {
         "type": "object",
         "properties": {
@@ -103,6 +315,118 @@
             "nullable": true
           },
           "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "etapaDeServico": {
+            "type": "string",
+            "nullable": true
+          },
+          "senhaGov": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDoProcesso": {
+            "type": "string",
+            "nullable": true
+          },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
+          "outros": {
+            "type": "string",
+            "nullable": true
+          },
+          "isProprioCliente": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RepresentanteLegalRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeCompletoRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "nacionalidadeRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "profissaoRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "enderecoRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefoneRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "celularRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "complementoRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "cepRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairroRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidadeRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "estadoRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataDeNascimentoRepresentateLegal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idadeRepresentateLegal": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rgRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpfRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
+          "clienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cliente": {
+            "$ref": "#/components/schemas/Cliente"
+          },
+          "tipoDeRepresentante": {
             "type": "string",
             "nullable": true
           }

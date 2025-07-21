@@ -26,7 +26,7 @@ namespace Application.DTOs.Clientes
         public string Rg { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
-        public string EtapdaDeServico { get; set; }
+        public string EtapaDeServico { get; set; }
         public string SenhaGov { get; set; }
         public string NumeroDoProcesso { get; set; }
         public string Celular { get; set; }

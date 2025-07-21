@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Clientes;
+using Application.DTOs.TipoDeRepresentante;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -9,12 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.Mappings
 {
-    public class ClienteProfile : Profile
+    public class ProfileMapper : Profile
     {
-        public ClienteProfile()
+        public ProfileMapper()
         {
             CreateMap<ClienteRequest, Cliente>();
             CreateMap<Cliente, ClienteResponse>();
+            CreateMap<RepresentanteLegalRequest, RepresentanteLegal>();
+            CreateMap<RepresentanteLegal, RepresentanteLegalResponse>();
         }
     }
 }

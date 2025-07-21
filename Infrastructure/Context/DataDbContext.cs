@@ -19,5 +19,6 @@ namespace Infrastructure.Context
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<RepresentanteLegal> Representantes { get; set; }
     }
 }
