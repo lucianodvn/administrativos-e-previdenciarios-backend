@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20250721170808_correcaotabelarepresentantelegal")]
-    partial class correcaotabelarepresentantelegal
+    [Migration("20250721190141_novo")]
+    partial class novo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

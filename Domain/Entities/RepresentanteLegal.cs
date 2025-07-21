@@ -28,5 +28,6 @@ namespace Domain.Entities
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
         public string TipoDeRepresentante { get; set; }
+        public string OutrosRepresentateLegal { get; set; }
     }
 }
