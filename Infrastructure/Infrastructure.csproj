@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20250721190141_novo.cs" />
+    <Compile Remove="Migrations\20250721190141_novo.Designer.cs" />
+    <Compile Remove="Migrations\20250722185424_correcaotabelarepresentantelegal.cs" />
+    <Compile Remove="Migrations\20250722185424_correcaotabelarepresentantelegal.Designer.cs" />
+    <Compile Remove="Migrations\DataDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>

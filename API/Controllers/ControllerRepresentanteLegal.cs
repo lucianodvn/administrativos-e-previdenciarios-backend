@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.TipoDeRepresentante;
 using Application.Interfaces;
+using Application.UseCases;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,12 @@ namespace API.Controllers
     public class ControllerRepresentanteLegal : ControllerBase
     {
        private readonly IUseCaseGeneric<RepresentanteLegalRequest, RepresentanteLegalResponse> _useCase;
-        public ControllerRepresentanteLegal(IUseCaseGeneric<RepresentanteLegalRequest, RepresentanteLegalResponse> useCase)
+        private readonly RepresentanteLegalUseCase _representanteLegalUseCase;
+        public ControllerRepresentanteLegal(IUseCaseGeneric<RepresentanteLegalRequest, RepresentanteLegalResponse> useCase,
+            RepresentanteLegalUseCase representanteLegalUseCase)
         {
             _useCase = useCase;
+            _representanteLegalUseCase = representanteLegalUseCase;
         }
 
         [HttpPost("salvar")]
@@ -39,7 +43,7 @@ namespace API.Controllers
         [HttpGet("buscar")]
         public async Task<IActionResult> ConsultarTodos()
         {
-            var response = await _useCase.ConsultarTodos();
+            var response = await _representanteLegalUseCase.ConsultarTodos();
             if (response == null || !response.Any())
             {
                 return NotFound("Nenhum representante legal não encontrado.");
