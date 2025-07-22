@@ -6,59 +6,44 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class criartabelarepresentantelegal : Migration
+    public partial class novo : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Celular",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "EtapdaDeServico",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsProprioCliente",
-                table: "Clientes",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
-
-            migrationBuilder.AddColumn<string>(
-                name: "NumeroDoProcesso",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Outros",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "SenhaGov",
-                table: "Clientes",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NomeCompleto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nacionalidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Profissao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Endereco = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Complemento = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cep = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bairro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cidade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TipoDeBeneficio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataDeNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Idade = table.Column<int>(type: "int", nullable: false),
+                    Rg = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cpf = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EtapaDeServico = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SenhaGov = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumeroDoProcesso = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Celular = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Outros = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsProprioCliente = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Representantes",
@@ -108,33 +93,8 @@ namespace Infrastructure.Migrations
             migrationBuilder.DropTable(
                 name: "Representantes");
 
-            migrationBuilder.DropColumn(
-                name: "Celular",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "Email",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "EtapdaDeServico",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "IsProprioCliente",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "NumeroDoProcesso",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "Outros",
-                table: "Clientes");
-
-            migrationBuilder.DropColumn(
-                name: "SenhaGov",
-                table: "Clientes");
+            migrationBuilder.DropTable(
+                name: "Clientes");
         }
     }
 }
