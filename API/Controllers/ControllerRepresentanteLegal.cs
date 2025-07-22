@@ -25,16 +25,28 @@ namespace API.Controllers
             var response = await _useCase.Salvar(request);
             return Ok(response);
         }
-        [HttpGet("{id}")]
+        [HttpGet("buscar/{id}")]
         public async Task<IActionResult> ConsultarPorId(int id)
         {
             var response = await _useCase.ConsultarPorId(id);
             if (response == null)
             {
-                return NotFound();
+                return NotFound("Representante legal não encontrado.");
             }
             return Ok(response);
         }
+
+        [HttpGet("buscar")]
+        public async Task<IActionResult> ConsultarTodos()
+        {
+            var response = await _useCase.ConsultarTodos();
+            if (response == null || !response.Any())
+            {
+                return NotFound("Nenhum representante legal não encontrado.");
+            }
+            return Ok(response);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Alterar(int id, [FromBody] RepresentanteLegalRequest request)
         {

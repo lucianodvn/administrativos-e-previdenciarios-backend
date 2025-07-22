@@ -29,5 +29,31 @@ namespace API.Controllers
             return Ok(clienteResponse);
         }
 
+        [HttpGet("buscar/{id}")]
+        public async Task<IActionResult> BuscarClientePorId(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+            var clienteResponse = await _useCaseGeneric.ConsultarPorId(id);
+            if (clienteResponse == null)
+            {
+                return NotFound("Cliente não encontrado.");
+            }
+            return Ok(clienteResponse);
+        }
+
+        [HttpGet("buscar")]
+        public async Task<IActionResult> BuscarTodosClientes()
+        {
+            var clientesResponse = await _useCaseGeneric.ConsultarTodos();
+            if (clientesResponse == null || !clientesResponse.Any())
+            {
+                return NotFound("Nenhum cliente encontrado.");
+            }
+            return Ok(clientesResponse);
+        }
+
     }
 }

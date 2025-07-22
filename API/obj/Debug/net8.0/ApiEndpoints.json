@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "API.Controllers.ClienteController",
+    "Method": "BuscarTodosClientes",
+    "RelativePath": "cliente/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ClienteController",
+    "Method": "BuscarClientePorId",
+    "RelativePath": "cliente/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ClienteController",
     "Method": "SalvarCliente",
     "RelativePath": "cliente/salvar",
     "HttpMethod": "POST",
@@ -10,22 +36,6 @@
       {
         "Name": "clienteRequest",
         "Type": "Application.DTOs.Clientes.ClienteRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.ControllerRepresentanteLegal",
-    "Method": "ConsultarPorId",
-    "RelativePath": "representantelegal/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -57,6 +67,32 @@
     "Method": "Excluir",
     "RelativePath": "representantelegal/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControllerRepresentanteLegal",
+    "Method": "ConsultarTodos",
+    "RelativePath": "representantelegal/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControllerRepresentanteLegal",
+    "Method": "ConsultarPorId",
+    "RelativePath": "representantelegal/buscar/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

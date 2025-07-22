@@ -22,18 +22,25 @@ namespace Application.UseCases
         }
         public async Task Alterar(int id, TRequest request)
         {
-            var entdade = _mapper.Map<TEntity>(request);
-            await _serviceGeneric.Alterar(entdade);
+            var entidade = _mapper.Map<TEntity>(request);
+            await _serviceGeneric.Alterar(entidade);
         }
 
         public async Task<TResponse> ConsultarPorId(int id)
         {
-            throw new NotImplementedException();
+            var entidade = await _serviceGeneric.ConsultarPorId(id);
+            if (entidade == null)
+            {
+                return default;
+            }
+            return _mapper.Map<TResponse>(entidade);
         }
 
         public async Task<IEnumerable<TResponse>> ConsultarTodos()
         {
-            throw new NotImplementedException();
+            var entidades = await _serviceGeneric.ConsultarTodos();
+            var resultado = _mapper.Map<IEnumerable<TResponse>>(entidades);
+            return resultado;
         }
 
         public async Task<bool> Excluir(int id)

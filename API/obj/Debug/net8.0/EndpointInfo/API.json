@@ -36,6 +36,41 @@
         }
       }
     },
+    "/cliente/buscar/{id}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cliente/buscar": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/representantelegal/salvar": {
       "post": {
         "tags": [
@@ -67,7 +102,7 @@
         }
       }
     },
-    "/representantelegal/{id}": {
+    "/representantelegal/buscar/{id}": {
       "get": {
         "tags": [
           "ControllerRepresentanteLegal"
@@ -88,7 +123,21 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/representantelegal/buscar": {
+      "get": {
+        "tags": [
+          "ControllerRepresentanteLegal"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/representantelegal/{id}": {
       "put": {
         "tags": [
           "ControllerRepresentanteLegal"
