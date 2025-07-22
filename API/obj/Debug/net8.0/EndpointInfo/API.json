@@ -478,6 +478,10 @@
           "tipoDeRepresentante": {
             "type": "string",
             "nullable": true
+          },
+          "outrosRepresentateLegal": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
