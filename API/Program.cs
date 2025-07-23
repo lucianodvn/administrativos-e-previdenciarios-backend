@@ -1,7 +1,6 @@
 
 
 using Application.DTOs.Clientes;
-using Application.DTOs.TipoDeRepresentante;
 using Application.Interfaces;
 using Application.Mappings;
 using Application.Services;
@@ -21,11 +20,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-builder.Services.AddScoped<IRepositoryRepresentanteLegal, RepresentanteLegalRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
-builder.Services.AddScoped<RepresentanteLegalUseCase>();
 builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, UseCaseGeneric<Cliente, ClienteRequest, ClienteResponse>>();
-builder.Services.AddScoped<IUseCaseGeneric<RepresentanteLegalRequest, RepresentanteLegalResponse>, UseCaseGeneric<RepresentanteLegal, RepresentanteLegalRequest, RepresentanteLegalResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));

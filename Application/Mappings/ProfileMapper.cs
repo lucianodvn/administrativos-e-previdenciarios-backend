@@ -1,5 +1,4 @@
 ﻿using Application.DTOs.Clientes;
-using Application.DTOs.TipoDeRepresentante;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -16,8 +15,6 @@ namespace Application.Mappings
         {
             CreateMap<ClienteRequest, Cliente>();
             CreateMap<Cliente, ClienteResponse>();
-            CreateMap<RepresentanteLegalRequest, RepresentanteLegal>();
-            CreateMap<RepresentanteLegal, RepresentanteLegalResponse>();
         }
     }
 }

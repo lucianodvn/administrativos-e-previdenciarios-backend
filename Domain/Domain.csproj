@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\RepresentanteLegal.cs" />
+    <Compile Remove="Interfaces\IRepositoryRepresentanteLegal.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>

@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\TipoDeRepresentante\**" />
+    <EmbeddedResource Remove="DTOs\TipoDeRepresentante\**" />
+    <None Remove="DTOs\TipoDeRepresentante\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="UseCases\RepresentanteLegalUseCase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
