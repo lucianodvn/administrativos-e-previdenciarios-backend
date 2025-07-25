@@ -55,5 +55,18 @@ namespace API.Controllers
             return Ok(clientesResponse);
         }
 
+        [HttpPut("alterar")]
+        public async Task<IActionResult> AlterarCliente([FromBody] ClienteRequest clienteRequest)
+        {
+            if(clienteRequest == null)
+            {
+                return BadRequest("Cliente Inexistente");
+            }
+
+            await _useCaseGeneric.Alterar(clienteRequest.Id, clienteRequest);
+            return Ok();
+
+        }
+
     }
 }

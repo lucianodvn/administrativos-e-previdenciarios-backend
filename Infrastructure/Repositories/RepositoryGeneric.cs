@@ -21,9 +21,10 @@ namespace Infrastructure.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        void IRepositoryGeneric<T>.Alterar(T entity)
+        async Task IRepositoryGeneric<T>.Alterar(T entity)
         {
             _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
        async Task<T> IRepositoryGeneric<T>.ConsultarPorId(object id)

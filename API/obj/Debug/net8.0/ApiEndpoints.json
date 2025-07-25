@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "API.Controllers.ClienteController",
+    "Method": "AlterarCliente",
+    "RelativePath": "cliente/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteRequest",
+        "Type": "Application.DTOs.Clientes.ClienteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ClienteController",
     "Method": "BuscarTodosClientes",
     "RelativePath": "cliente/buscar",
     "HttpMethod": "GET",

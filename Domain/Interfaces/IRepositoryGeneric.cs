@@ -14,7 +14,7 @@ namespace Domain.Interfaces
         Task<IEnumerable<T>> ConsultarTodos();
         Task<IEnumerable<T>> Pesquisar(Expression<Func<T, bool>> predicate);
         Task<T> Salvar(T entity);
-        void Alterar(T entity);
+        Task Alterar(T entity);
         void Excluir(T entity);
     }
 }
