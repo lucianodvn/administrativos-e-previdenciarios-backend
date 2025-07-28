@@ -50,5 +50,7 @@ namespace Application.DTOs.Clientes
         public string? EmailRepresentateLegal { get; set; }
         public string? TipoDeRepresentante { get; set; }
         public string? OutrosRepresentateLegal { get; set; }
+        public string EstadoCivil { get; set; }
+        public string? EstadoCivilRepresentateLegal { get; set; }
     }
 }

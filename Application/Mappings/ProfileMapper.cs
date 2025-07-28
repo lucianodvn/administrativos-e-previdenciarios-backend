@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Clientes;
+using Application.DTOs.Contrato;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -15,6 +16,8 @@ namespace Application.Mappings
         {
             CreateMap<ClienteRequest, Cliente>();
             CreateMap<Cliente, ClienteResponse>();
+            CreateMap<ContratoRequest, Contrato>();
+            CreateMap<Contrato, ContratoResponse>();
         }
     }
 }
