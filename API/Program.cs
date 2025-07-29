@@ -1,5 +1,6 @@
 
 
+using Application.Arquivos;
 using Application.DTOs.Clientes;
 using Application.DTOs.Contrato;
 using Application.Interfaces;
@@ -10,6 +11,8 @@ using Domain.Entities;
 using Domain.Interfaces;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
+using Infrastructure.Service;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,11 +25,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IArquivoService, ArquivoService>();
 builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, UseCaseGeneric<Cliente, ClienteRequest, ClienteResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoRequest, ContratoResponse>, UseCaseGeneric<Contrato, ContratoRequest, ContratoResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));
+builder.Services.AddMediatR(typeof(UploadMultiplosArquivosCommandHandler).Assembly);
+
 
 builder.Services.AddCors(options =>
 {

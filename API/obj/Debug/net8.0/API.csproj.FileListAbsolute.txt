@@ -356,3 +356,7 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\ref\API.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\MediatR.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\API.staticwebassets.runtime.json

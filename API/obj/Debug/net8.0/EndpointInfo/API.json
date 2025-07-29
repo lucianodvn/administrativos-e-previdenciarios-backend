@@ -132,6 +132,47 @@
           }
         }
       }
+    },
+    "/upload/salvararquivos": {
+      "post": {
+        "tags": [
+          "Upload"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "arquivos": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "nomeCliente": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "arquivos": {
+                  "style": "form"
+                },
+                "nomeCliente": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

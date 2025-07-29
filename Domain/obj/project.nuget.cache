@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JZar/qyTmXs=",
+  "dgSpecHash": "c57F8yvQrf0=",
   "success": true,
   "projectFilePath": "C:\\Projetos Luciano\\Atitude-Administrativo\\administrativos-e-previdenciarios-backend\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
