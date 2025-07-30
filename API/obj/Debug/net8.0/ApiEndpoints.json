@@ -93,5 +93,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuarioController",
+    "Method": "SalvarCliente",
+    "RelativePath": "usuario/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioRequest",
+        "Type": "Application.DTOs.Usuarios.UsuarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
