@@ -45,7 +45,13 @@ namespace Application.UseCases
 
         public async Task<bool> Excluir(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _serviceGeneric.ConsultarPorId(id);
+            if(entity == null)
+            {
+                return false;
+            }
+            await _serviceGeneric.Excluir(entity);
+            return true; 
         }
 
         public async Task<TResponse> Salvar(TRequest request)

@@ -27,5 +27,47 @@ namespace API.Controllers
             var usuarioResponse = await _useCaseGeneric.Salvar(usuarioRequest);
             return Ok(usuarioResponse);
         }
+
+        [HttpGet("listar")]
+        public async Task<IActionResult> ListarTodosUsuarios()
+        {
+            var usuarioResponse = await _useCaseGeneric.ConsultarTodos();
+            if (usuarioResponse == null || !usuarioResponse.Any())
+            {
+                return NotFound("Nenhum usuário encontrado.");
+            }
+            return Ok(usuarioResponse);
+        }
+
+        [HttpGet("buscar/{id}")]
+        public async Task<IActionResult> BuscarUsuarioPorId(int id)
+        {
+            var usuarioResponse = await _useCaseGeneric.ConsultarPorId(id);
+            if (usuarioResponse == null)
+            {
+                return NotFound("Nenhum usuário encontrado.");
+            }
+            return Ok(usuarioResponse);
+
+        }
+
+        [HttpPut("alterar")]
+        public async Task<IActionResult> AlterarUsuario([FromBody] UsuarioRequest usuarioRequest)
+        {
+            if(usuarioRequest == null)
+            {
+                return BadRequest("Usuário Inexistente");
+            }
+
+            await _useCaseGeneric.Alterar(usuarioRequest.Id, usuarioRequest);
+            return Ok();
+        }
+
+        [HttpDelete("excluir")]
+        public async Task<IActionResult> ExcluirUsuario(int id)
+        {
+            var usuarioResponse = await _useCaseGeneric.Excluir(id);
+            return Ok(usuarioResponse);
+        }
     }
 }
