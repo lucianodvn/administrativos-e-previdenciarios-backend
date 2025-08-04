@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Clientes;
 using Application.DTOs.Usuarios;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
