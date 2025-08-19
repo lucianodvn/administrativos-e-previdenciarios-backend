@@ -90,6 +90,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.ParceiroController",
+    "Method": "AlterarParceiro",
+    "RelativePath": "parceiro/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parceiroRequest",
+        "Type": "Application.DTOs.Parceiro.ParceiroRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ParceiroController",
+    "Method": "BuscarParceiroPorId",
+    "RelativePath": "parceiro/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ParceiroController",
+    "Method": "ExcluirParceiro",
+    "RelativePath": "parceiro/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ParceiroController",
+    "Method": "ListarTodosParceiros",
+    "RelativePath": "parceiro/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ParceiroController",
+    "Method": "SalvarParceiro",
+    "RelativePath": "parceiro/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parceiroRequest",
+        "Type": "Application.DTOs.Parceiro.ParceiroRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.UploadController",
     "Method": "UploadMultiplos",
     "RelativePath": "upload/salvararquivos",

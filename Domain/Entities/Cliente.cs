@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,9 @@ namespace Domain.Entities
         public string? TipoDeRepresentante { get; set; }
         public string? OutrosRepresentateLegal { get; set; }
         public string? EstadoCivilRepresentateLegal { get; set; }
+        [ForeignKey("ParceiroId")]
+        public int? ParceiroId { get; set; }
+        public virtual Parceiro? Parceiro { get; set; }
 
     }
 }
