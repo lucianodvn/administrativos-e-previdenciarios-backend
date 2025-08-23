@@ -52,5 +52,6 @@ namespace Application.DTOs.Clientes
         public string? OutrosRepresentateLegal { get; set; }
         public string EstadoCivil { get; set; }
         public string? EstadoCivilRepresentateLegal { get; set; }
+        public int? ParceiroId { get; set; }
     }
 }
