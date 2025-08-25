@@ -2,8 +2,10 @@
 
 using Application.Arquivos;
 using Application.DTOs.Clientes;
+using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.Parceiro;
+using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
 using Application.Interfaces;
 using Application.Mappings;
@@ -35,6 +37,8 @@ builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, Use
 builder.Services.AddScoped<IUseCaseGeneric<ContratoRequest, ContratoResponse>, UseCaseGeneric<Contrato, ContratoRequest, ContratoResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<UsuarioRequest, UsuarioResponse>, UseCaseGeneric<Usuarios, UsuarioRequest, UsuarioResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ParceiroRequest, ParceiroResponse>, UseCaseGeneric<Parceiro, ParceiroRequest, ParceiroResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<ReciboRequest, ReciboResponse>, UseCaseGeneric<Recibo, ReciboRequest, ReciboResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse>, UseCaseGeneric<ContasAReceber, ContasAReceberRequest, ContasAReceberResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));

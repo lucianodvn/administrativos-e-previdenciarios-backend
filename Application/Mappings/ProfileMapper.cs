@@ -1,6 +1,8 @@
 ﻿using Application.DTOs.Clientes;
+using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.Parceiro;
+using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
 using AutoMapper;
 using Domain.Entities;
@@ -24,6 +26,10 @@ namespace Application.Mappings
             CreateMap<Usuarios, UsuarioResponse>();
             CreateMap<ParceiroRequest, Parceiro>();
             CreateMap<Parceiro, ParceiroResponse>();
+            CreateMap<ReciboRequest, Recibo>();
+            CreateMap<Recibo, ReciboResponse>(); 
+            CreateMap<ContasAReceberRequest, ContasAReceber>();
+            CreateMap<ContasAReceber, ContasAReceberResponse>();
         }
     }
 }

@@ -13,5 +13,6 @@ namespace Application.Interfaces
         Task<TResponse> Salvar(TRequest request);
         Task Alterar(int id, TRequest request);
         Task<bool> Excluir(int id);
+        Task<bool> Existe(string numeroRecibo);
     }
 }

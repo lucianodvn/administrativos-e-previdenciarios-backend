@@ -22,5 +22,8 @@ namespace Infrastructure.Context
         public DbSet<Contrato> Contrato { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Parceiro> Parceiros { get; set; }
+        public DbSet<ContasAReceber> ContasAReceber { get; set; }
+        public DbSet<Recibo> Recibos { get; set;
+        }
     }
 }

@@ -42,5 +42,15 @@ namespace Application.Services
         {
            return await _repository.Salvar(entity);
         }
+
+        public async Task<bool> Existe(string numeroRecibo)
+        {
+            var existe = await _repository.Existe(numeroRecibo);
+            if (existe)
+            {
+                throw new Exception("Número de recibo já existe.");
+            }
+            return existe;
+        }
     }
 }

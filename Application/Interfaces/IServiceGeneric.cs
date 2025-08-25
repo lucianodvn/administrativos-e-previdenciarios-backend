@@ -14,5 +14,6 @@ namespace Application.Interfaces
         Task<T> Salvar(T entity);
         Task Alterar(T entity);
         Task Excluir(T entity);
+        Task<bool> Existe(string numeroRecibo);
     }
 }

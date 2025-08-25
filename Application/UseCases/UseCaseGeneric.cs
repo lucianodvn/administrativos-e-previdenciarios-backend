@@ -60,5 +60,10 @@ namespace Application.UseCases
             var savedEntity = await _serviceGeneric.Salvar(entity);
             return _mapper.Map<TResponse>(savedEntity);
         }
+
+        public async Task<bool> Existe(string numeroRecibo)
+        {
+            return await _serviceGeneric.Existe(numeroRecibo);
+        }
     }
 }

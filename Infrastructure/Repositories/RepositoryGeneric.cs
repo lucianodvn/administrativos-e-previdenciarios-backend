@@ -53,5 +53,15 @@ namespace Infrastructure.Repositories
            await _context.SaveChangesAsync();
            return entity;
         }
+
+        async Task<bool> IRepositoryGeneric<T>.Existe(string numeroRecibo)
+        {
+            var parameter = Expression.Parameter(typeof(T), "x");
+            var property = Expression.Property(parameter, "NumeroRecibo");
+            var constant = Expression.Constant(numeroRecibo);
+            var equality = Expression.Equal(property, constant);
+            var lambda = Expression.Lambda<Func<T, bool>>(equality, parameter);
+            return await _dbSet.AnyAsync(lambda);
+        }
     }
 }
