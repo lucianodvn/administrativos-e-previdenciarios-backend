@@ -10,9 +10,11 @@ namespace API.Controllers
     public class ReciboController : ControllerBase
     {
         private readonly IUseCaseGeneric<ReciboRequest, ReciboResponse> _useCaseGeneric;
-        public ReciboController(IUseCaseGeneric<ReciboRequest, ReciboResponse> useCaseGeneric)
+        private readonly IUseCaseGeneric<ClienteRequest, ClienteResponse> _useCaseClienteGeneric;
+        public ReciboController(IUseCaseGeneric<ReciboRequest, ReciboResponse> useCaseGeneric, IUseCaseGeneric<ClienteRequest, ClienteResponse> useCaseClienteGeneric)
         {
             _useCaseGeneric = useCaseGeneric;
+            _useCaseClienteGeneric = useCaseClienteGeneric;
         }
 
         [HttpPost("salvar")]
@@ -38,6 +40,12 @@ namespace API.Controllers
             {
                 return NotFound("Recibo não encontrado.");
             }
+
+            if (reciboResponse.ClienteId > 0)
+            {
+                var clienteResponse = await _useCaseClienteGeneric.ConsultarPorId(reciboResponse.ClienteId);
+                reciboResponse.ClienteResponse = clienteResponse;
+            }
             return Ok(reciboResponse);
         }
 
@@ -48,6 +56,15 @@ namespace API.Controllers
             if (recibosResponse == null || !recibosResponse.Any())
             {
                 return NotFound("Nenhum recibo encontrado.");
+            }
+
+            foreach (var recibo in recibosResponse)
+            {
+                if (recibo.ClienteId > 0)
+                {
+                    var clienteResponse = await _useCaseClienteGeneric.ConsultarPorId(recibo.ClienteId);
+                    recibo.ClienteResponse = clienteResponse;
+                }
             }
             return Ok(recibosResponse);
         }
