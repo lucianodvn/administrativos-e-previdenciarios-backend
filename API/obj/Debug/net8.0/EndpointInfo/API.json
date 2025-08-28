@@ -885,6 +885,10 @@
           "clienteId": {
             "type": "integer",
             "format": "int32"
+          },
+          "valorEntrada": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
