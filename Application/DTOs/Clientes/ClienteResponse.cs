@@ -1,4 +1,6 @@
-﻿using Application.DTOs.Parceiro;
+﻿using Application.DTOs.BeneficiosServicos;
+using Application.DTOs.EtapaServico;
+using Application.DTOs.Parceiro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,5 +56,9 @@ namespace Application.DTOs.Clientes
         public string EstadoCivilRepresentateLegal { get; set; }
         public int? ParceiroId { get; set; }
         public ParceiroResponse Parceiro { get; set; }
+        public int EtapaServicoId { get; set; }
+        public int BeneficiosServicosId { get; set; }
+        public BeneficiosServicosResponse BeneficiosServicos { get; set; }
+        public EtapaServicoResponse EtapaServico { get; set; }
     }
 }

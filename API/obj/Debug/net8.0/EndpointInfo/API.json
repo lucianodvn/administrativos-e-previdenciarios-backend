@@ -5,6 +5,126 @@
     "version": "1.0"
   },
   "paths": {
+    "/beneficioservico/salvar": {
+      "post": {
+        "tags": [
+          "BeneficioServico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/beneficioservico/listar": {
+      "get": {
+        "tags": [
+          "BeneficioServico"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/beneficioservico/buscar/{id}": {
+      "get": {
+        "tags": [
+          "BeneficioServico"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/beneficioservico/alterar": {
+      "put": {
+        "tags": [
+          "BeneficioServico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BeneficiosServicosRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/beneficioservico/excluir/{id}": {
+      "delete": {
+        "tags": [
+          "BeneficioServico"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/cliente/salvar": {
       "post": {
         "tags": [
@@ -223,6 +343,126 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/etapaservico/salvar": {
+      "post": {
+        "tags": [
+          "EtapaServico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/etapaservico/listar": {
+      "get": {
+        "tags": [
+          "EtapaServico"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/etapaservico/buscar/{id}": {
+      "get": {
+        "tags": [
+          "EtapaServico"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/etapaservico/alterar": {
+      "put": {
+        "tags": [
+          "EtapaServico"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EtapaServicoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/etapaservico/deletar/{id}": {
+      "delete": {
+        "tags": [
+          "EtapaServico"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -663,6 +903,23 @@
   },
   "components": {
     "schemas": {
+      "BeneficiosServicosRequest": {
+        "required": [
+          "nomeBeneficioServico"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeBeneficioServico": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "ClienteRequest": {
         "type": "object",
         "properties": {
@@ -843,6 +1100,14 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "etapaServicoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "beneficiosServicosId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -903,6 +1168,23 @@
           "htmlContrato": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EtapaServicoRequest": {
+        "required": [
+          "nomeEtapaServico"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeEtapaServico": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false

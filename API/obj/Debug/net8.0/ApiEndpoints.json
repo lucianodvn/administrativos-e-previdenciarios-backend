@@ -1,5 +1,79 @@
 [
   {
+    "ContainingType": "API.Controllers.BeneficioServicoController",
+    "Method": "AlterarBeneficioServico",
+    "RelativePath": "beneficioservico/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "beneficiosServicosRequest",
+        "Type": "Application.DTOs.BeneficiosServicos.BeneficiosServicosRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BeneficioServicoController",
+    "Method": "BuscarBeneficioServicoPorId",
+    "RelativePath": "beneficioservico/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BeneficioServicoController",
+    "Method": "ExcluirBeneficioServico",
+    "RelativePath": "beneficioservico/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BeneficioServicoController",
+    "Method": "ListarTodosBeneficiosServicos",
+    "RelativePath": "beneficioservico/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BeneficioServicoController",
+    "Method": "SalvarBeneficioServico",
+    "RelativePath": "beneficioservico/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "beneficiosServicosRequest",
+        "Type": "Application.DTOs.BeneficiosServicos.BeneficiosServicosRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ClienteController",
     "Method": "AlterarCliente",
     "RelativePath": "cliente/alterar",
@@ -126,6 +200,80 @@
       {
         "Name": "request",
         "Type": "Application.DTOs.Contrato.ContratoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.EtapaServicoController",
+    "Method": "AlterarEtapaServico",
+    "RelativePath": "etapaservico/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "etapaServicoRequest",
+        "Type": "Application.DTOs.EtapaServico.EtapaServicoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.EtapaServicoController",
+    "Method": "BuscarEtapaServicoPorId",
+    "RelativePath": "etapaservico/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.EtapaServicoController",
+    "Method": "DeletarEtapaServico",
+    "RelativePath": "etapaservico/deletar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.EtapaServicoController",
+    "Method": "ListarTodasEtapasServico",
+    "RelativePath": "etapaservico/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.EtapaServicoController",
+    "Method": "SalvarEtapaServico",
+    "RelativePath": "etapaservico/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "etapaServicoRequest",
+        "Type": "Application.DTOs.EtapaServico.EtapaServicoRequest",
         "IsRequired": true
       }
     ],

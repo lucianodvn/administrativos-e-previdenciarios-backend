@@ -23,7 +23,8 @@ namespace Infrastructure.Context
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Parceiro> Parceiros { get; set; }
         public DbSet<ContasAReceber> ContasAReceber { get; set; }
-        public DbSet<Recibo> Recibos { get; set;
-        }
+        public DbSet<Recibo> Recibos { get; set; }
+        public DbSet<BeneficiosServicos> BeneficiosServicos { get; set; }
+        public DbSet<EtapaServico> EtapasServico { get; set; }
     }
 }

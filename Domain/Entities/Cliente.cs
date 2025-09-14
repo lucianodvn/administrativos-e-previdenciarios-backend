@@ -56,5 +56,13 @@ namespace Domain.Entities
         public int? ParceiroId { get; set; }
         public virtual Parceiro? Parceiro { get; set; }
 
+        [ForeignKey("EtapaServicoId")]
+        public int EtapaServicoId { get; set; }
+        public virtual EtapaServico EtapaServico { get; set; }
+
+        [ForeignKey("BeneficiosServicosId")]
+        public int BeneficiosServicosId { get; set; }
+        public virtual BeneficiosServicos BeneficiosServicos { get; set; }
+
     }
 }

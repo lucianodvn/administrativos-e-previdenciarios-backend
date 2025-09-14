@@ -15,7 +15,7 @@ namespace Domain.Interfaces
         Task<IEnumerable<T>> Pesquisar(Expression<Func<T, bool>> predicate);
         Task<T> Salvar(T entity);
         Task Alterar(T entity);
-        void Excluir(T entity);
+        Task Excluir(T entity);
         Task<bool> Existe(string numeroRecibo);
     }
 }

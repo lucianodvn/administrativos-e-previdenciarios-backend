@@ -22,6 +22,23 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.BeneficiosServicos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeBeneficioServico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BeneficiosServicos");
+                });
+
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
                 {
                     b.Property<int>("Id")
@@ -36,6 +53,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("BairroRepresentateLegal")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BeneficiosServicosId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Celular")
                         .IsRequired()
@@ -109,6 +129,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EtapaServicoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Idade")
                         .HasColumnType("int");
 
@@ -179,6 +202,10 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BeneficiosServicosId");
+
+                    b.HasIndex("EtapaServicoId");
+
                     b.HasIndex("ParceiroId");
 
                     b.ToTable("Clientes");
@@ -248,6 +275,23 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Contrato");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EtapaServico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeEtapaServico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EtapaServico");
                 });
 
             modelBuilder.Entity("Domain.Entities.Parceiro", b =>
@@ -333,9 +377,25 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
                 {
+                    b.HasOne("Domain.Entities.BeneficiosServicos", "BeneficiosServicos")
+                        .WithMany()
+                        .HasForeignKey("BeneficiosServicosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EtapaServico", "EtapaServico")
+                        .WithMany()
+                        .HasForeignKey("EtapaServicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Domain.Entities.Parceiro", "Parceiro")
                         .WithMany()
                         .HasForeignKey("ParceiroId");
+
+                    b.Navigation("BeneficiosServicos");
+
+                    b.Navigation("EtapaServico");
 
                     b.Navigation("Parceiro");
                 });

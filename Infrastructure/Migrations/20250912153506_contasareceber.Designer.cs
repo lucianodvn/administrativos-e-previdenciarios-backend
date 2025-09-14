@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20250728194818_novo")]
-    partial class novo
+    [Migration("20250912153506_contasareceber")]
+    partial class contasareceber
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,23 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.Entities.BeneficiosServicos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeBeneficioServico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BeneficiosServicos");
+                });
 
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
                 {
@@ -39,6 +56,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("BairroRepresentateLegal")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BeneficiosServicosId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Celular")
                         .IsRequired()
@@ -112,6 +132,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EtapaServicoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Idade")
                         .HasColumnType("int");
 
@@ -144,6 +167,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("OutrosRepresentateLegal")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParceiroId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Profissao")
                         .IsRequired()
@@ -179,7 +205,54 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BeneficiosServicosId");
+
+                    b.HasIndex("EtapaServicoId");
+
+                    b.HasIndex("ParceiroId");
+
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ContasAReceber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataPagamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataVencimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPago")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("QuantidadeParcelas")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorEntrada")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContasAReceber");
                 });
 
             modelBuilder.Entity("Domain.Entities.Contrato", b =>
@@ -205,6 +278,129 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Contrato");
+                });
+
+            modelBuilder.Entity("Domain.Entities.EtapaServico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeEtapaServico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EtapaServico");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Parceiro", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeParceiro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Parceiros");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Recibo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataEmissao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPagoConfirmado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NumeroRecibo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Observacoes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Recebedor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recibos");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Usuarios", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NomeDoUsuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenhaDoUsuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Cliente", b =>
+                {
+                    b.HasOne("Domain.Entities.BeneficiosServicos", "BeneficiosServicos")
+                        .WithMany()
+                        .HasForeignKey("BeneficiosServicosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.EtapaServico", "EtapaServico")
+                        .WithMany()
+                        .HasForeignKey("EtapaServicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Parceiro", "Parceiro")
+                        .WithMany()
+                        .HasForeignKey("ParceiroId");
+
+                    b.Navigation("BeneficiosServicos");
+
+                    b.Navigation("EtapaServico");
+
+                    b.Navigation("Parceiro");
                 });
 
             modelBuilder.Entity("Domain.Entities.Contrato", b =>

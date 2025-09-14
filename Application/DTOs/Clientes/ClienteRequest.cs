@@ -53,5 +53,7 @@ namespace Application.DTOs.Clientes
         public string EstadoCivil { get; set; }
         public string? EstadoCivilRepresentateLegal { get; set; }
         public int? ParceiroId { get; set; }
+        public int EtapaServicoId { get; set; }
+        public int BeneficiosServicosId { get; set; }
     }
 }

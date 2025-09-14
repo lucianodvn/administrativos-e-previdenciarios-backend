@@ -37,9 +37,10 @@ namespace Infrastructure.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        void IRepositoryGeneric<T>.Excluir(T entity)
+        async Task IRepositoryGeneric<T>.Excluir(T entity)
         {
             _dbSet.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
         Task<IEnumerable<T>> IRepositoryGeneric<T>.Pesquisar(Expression<Func<T, bool>> predicate)

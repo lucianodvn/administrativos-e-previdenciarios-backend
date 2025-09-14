@@ -1,9 +1,11 @@
 
 
 using Application.Arquivos;
+using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
+using Application.DTOs.EtapaServico;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -33,6 +35,8 @@ builder.Services.AddScoped<IArquivoService, ArquivoService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
+builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<EtapaServicoRequest, EtapaServicoResponse>, UseCaseGeneric<EtapaServico, EtapaServicoRequest, EtapaServicoResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, UseCaseGeneric<Cliente, ClienteRequest, ClienteResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoRequest, ContratoResponse>, UseCaseGeneric<Contrato, ContratoRequest, ContratoResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<UsuarioRequest, UsuarioResponse>, UseCaseGeneric<Usuarios, UsuarioRequest, UsuarioResponse>>();
