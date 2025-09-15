@@ -967,10 +967,6 @@
             "type": "string",
             "nullable": true
           },
-          "tipoDeBeneficio": {
-            "type": "string",
-            "nullable": true
-          },
           "dataDeNascimento": {
             "type": "string",
             "format": "date-time"
@@ -988,10 +984,6 @@
             "nullable": true
           },
           "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "etapaDeServico": {
             "type": "string",
             "nullable": true
           },

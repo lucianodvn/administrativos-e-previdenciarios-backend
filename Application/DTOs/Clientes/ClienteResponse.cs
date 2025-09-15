@@ -22,13 +22,11 @@ namespace Application.DTOs.Clientes
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        public string TipoDeBeneficio { get; set; }
         public DateTime DataDeNascimento { get; set; }
         public int Idade { get; set; }
         public string Rg { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
-        public string EtapaDeServico { get; set; }
         public string SenhaGov { get; set; }
         public string NumeroDoProcesso { get; set; }
         public string Celular { get; set; }
