@@ -240,7 +240,7 @@
   {
     "ContainingType": "API.Controllers.EtapaServicoController",
     "Method": "DeletarEtapaServico",
-    "RelativePath": "etapaservico/deletar/{id}",
+    "RelativePath": "etapaservico/excluir/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

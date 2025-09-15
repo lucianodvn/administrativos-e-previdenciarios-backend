@@ -58,7 +58,7 @@ namespace API.Controllers
             return Ok(new { mensagem = "Etapa de serviço alterada com sucesso." });
         }
 
-        [HttpDelete("deletar/{id}")]
+        [HttpDelete("excluir/{id}")]
         public async Task<IActionResult> DeletarEtapaServico(int id)
         {
             var etapaServicoResponse = await _useCaseGeneric.ConsultarPorId(id);

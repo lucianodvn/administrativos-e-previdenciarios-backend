@@ -447,7 +447,7 @@
         }
       }
     },
-    "/etapaservico/deletar/{id}": {
+    "/etapaservico/excluir/{id}": {
       "delete": {
         "tags": [
           "EtapaServico"
