@@ -25,11 +25,13 @@ namespace Application.Mappings
             CreateMap<ContratoRequest, Contrato>();
             CreateMap<Contrato, ContratoResponse>();
             CreateMap<UsuarioRequest, Usuarios>();
-            CreateMap<Usuarios, UsuarioResponse>();
+            CreateMap<Usuarios, UsuarioResponse>()
+                .ForMember(dest => dest.NomeDoUsuario, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.SenhaDoUsuario, opt => opt.Ignore());
             CreateMap<ParceiroRequest, Parceiro>();
             CreateMap<Parceiro, ParceiroResponse>();
             CreateMap<ReciboRequest, Recibo>();
-            CreateMap<Recibo, ReciboResponse>(); 
+            CreateMap<Recibo, ReciboResponse>();
             CreateMap<ContasAReceberRequest, ContasAReceber>();
             CreateMap<ContasAReceber, ContasAReceberResponse>();
             CreateMap<BeneficiosServicosRequest, BeneficiosServicos>();

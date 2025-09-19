@@ -13,6 +13,7 @@ C:\projeto-atitude-backend\administrativos-e-previdenciarios\Domain\obj\Debug\ne
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\bin\Debug\net8.0\Domain.deps.json
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\bin\Debug\net8.0\Domain.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
@@ -22,4 +23,3 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\ref\Domain.dll
-C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache

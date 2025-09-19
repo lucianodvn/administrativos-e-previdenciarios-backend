@@ -281,14 +281,30 @@
   },
   {
     "ContainingType": "API.Controllers.LoginController",
-    "Method": "Login",
-    "RelativePath": "login",
+    "Method": "LoginAsync",
+    "RelativePath": "login/acesso",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "loginRequest",
+        "Name": "dto",
+        "Type": "Application.DTOs.Login.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.LoginController",
+    "Method": "LoginAdminAsync",
+    "RelativePath": "login/isadmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
         "Type": "Application.DTOs.Login.LoginRequest",
         "IsRequired": true
       }
@@ -490,7 +506,23 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UsuarioController",
+    "Method": "CadastraUsuario",
+    "RelativePath": "usuario/cadastro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.Usuarios.UsuarioRequest",
         "IsRequired": true
       }
     ],
@@ -506,7 +538,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.Guid",
         "IsRequired": false
       }
     ],
@@ -524,15 +556,15 @@
   },
   {
     "ContainingType": "API.Controllers.UsuarioController",
-    "Method": "SalvarCliente",
-    "RelativePath": "usuario/salvar",
+    "Method": "LoginAsync",
+    "RelativePath": "usuario/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuarioRequest",
-        "Type": "Application.DTOs.Usuarios.UsuarioRequest",
+        "Name": "dto",
+        "Type": "Application.DTOs.Login.LoginRequest",
         "IsRequired": true
       }
     ],

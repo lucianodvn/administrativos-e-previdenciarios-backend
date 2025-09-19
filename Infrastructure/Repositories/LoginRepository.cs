@@ -20,8 +20,9 @@ namespace Infrastructure.Repositories
 
         public async Task<Usuarios> ConsultarLogin(string nome, string senha)
         {
-            Usuarios login =  await _context.Usuarios.FirstOrDefaultAsync(x => x.Usuario == nome && x.SenhaDoUsuario == senha);
-            return login;
+            //Usuarios login =  await _context.Usuarios.FirstOrDefaultAsync(x => x.Usuario == nome && x.SenhaDoUsuario == senha);
+            //return login;
+            return new Usuarios();
         }
     }
 }

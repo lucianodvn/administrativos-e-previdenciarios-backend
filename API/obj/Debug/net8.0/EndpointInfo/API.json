@@ -470,7 +470,38 @@
         }
       }
     },
-    "/login": {
+    "/login/acesso": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login/isadmin": {
       "post": {
         "tags": [
           "Login"
@@ -781,7 +812,7 @@
         }
       }
     },
-    "/usuario/salvar": {
+    "/usuario/cadastro": {
       "post": {
         "tags": [
           "Usuario"
@@ -801,6 +832,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/UsuarioRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/usuario/login": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           }
@@ -835,8 +897,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -888,8 +950,8 @@
             "name": "id",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -1182,15 +1244,19 @@
         "additionalProperties": false
       },
       "LoginRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
         "type": "object",
         "properties": {
-          "usuario": {
-            "type": "string",
-            "nullable": true
+          "username": {
+            "minLength": 1,
+            "type": "string"
           },
-          "senhaDoUsuario": {
-            "type": "string",
-            "nullable": true
+          "password": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1247,23 +1313,25 @@
         "additionalProperties": false
       },
       "UsuarioRequest": {
+        "required": [
+          "confirmarSenha",
+          "nomeDoUsuario",
+          "senhaDoUsuario"
+        ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "nomeDoUsuario": {
-            "type": "string",
-            "nullable": true
-          },
-          "usuario": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "senhaDoUsuario": {
+            "minLength": 1,
             "type": "string",
-            "nullable": true
+            "format": "password"
+          },
+          "confirmarSenha": {
+            "minLength": 1,
+            "type": "string"
           },
           "isAdmin": {
             "type": "boolean"

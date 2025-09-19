@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Entities
 {
-    public class Usuarios
+    public class Usuarios : IdentityUser
     {
-        public int Id { get; set; }
-        public string NomeDoUsuario { get; set; }
-        public string Usuario { get; set; }
-        public string SenhaDoUsuario { get; set; }
+        public Usuarios() : base() { }
         public bool IsAdmin { get; set; }
     }
 }

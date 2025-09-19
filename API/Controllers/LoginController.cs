@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Login;
 using Application.DTOs.Usuarios;
 using Application.Interfaces;
+using Application.Services;
 using Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,29 +11,20 @@ namespace API.Controllers
     [Route("login")]
     public class LoginController : ControllerBase
     {
-        private readonly ILoginUseCase _loginUseCase;
+        //private readonly ILoginUseCase _loginUseCase;
+        private readonly LoginService _loginService;
 
-        public LoginController(ILoginUseCase loginUseCase)
+        public LoginController(LoginService loginService)
         {
-            _loginUseCase = loginUseCase;
+            //_loginUseCase = loginUseCase;
+            _loginService = loginService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
+        [HttpPost("acesso")]
+        public async Task<IActionResult> LoginAsync(LoginRequest dto)
         {
-            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Usuario) || string.IsNullOrEmpty(loginRequest.SenhaDoUsuario))
-            {
-                return BadRequest("Usuário e senha são obrigatórios.");
-            }
-               
-            var usuario = await _loginUseCase.ConsultarLogin(loginRequest);
-
-            if (usuario == null)
-            {
-                return Unauthorized("Usuário ou senha inválidos.");
-            }
-                
-            return Ok(usuario);
+            var token = await _loginService.Login(dto);
+            return Ok(token);
         }
     }
 }
