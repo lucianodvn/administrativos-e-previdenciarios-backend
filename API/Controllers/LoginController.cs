@@ -11,12 +11,10 @@ namespace API.Controllers
     [Route("login")]
     public class LoginController : ControllerBase
     {
-        //private readonly ILoginUseCase _loginUseCase;
         private readonly LoginService _loginService;
 
         public LoginController(LoginService loginService)
         {
-            //_loginUseCase = loginUseCase;
             _loginService = loginService;
         }
 

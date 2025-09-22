@@ -25,5 +25,6 @@ namespace Infrastructure.Context
         public DbSet<Recibo> Recibos { get; set; }
         public DbSet<BeneficiosServicos> BeneficiosServicos { get; set; }
         public DbSet<EtapaServico> EtapaServico { get; set; }
-    }
+        public DbSet<ContasAPagar> ContasAPagar { get; set; }
+    }    
 }

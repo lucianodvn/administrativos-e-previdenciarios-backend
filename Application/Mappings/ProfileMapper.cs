@@ -1,5 +1,7 @@
-﻿using Application.DTOs.BeneficiosServicos;
+﻿using Application.DTOs;
+using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
+using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
@@ -38,6 +40,8 @@ namespace Application.Mappings
             CreateMap<BeneficiosServicos, BeneficiosServicosResponse>();
             CreateMap<EtapaServicoRequest, EtapaServico>();
             CreateMap<EtapaServico, EtapaServicoResponse>();
+            CreateMap<ContasAPagarRequest, ContasAPagar>();
+            CreateMap<ContasAPagar, ContasAPagarResponse>();
         }
     }
 }

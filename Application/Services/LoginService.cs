@@ -14,7 +14,6 @@ namespace Application.Services
 {
     public class LoginService
     {
-        //private readonly ILoginRepository _loginRepository;
         private IMapper _mapper;
         private UserManager<Usuarios> _userManager;
         private SignInManager<Usuarios> _signInManager;
@@ -27,12 +26,7 @@ namespace Application.Services
             _signInManager = signInManager;
             _tokenService = tokenService;
         }
-        //public async Task<Usuarios> ConsultarLogin(string nome, string senha)
-        //{
-        //    Usuarios login = await _loginRepository.ConsultarLogin(nome, senha);
-        //    return login;
-        //}
-
+   
         public async Task CadastraUsuario(UsuarioRequest dto)
         {
             Usuarios usuario = _mapper.Map<Usuarios>(dto);

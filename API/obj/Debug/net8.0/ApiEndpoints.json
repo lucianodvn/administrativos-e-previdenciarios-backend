@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "API.Controllers.AgendaController",
+    "Method": "ListarAgenda",
+    "RelativePath": "agenda",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.BeneficioServicoController",
     "Method": "AlterarBeneficioServico",
     "RelativePath": "beneficioservico/alterar",
@@ -126,6 +136,80 @@
       {
         "Name": "clienteRequest",
         "Type": "Application.DTOs.Clientes.ClienteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "AlterarContaAPagar",
+    "RelativePath": "contas-a-pagar/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAPagarRequest",
+        "Type": "Application.DTOs.ContasAPagar.ContasAPagarRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "BuscarContaAPagarPorId",
+    "RelativePath": "contas-a-pagar/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "DeletarContaAPagar",
+    "RelativePath": "contas-a-pagar/deletar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "ListarTodasContasAPagar",
+    "RelativePath": "contas-a-pagar/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "SalvarContaAPagar",
+    "RelativePath": "contas-a-pagar/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAPagarRequest",
+        "Type": "Application.DTOs.ContasAPagar.ContasAPagarRequest",
         "IsRequired": true
       }
     ],
@@ -283,22 +367,6 @@
     "ContainingType": "API.Controllers.LoginController",
     "Method": "LoginAsync",
     "RelativePath": "login/acesso",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "Application.DTOs.Login.LoginRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.LoginController",
-    "Method": "LoginAdminAsync",
-    "RelativePath": "login/isadmin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
