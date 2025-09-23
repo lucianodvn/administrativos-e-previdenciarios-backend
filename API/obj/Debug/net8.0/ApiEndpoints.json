@@ -176,7 +176,7 @@
   {
     "ContainingType": "API.Controllers.ContasAPagarController",
     "Method": "DeletarContaAPagar",
-    "RelativePath": "contas-a-pagar/deletar/{id}",
+    "RelativePath": "contas-a-pagar/excluir/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

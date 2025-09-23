@@ -331,7 +331,7 @@
         }
       }
     },
-    "/contas-a-pagar/deletar/{id}": {
+    "/contas-a-pagar/excluir/{id}": {
       "delete": {
         "tags": [
           "ContasAPagar"

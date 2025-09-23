@@ -33,7 +33,18 @@ namespace API.Controllers
             {
                 return NotFound("Nenhuma conta a pagar encontrada.");
             }
-            return Ok(contasAPagarResponse);
+
+            var contasDoMesViegente = contasAPagarResponse
+                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year)
+                .ToList();
+
+            var totalAPagar = contasDoMesViegente.Sum(x => x.Valor);
+
+            return Ok(new
+            {
+                Contas = contasDoMesViegente,
+                TotalAPagar = totalAPagar
+            });
         }
 
         [HttpGet("buscar/{id}")]
@@ -58,7 +69,7 @@ namespace API.Controllers
             return Ok(new { mensagem = "Conta a pagar alterada com sucesso." });
         }
 
-        [HttpDelete("deletar/{id}")]
+        [HttpDelete("excluir/{id}")]
         public async Task<IActionResult> DeletarContaAPagar(int id)
         {
             var contasAPagarResponse = await _useCaseGeneric.ConsultarPorId(id);
