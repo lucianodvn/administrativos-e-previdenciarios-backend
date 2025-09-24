@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Clientes;
+using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +62,18 @@ namespace API.Controllers
             {
                 return NotFound("Nenhuma Conta a Receber encontrada.");
             }
-            return Ok(contasAReceberResponse);
+
+            var contasDoMesVigente = contasAReceberResponse
+                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year)
+                .ToList();
+
+            var totalAReceber = contasDoMesVigente.Sum(x => x.Valor);
+
+            return Ok(new
+            {
+                Contas = contasDoMesVigente,
+                TotalAReceber = totalAReceber
+            });
         }
     }
 }

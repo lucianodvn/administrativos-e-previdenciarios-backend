@@ -380,6 +380,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.LucroController",
+    "Method": "ConsultarLucro",
+    "RelativePath": "lucro",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ParceiroController",
     "Method": "AlterarParceiro",
     "RelativePath": "parceiro/alterar",

@@ -37,6 +37,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<AgendaService>();
+builder.Services.AddScoped<LucroService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<EtapaServicoRequest, EtapaServicoResponse>, UseCaseGeneric<EtapaServico, EtapaServicoRequest, EtapaServicoResponse>>();

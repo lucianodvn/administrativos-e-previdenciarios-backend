@@ -633,6 +633,18 @@
         }
       }
     },
+    "/lucro": {
+      "get": {
+        "tags": [
+          "Lucro"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/parceiro/salvar": {
       "post": {
         "tags": [

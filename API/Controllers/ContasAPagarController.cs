@@ -34,15 +34,15 @@ namespace API.Controllers
                 return NotFound("Nenhuma conta a pagar encontrada.");
             }
 
-            var contasDoMesViegente = contasAPagarResponse
+            var contasDoMesVigente = contasAPagarResponse
                 .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year)
                 .ToList();
 
-            var totalAPagar = contasDoMesViegente.Sum(x => x.Valor);
+            var totalAPagar = contasDoMesVigente.Sum(x => x.Valor);
 
             return Ok(new
             {
-                Contas = contasDoMesViegente,
+                Contas = contasDoMesVigente,
                 TotalAPagar = totalAPagar
             });
         }

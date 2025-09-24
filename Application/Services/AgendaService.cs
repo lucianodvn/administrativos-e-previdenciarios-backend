@@ -39,6 +39,5 @@ namespace Application.Services
                          };
             return agenda.ToList();
         }
-
     }
 }
