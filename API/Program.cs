@@ -78,10 +78,13 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", builder =>
+    options.AddPolicy("CorsPolicy", policy =>
     {
-        builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:4200");
+        policy.WithOrigins("http://192.168.0.158:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
+
 });
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -98,7 +101,6 @@ var app = builder.Build();
 
 app.UseCors("CorsPolicy");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
