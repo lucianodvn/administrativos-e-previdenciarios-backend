@@ -1,0 +1,114 @@
+CONTRATO DE PRESTAÇÃO DE SERVIÇOS ADMINISTRATIVOS E PREVIDENCIÁRIOS
+
+CONTRATANTE: teste alterar123, 12122112, {{estadoCivil}}, 12312321, portador(a) do RG nº 111111111, inscrito no CPF/MF sob o nº 22234364576, residente e domiciliado(a) à Rua Doutor Manoel Alexandre Marcondes Machado, nº 99999, Bairro: Jardim do Lago, CEP: 13050012, Campinas/SP, contato telefônico: 1111111111, que é representado legalmente por: qwedqweqwe, string, {{estadoCivilRepresentateLegal}}, string, portador(a) do RG nº 123132131, inscrito no CPF/MF sob o nº 12313123131, residente e domiciliado(a) à Rua Vasco Joaquim Smith Vasconcelos, nº {{numeroRepresentateLegal}}, Bairro: Jardim do Lago, CEP: 13050014, Campinas/SP, contato telefônico: 1111111111
+
+CONTRATADO: JAMILLA HELEN DE SOUSA NICOMEDES, BRASILEIRA, DIVORCIADA, BACHAREL EM DIREITO, prestadora de serviços administrativos e previdenciários no âmbito administrativo, portadora do RG nº 29.467.333-7, inscrita sob CPF/MF nº 257.023.988-74, residente e domiciliada à Rua Benedito Jesus Alves, Nº341, DIC V DE MARÇO, CEP: 13054-566 - CAMPINAS/SP, contato telefônico: 19-33426223 / 19-994731643, email: jamillanicomedes@gmail.com
+
+As partes acima identificadas têm, entre si, justo e acordado o presente Contrato de Prestação de Serviços Administrativos e Previdenciários, que se regerá pelas cláusulas seguintes e pelas condições de preço, forma e termo de pagamento descritas no presente.
+
+### DO OBJETO DO CONTRATO
+
+**Cláusula 1ª.** É objeto do presente contrato a prestação do serviço de: 5, junto ao INSS, para o(a) mesmo(a), nascido(a) em 2025-07-23T00:00:00.
+
+### OBRIGAÇÕES DO CONTRATANTE
+
+**Cláusula 2ª.** O CONTRATANTE deverá fornecer ao CONTRATADO todas as informações necessárias e documentações para a realização do serviço.
+
+**Cláusula 3ª.** O CONTRATANTE deverá efetuar o pagamento na forma e condições estabelecidas na cláusula 6ª.
+
+### OBRIGAÇÕES DO CONTRATADO
+
+**Cláusula 4ª.** É dever do CONTRATADO oferecer cópia do presente instrumento, contendo todas as especificidades da prestação de serviço contratada.
+
+**Cláusula 5ª.** O CONTRATADO deverá fornecer recibos referentes aos pagamentos efetuados pelo CONTRATANTE.
+
+### DO PREÇO E DAS CONDIÇÕES DE PAGAMENTO
+
+**Cláusula 6ª.** O presente serviço será remunerado pela quantia de: 5 (cinco) salários iguais ao que o requerente receber, devendo pagar com o valor retroativo. Caso o processo ultrapasse 13 meses, o valor será de 3 salários e 30% do retroativo pagos à vista. Parcelamentos são possíveis mediante comum acordo.
+
+Ciente: ___________________
+
+### DO INADIMPLEMENTO, DESCUMPRIMENTO E MULTA
+
+**Cláusula 7ª.** Multa de 2% e juros de 1% ao mês. Honorários de 20% em caso judicial.
+
+**Cláusula 8ª.** Em caso de morte do CONTRATADO, os herdeiros receberão proporcionalmente.
+
+**Cláusula 9ª.** Despesas com cópias, viagens e emolumentos serão do CONTRATANTE.
+
+**Cláusula 10ª.** Em caso de rescisão sem justa causa pelo CONTRATANTE, haverá pagamento de 5 salários do benefício pleiteado.
+
+**Cláusula 11ª.** Caso o pedido seja indeferido, o CONTRATANTE não pagará honorários.
+
+**Cláusula 12ª.** Serviços jurídicos complementares deverão ser pagos à parte mediante contrato próprio com advogado.
+
+### DA RESCISÃO IMOTIVADA
+
+**Cláusula 13ª.** Rescisão pode ser feita com aviso prévio de 30 dias.
+
+### DO PRAZO
+
+**Cláusula 14ª.** O prazo é indeterminado.
+
+Ciente: ___________________
+
+### DAS CONDIÇÕES GERAIS
+
+**Cláusula 15ª.** Inexistência de vínculo empregatício.
+
+**Cláusula 16ª.** O CONTRATADO pode subcontratar com autorização do CONTRATANTE.
+
+### CONFIDENCIALIDADE
+
+**Cláusulas 17ª a 20ª.** As partes devem manter sigilo sobre informações confidenciais e dados pessoais, conforme a LGPD (Lei nº 13.709/18).
+
+### DO FORO
+
+**Cláusula 21ª.** Fica eleito o foro da comarca de Campinas/SP.
+
+Campinas, ____/____/_____
+
+_______________________
+CONTRATANTE
+
+_______________________
+CONTRATADO
+
+_______________________
+TESTEMUNHA 1 - Nome: __________________  CPF: ________________
+
+_______________________
+TESTEMUNHA 2 - Nome: __________________  CPF: ________________
+
+---
+
+### ADENDO DO CONTRATO PARTICULAR DE PRESTAÇÃO DE SERVIÇOS
+
+CONTRATANTE: teste alterar123 – conforme dados acima.
+
+CONTRATADO: JAMILLA HELEN DE SOUSA NICOMEDES – conforme qualificação acima.
+
+As partes firmam o presente adendo ao contrato original homologado em {{dataContrato}}, com a seguinte alteração:
+
+**Cláusula 6.1 – DO PAGAMENTO**
+Valor total: R$ {{valorTotal}} ({{valorTotalPorExtenso}})
+Valor pago na data {{dataPagamentoInicial}}: R$ {{valorPago}} ({{valorPagoPorExtenso}})
+Saldo: R$ {{valorRestante}} ({{valorRestantePorExtenso}})
+Parcelas: {{quantidadeParcelas}} de R$ {{valorParcela}} ({{valorParcelaPorExtenso}}) com vencimento todo dia {{diaParcela}} de cada mês a partir de {{dataInicioParcelas}}
+
+Pagamento via Pix (Chave: 19983325518) ou depósito bancário:
+Banco Caixa Econômica Federal – Agência 3914 – Conta Poupança 000755191438-3 (em nome da CONTRATADA)
+
+Campinas, ____/____/_____
+
+_______________________
+CONTRATANTE
+
+_______________________
+CONTRATADO
+
+_______________________
+TESTEMUNHA 1 – Nome: __________________  CPF: ________________
+
+_______________________
+TESTEMUNHA 2 – Nome: __________________  CPF: ________________

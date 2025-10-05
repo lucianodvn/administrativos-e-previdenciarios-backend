@@ -18,7 +18,7 @@ namespace Application.Services
         }
        public async Task Alterar(T entity)
         {
-            _repository.Alterar(entity);
+            await _repository.Alterar(entity);
             await Task.CompletedTask;
         }
 
@@ -34,7 +34,7 @@ namespace Application.Services
 
         public async Task Excluir(T entity)
         {
-            _repository.Excluir(entity);
+            await _repository.Excluir(entity);
             await Task.CompletedTask;
         }
 

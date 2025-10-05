@@ -1074,6 +1074,200 @@
           }
         }
       }
+    },
+    "/vincular-cliente-beneficio-etapa/salvar": {
+      "post": {
+        "tags": [
+          "VincularClienteBeneficioEtapa"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vincular-cliente-beneficio-etapa/buscar/{id}": {
+      "get": {
+        "tags": [
+          "VincularClienteBeneficioEtapa"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vincular-cliente-beneficio-etapa/buscar": {
+      "get": {
+        "tags": [
+          "VincularClienteBeneficioEtapa"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vincular-cliente-beneficio-etapa/alterar": {
+      "put": {
+        "tags": [
+          "VincularClienteBeneficioEtapa"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteBeneficioEtapaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vinculo-cliente-parceiro/salvar": {
+      "post": {
+        "tags": [
+          "VinculoClienteParceiro"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vinculo-cliente-parceiro/buscar/{id}": {
+      "get": {
+        "tags": [
+          "VinculoClienteParceiro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vinculo-cliente-parceiro/buscar": {
+      "get": {
+        "tags": [
+          "VinculoClienteParceiro"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/vinculo-cliente-parceiro/alterar": {
+      "put": {
+        "tags": [
+          "VinculoClienteParceiro"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VinculoClienteParceiroRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1122,6 +1316,10 @@
             "type": "string",
             "nullable": true
           },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
           "complemento": {
             "type": "string",
             "nullable": true
@@ -1162,19 +1360,7 @@
             "type": "string",
             "nullable": true
           },
-          "senhaGov": {
-            "type": "string",
-            "nullable": true
-          },
-          "numeroDoProcesso": {
-            "type": "string",
-            "nullable": true
-          },
-          "celular": {
-            "type": "string",
-            "nullable": true
-          },
-          "outros": {
+          "historico": {
             "type": "string",
             "nullable": true
           },
@@ -1251,10 +1437,6 @@
             "type": "string",
             "nullable": true
           },
-          "outrosRepresentateLegal": {
-            "type": "string",
-            "nullable": true
-          },
           "estadoCivil": {
             "type": "string",
             "nullable": true
@@ -1262,19 +1444,6 @@
           "estadoCivilRepresentateLegal": {
             "type": "string",
             "nullable": true
-          },
-          "parceiroId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "etapaServicoId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "beneficiosServicosId": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1475,6 +1644,70 @@
           },
           "isAdmin": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VinculoClienteBeneficioEtapaRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "etapaServicoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "beneficiosServicosId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "senhaGov": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDoProcesso": {
+            "type": "string",
+            "nullable": true
+          },
+          "outros": {
+            "type": "string",
+            "nullable": true
+          },
+          "historico": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VinculoClienteParceiroRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parceiroId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "senhaGov": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroDoProcesso": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

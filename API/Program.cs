@@ -8,6 +8,8 @@ using Application.DTOs.EtapaServico;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
+using Application.DTOs.VinculoClienteBeneficioEtapa;
+using Application.DTOs.VinculoClienteParceiro;
 using Application.Interfaces;
 using Application.Mappings;
 using Application.Services;
@@ -34,10 +36,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IArquivoService, ArquivoService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IVinculoClienteRepository, VinculoClienteRepository>();
+builder.Services.AddScoped<IVinculoClienteParceiroRepository, VinculoClienteParceiroRepository>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<AgendaService>();
 builder.Services.AddScoped<LucroService>();
+builder.Services.AddScoped<VinculoClienteService>();
+builder.Services.AddScoped<VinculoClienteParceiroService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<EtapaServicoRequest, EtapaServicoResponse>, UseCaseGeneric<EtapaServico, EtapaServicoRequest, EtapaServicoResponse>>();
@@ -47,18 +53,18 @@ builder.Services.AddScoped<IUseCaseGeneric<UsuarioRequest, UsuarioResponse>, Use
 builder.Services.AddScoped<IUseCaseGeneric<ParceiroRequest, ParceiroResponse>, UseCaseGeneric<Parceiro, ParceiroRequest, ParceiroResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ReciboRequest, ReciboResponse>, UseCaseGeneric<Recibo, ReciboRequest, ReciboResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse>, UseCaseGeneric<ContasAReceber, ContasAReceberRequest, ContasAReceberResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>, UseCaseGeneric<VinculoClienteBeneficioEtapa, VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>, UseCaseGeneric<VinculoClienteParceiro, VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));
 builder.Services.AddMediatR(typeof(UploadMultiplosArquivosCommandHandler).Assembly);
-builder.Services.AddIdentity<Usuarios, IdentityRole> ()
+builder.Services.AddIdentity<Usuarios, IdentityRole>()
     .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<TokenService>();
 
-
 var secretKey = builder.Configuration["SymmetricSecurityKey"];
-
 
 builder.Services.AddAuthentication(options =>
 {
@@ -80,7 +86,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://192.168.0.158:4200")
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -99,17 +105,13 @@ builder.Services.AddDbContext<DataDbContext>(options =>
 
 var app = builder.Build();
 
+app.UseRouting();
 app.UseCors("CorsPolicy");
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
 

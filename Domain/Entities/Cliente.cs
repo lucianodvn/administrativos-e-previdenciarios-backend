@@ -16,6 +16,7 @@ namespace Domain.Entities
         public string Profissao { get; set; }
         public string Endereco { get; set; }
         public string Telefone { get; set; }
+        public string Celular { get; set; }
         public string? Complemento { get; set; }
         public string Cep { get; set; }
         public string Bairro { get; set; }
@@ -26,10 +27,6 @@ namespace Domain.Entities
         public string Rg { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
-        public string SenhaGov { get; set; }
-        public string NumeroDoProcesso { get; set; }
-        public string Celular { get; set; }
-        public string? Outros { get; set; }
         public bool IsProprioCliente { get; set; }
         public string? NomeCompletoRepresentateLegal { get; set; }
         public string? NacionalidadeRepresentateLegal { get; set; }
@@ -48,19 +45,6 @@ namespace Domain.Entities
         public string? CpfRepresentateLegal { get; set; }
         public string? EmailRepresentateLegal { get; set; }
         public string? TipoDeRepresentante { get; set; }
-        public string? OutrosRepresentateLegal { get; set; }
         public string? EstadoCivilRepresentateLegal { get; set; }
-        [ForeignKey("ParceiroId")]
-        public int? ParceiroId { get; set; }
-        public virtual Parceiro? Parceiro { get; set; }
-
-        [ForeignKey("EtapaServicoId")]
-        public int EtapaServicoId { get; set; }
-        public virtual EtapaServico EtapaServico { get; set; }
-
-        [ForeignKey("BeneficiosServicosId")]
-        public int BeneficiosServicosId { get; set; }
-        public virtual BeneficiosServicos BeneficiosServicos { get; set; }
-
     }
 }

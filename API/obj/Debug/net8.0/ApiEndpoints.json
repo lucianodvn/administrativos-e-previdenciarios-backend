@@ -647,5 +647,121 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VincularClienteBeneficioEtapaController",
+    "Method": "AlterarCliente",
+    "RelativePath": "vincular-cliente-beneficio-etapa/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.VinculoClienteBeneficioEtapa.VinculoClienteBeneficioEtapaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VincularClienteBeneficioEtapaController",
+    "Method": "BuscarTodos",
+    "RelativePath": "vincular-cliente-beneficio-etapa/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VincularClienteBeneficioEtapaController",
+    "Method": "BuscarPorId",
+    "RelativePath": "vincular-cliente-beneficio-etapa/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VincularClienteBeneficioEtapaController",
+    "Method": "Salvar",
+    "RelativePath": "vincular-cliente-beneficio-etapa/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.VinculoClienteBeneficioEtapa.VinculoClienteBeneficioEtapaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VinculoClienteParceiroController",
+    "Method": "AlterarCliente",
+    "RelativePath": "vinculo-cliente-parceiro/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.VinculoClienteParceiro.VinculoClienteParceiroRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VinculoClienteParceiroController",
+    "Method": "BuscarTodos",
+    "RelativePath": "vinculo-cliente-parceiro/buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VinculoClienteParceiroController",
+    "Method": "BuscarPorId",
+    "RelativePath": "vinculo-cliente-parceiro/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VinculoClienteParceiroController",
+    "Method": "Salvar",
+    "RelativePath": "vinculo-cliente-parceiro/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.VinculoClienteParceiro.VinculoClienteParceiroRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

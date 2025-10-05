@@ -1,5 +1,4 @@
-﻿using Application.DTOs;
-using Application.DTOs.BeneficiosServicos;
+﻿using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
@@ -8,13 +7,10 @@ using Application.DTOs.EtapaServico;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
+using Application.DTOs.VinculoClienteBeneficioEtapa;
+using Application.DTOs.VinculoClienteParceiro;
 using AutoMapper;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Mappings
 {
@@ -42,6 +38,15 @@ namespace Application.Mappings
             CreateMap<EtapaServico, EtapaServicoResponse>();
             CreateMap<ContasAPagarRequest, ContasAPagar>();
             CreateMap<ContasAPagar, ContasAPagarResponse>();
+            CreateMap<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapa>();
+            CreateMap<VinculoClienteBeneficioEtapa, VinculoClienteBeneficioEtapaResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.EtapaServico, opt => opt.MapFrom(src => src.EtapaServico))
+                .ForMember(dest => dest.BeneficiosServicos, opt => opt.MapFrom(src => src.BeneficiosServicos));
+            CreateMap<VinculoClienteParceiroRequest, VinculoClienteParceiro>();
+            CreateMap<VinculoClienteParceiro, VinculoClienteParceiroResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
         }
     }
 }

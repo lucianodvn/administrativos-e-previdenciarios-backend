@@ -1,10 +1,5 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Context
 {
@@ -26,5 +21,7 @@ namespace Infrastructure.Context
         public DbSet<BeneficiosServicos> BeneficiosServicos { get; set; }
         public DbSet<EtapaServico> EtapaServico { get; set; }
         public DbSet<ContasAPagar> ContasAPagar { get; set; }
-    }    
+        public DbSet<VinculoClienteBeneficioEtapa> VinculoClienteBeneficioEtapas { get; set; }
+        public DbSet<VinculoClienteParceiro> VinculoClienteParceiros { get; set; }
+    }
 }
