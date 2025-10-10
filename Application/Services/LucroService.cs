@@ -1,6 +1,6 @@
 ﻿using Application.DTOs;
 using Application.DTOs.Lucro;
-using Application.Interfaces;
+using Application.Interfaces.Service;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;

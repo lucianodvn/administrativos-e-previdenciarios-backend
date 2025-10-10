@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.Clientes;
 using Application.DTOs.Contrato;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

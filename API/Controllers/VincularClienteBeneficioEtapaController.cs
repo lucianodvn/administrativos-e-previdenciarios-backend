@@ -1,6 +1,5 @@
-﻿using Application.DTOs.Clientes;
-using Application.DTOs.VinculoClienteBeneficioEtapa;
-using Application.Interfaces;
+﻿using Application.DTOs.VinculoClienteBeneficioEtapa;
+using Application.Interfaces.UseCase;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +12,7 @@ namespace API.Controllers
         private readonly IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse> _useCaseGeneric;
         private VinculoClienteService _vinculoClienteService;
 
-        public VincularClienteBeneficioEtapaController(IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, 
+        public VincularClienteBeneficioEtapaController(IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest,
             VinculoClienteBeneficioEtapaResponse> useCaseGeneric,
             VinculoClienteService vinculoClienteService)
         {
@@ -72,5 +71,5 @@ namespace API.Controllers
 
         }
     }
-    
+
 }

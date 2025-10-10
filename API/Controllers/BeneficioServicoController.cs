@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.BeneficiosServicos;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

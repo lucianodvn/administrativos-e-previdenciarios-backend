@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Clientes;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Application.UseCases;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

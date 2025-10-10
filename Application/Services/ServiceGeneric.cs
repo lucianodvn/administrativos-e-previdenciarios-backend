@@ -1,10 +1,5 @@
-﻿using Application.Interfaces;
-using Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Interfaces.Service;
+using Domain.Interfaces.Repository;
 
 namespace Application.Services
 {
@@ -16,15 +11,16 @@ namespace Application.Services
         {
             _repository = repository;
         }
-       public async Task Alterar(T entity)
+        public async Task Alterar(T entity)
         {
             await _repository.Alterar(entity);
+
             await Task.CompletedTask;
         }
 
         public async Task<T> ConsultarPorId(object id)
         {
-          return await _repository.ConsultarPorId(id);
+            return await _repository.ConsultarPorId(id);
         }
 
         public async Task<IEnumerable<T>> ConsultarTodos()
@@ -40,7 +36,7 @@ namespace Application.Services
 
         public async Task<T> Salvar(T entity)
         {
-           return await _repository.Salvar(entity);
+            return await _repository.Salvar(entity);
         }
 
         public async Task<bool> Existe(string numeroRecibo)

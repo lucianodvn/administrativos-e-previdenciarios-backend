@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.Clientes;
 using Application.DTOs.Login;
 using Application.DTOs.Usuarios;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 

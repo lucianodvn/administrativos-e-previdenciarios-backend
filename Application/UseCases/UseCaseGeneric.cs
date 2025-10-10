@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.Service;
+using Application.Interfaces.UseCase;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

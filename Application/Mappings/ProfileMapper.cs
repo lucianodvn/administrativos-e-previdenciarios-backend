@@ -1,9 +1,11 @@
-﻿using Application.DTOs.BeneficiosServicos;
+﻿using Application.DTOs.Agendamento;
+using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
+using Application.DTOs.Fornecedor;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -31,14 +33,23 @@ namespace Application.Mappings
             CreateMap<ReciboRequest, Recibo>();
             CreateMap<Recibo, ReciboResponse>();
             CreateMap<ContasAReceberRequest, ContasAReceber>();
-            CreateMap<ContasAReceber, ContasAReceberResponse>();
+            CreateMap<ContasAReceber, ContasAReceberResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Fornecedor, opt => opt.MapFrom(src => src.Fornecedor))
+                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
             CreateMap<BeneficiosServicosRequest, BeneficiosServicos>();
             CreateMap<BeneficiosServicos, BeneficiosServicosResponse>();
             CreateMap<EtapaServicoRequest, EtapaServico>();
             CreateMap<EtapaServico, EtapaServicoResponse>();
             CreateMap<ContasAPagarRequest, ContasAPagar>();
-            CreateMap<ContasAPagar, ContasAPagarResponse>();
+            CreateMap<ContasAPagar, ContasAPagarResponse>()
+                .ForMember(dest => dest.Fornecedor, opt => opt.MapFrom(src => src.Fornecedor))
+                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
+            CreateMap<AgendamentoRequest, Agendamento>();
+            CreateMap<Agendamento, AgendamentoResponse>();
             CreateMap<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapa>();
+            CreateMap<FornecedorRequest, Fornecedor>();
+            CreateMap<Fornecedor, FornecedorResponse>();
             CreateMap<VinculoClienteBeneficioEtapa, VinculoClienteBeneficioEtapaResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
                 .ForMember(dest => dest.EtapaServico, opt => opt.MapFrom(src => src.EtapaServico))

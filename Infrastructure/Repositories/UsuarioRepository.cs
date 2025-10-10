@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Usuarios;
-using Application.Interfaces;
+using Application.Interfaces.Repository;
 using AutoMapper;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;

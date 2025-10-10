@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.Usuarios;
 using Application.DTOs.VinculoClienteBeneficioEtapa;
-using Application.Interfaces;
+using Application.Interfaces.Repository;
 using AutoMapper;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;

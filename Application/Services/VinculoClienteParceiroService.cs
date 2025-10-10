@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.VinculoClienteParceiro;
-using Application.Interfaces;
+using Application.Interfaces.Repository;
 
 namespace Application.Services
 {
@@ -28,7 +28,6 @@ namespace Application.Services
             {
                 return null;
             }
-
             return response;
         }
     }

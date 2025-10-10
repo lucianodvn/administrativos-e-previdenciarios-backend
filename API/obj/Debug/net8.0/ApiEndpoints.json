@@ -1,13 +1,107 @@
 [
   {
-    "ContainingType": "API.Controllers.AgendaController",
-    "Method": "ListarAgenda",
-    "RelativePath": "agenda",
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "AtualizarAgendamento",
+    "RelativePath": "agenda/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agendamentoRequest",
+        "Type": "Application.DTOs.Agendamento.AgendamentoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "ObterAgendamentoPorId",
+    "RelativePath": "agenda/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "CriarAgendamento",
+    "RelativePath": "agenda/cadastrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agendamentoRequest",
+        "Type": "Application.DTOs.Agendamento.AgendamentoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "ConsultarAgendamento",
+    "RelativePath": "agenda/consultaragendamento",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "DeletarAgendamento",
+    "RelativePath": "agenda/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "ListarAgenda",
+    "RelativePath": "agenda/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "ConsultarQuantidadeRegistros",
+    "RelativePath": "agenda/registros",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "API.Controllers.BeneficioServicoController",
@@ -358,6 +452,80 @@
       {
         "Name": "etapaServicoRequest",
         "Type": "Application.DTOs.EtapaServico.EtapaServicoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorController",
+    "Method": "AlterarParceiro",
+    "RelativePath": "fornecedor/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fornecedorRequest",
+        "Type": "Application.DTOs.Fornecedor.FornecedorRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorController",
+    "Method": "BuscarParceiroPorId",
+    "RelativePath": "fornecedor/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorController",
+    "Method": "ExcluirParceiro",
+    "RelativePath": "fornecedor/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorController",
+    "Method": "ListarTodosParceiros",
+    "RelativePath": "fornecedor/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorController",
+    "Method": "SalvarParceiro",
+    "RelativePath": "fornecedor/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fornecedorRequest",
+        "Type": "Application.DTOs.Fornecedor.FornecedorRequest",
         "IsRequired": true
       }
     ],

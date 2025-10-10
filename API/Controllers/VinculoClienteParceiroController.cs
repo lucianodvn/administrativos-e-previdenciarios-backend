@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.VinculoClienteParceiro;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 

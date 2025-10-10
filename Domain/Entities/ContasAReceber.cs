@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -16,7 +12,19 @@ namespace Domain.Entities
         public DateTime? DataPagamento { get; set; }
         public int QuantidadeParcelas { get; set; }
         public double Total { get; set; }
-        public int ClienteId { get; set; }
+
+        [ForeignKey("ClienteId")]
+        public int? ClienteId { get; set; }
+
+        public virtual Cliente? Cliente { get; set; }
         public double? ValorEntrada { get; set; }
+
+        [ForeignKey("IdParceiro")]
+        public int? IdParceiro { get; set; }
+        public virtual Parceiro? Parceiro { get; set; }
+
+        [ForeignKey("IdFornecedor")]
+        public int? IdFornecedor { get; set; }
+        public virtual Fornecedor? Fornecedor { get; set; }
     }
 }

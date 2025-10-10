@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.UseCase
 {
     public interface IUseCaseGeneric<TRequest, TResponse>
     {

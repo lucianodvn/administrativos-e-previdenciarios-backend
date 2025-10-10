@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.DTOs.ContasAPagar
+﻿namespace Application.DTOs.ContasAPagar
 {
     public class ContasAPagarRequest
     {
         public int Id { get; set; }
-        public string NomeDaConta { get; set; }
         public double Valor { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime? DataPagamento { get; set; }
+        public int? IdParceiro { get; set; }
+        public int? IdFornecedor { get; set; }
+        public bool IsPago { get; set; }
     }
 }

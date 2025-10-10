@@ -1,7 +1,6 @@
-﻿using Application.DTOs.Clientes;
-using Application.DTOs.ContasAPagar;
-using Application.DTOs.ContasAReceber;
-using Application.Interfaces;
+﻿using Application.DTOs.ContasAReceber;
+using Application.Interfaces.UseCase;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -11,10 +10,12 @@ namespace API.Controllers
     public class ContasAReceberController : ControllerBase
     {
         private readonly IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> _useCaseGeneric;
+        private ContasAReceberService _contasAReceberService;
 
-        public ContasAReceberController(IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> useCaseGeneric)
+        public ContasAReceberController(IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> useCaseGeneric, ContasAReceberService contasAReceberService)
         {
             _useCaseGeneric = useCaseGeneric;
+            _contasAReceberService = contasAReceberService;
         }
 
         [HttpPut("alterar")]
@@ -46,7 +47,7 @@ namespace API.Controllers
             {
                 return BadRequest("Conta a Receber inválida.");
             }
-            var contasAReceberResponse = await _useCaseGeneric.ConsultarPorId(id);
+            var contasAReceberResponse = await _contasAReceberService.ConsultarPorId(id);
             if (contasAReceberResponse == null)
             {
                 return NotFound("Conta a Receber não encontrada.");
@@ -57,7 +58,7 @@ namespace API.Controllers
         [HttpGet("buscar")]
         public async Task<IActionResult> BuscarTodasContasAReceber()
         {
-            var contasAReceberResponse = await _useCaseGeneric.ConsultarTodos();
+            var contasAReceberResponse = await _contasAReceberService.ConsultarTodos();
             if (contasAReceberResponse == null || !contasAReceberResponse.Any())
             {
                 return NotFound("Nenhuma Conta a Receber encontrada.");

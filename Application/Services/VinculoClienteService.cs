@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.VinculoClienteBeneficioEtapa;
-using Application.Interfaces;
+using Application.Interfaces.Repository;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

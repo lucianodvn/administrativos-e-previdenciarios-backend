@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.VinculoClienteParceiro;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.Repository
 {
     public interface IVinculoClienteParceiroRepository
     {

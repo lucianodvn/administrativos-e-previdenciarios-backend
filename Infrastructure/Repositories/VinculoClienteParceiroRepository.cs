@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.VinculoClienteParceiro;
-using Application.Interfaces;
+using Application.Interfaces.Repository;
 using AutoMapper;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;

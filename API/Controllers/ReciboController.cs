@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.Clientes;
 using Application.DTOs.Recibo;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.ContasAPagar;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -9,9 +10,11 @@ namespace API.Controllers
     public class ContasAPagarController : ControllerBase
     {
         private readonly IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse> _useCaseGeneric;
-        public ContasAPagarController(IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse> useCaseGeneric)
+        private ContasAPagarService _contasAPagar;
+        public ContasAPagarController(IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse> useCaseGeneric, ContasAPagarService contasAPagar)
         {
             _useCaseGeneric = useCaseGeneric;
+            _contasAPagar = contasAPagar;
         }
 
         [HttpPost("salvar")]
@@ -28,7 +31,7 @@ namespace API.Controllers
         [HttpGet("listar")]
         public async Task<IActionResult> ListarTodasContasAPagar()
         {
-            var contasAPagarResponse = await _useCaseGeneric.ConsultarTodos();
+            var contasAPagarResponse = await _contasAPagar.ConsultarTodos();
             if (contasAPagarResponse == null || !contasAPagarResponse.Any())
             {
                 return NotFound("Nenhuma conta a pagar encontrada.");
@@ -50,7 +53,7 @@ namespace API.Controllers
         [HttpGet("buscar/{id}")]
         public async Task<IActionResult> BuscarContaAPagarPorId(int id)
         {
-            var contasAPagarResponse = await _useCaseGeneric.ConsultarPorId(id);
+            var contasAPagarResponse = await _contasAPagar.ConsultarPorId(id);
             if (contasAPagarResponse == null)
             {
                 return NotFound("Nenhuma conta a pagar encontrada.");

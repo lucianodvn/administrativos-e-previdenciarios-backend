@@ -1,10 +1,6 @@
 ﻿using Application.DTOs.Clientes;
-using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Application.DTOs.Fornecedor;
+using Application.DTOs.Parceiro;
 
 namespace Application.DTOs.ContasAReceber
 {
@@ -18,8 +14,12 @@ namespace Application.DTOs.ContasAReceber
         public DateTime? DataPagamento { get; set; }
         public int QuantidadeParcelas { get; set; }
         public double Total { get; set; }
-        public int ClienteId { get; set; }
         public double ValorEntrada { get; set; }
-        public ClienteResponse? ClienteResponse { get; set; }
+        public int? ClienteId { get; set; }
+        public ClienteResponse? Cliente { get; set; }
+        public int? IdParceiro { get; set; }
+        public ParceiroResponse? Parceiro { get; set; }
+        public int? IdFornecedor { get; set; }
+        public FornecedorResponse? Fornecedor { get; set; }
     }
 }

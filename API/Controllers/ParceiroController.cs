@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.Parceiro;
 using Application.DTOs.Usuarios;
-using Application.Interfaces;
+using Application.Interfaces.UseCase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
