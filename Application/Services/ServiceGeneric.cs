@@ -48,5 +48,12 @@ namespace Application.Services
             }
             return existe;
         }
+
+        public async Task AlterarSomenteNecessario<T>(T entity, object id)
+        {
+            await _repository.AlterarSomenteNecessario(entity, id);
+
+            await Task.CompletedTask;
+        }
     }
 }

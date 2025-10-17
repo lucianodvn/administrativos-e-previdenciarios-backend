@@ -1,11 +1,6 @@
 ﻿using Application.Interfaces.Service;
 using Application.Interfaces.UseCase;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.UseCases
 {
@@ -47,12 +42,12 @@ namespace Application.UseCases
         public async Task<bool> Excluir(int id)
         {
             var entity = await _serviceGeneric.ConsultarPorId(id);
-            if(entity == null)
+            if (entity == null)
             {
                 return false;
             }
             await _serviceGeneric.Excluir(entity);
-            return true; 
+            return true;
         }
 
         public async Task<TResponse> Salvar(TRequest request)
@@ -65,6 +60,12 @@ namespace Application.UseCases
         public async Task<bool> Existe(string numeroRecibo)
         {
             return await _serviceGeneric.Existe(numeroRecibo);
+        }
+
+        public async Task AlterarSomenteNecessario<T>(T request, object id)
+        {
+            var entidade = _mapper.Map<TEntity>(request);
+            await _serviceGeneric.AlterarSomenteNecessario(entidade, id);
         }
     }
 }

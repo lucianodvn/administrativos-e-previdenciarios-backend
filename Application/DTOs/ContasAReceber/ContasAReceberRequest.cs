@@ -14,5 +14,6 @@
         public double ValorEntrada { get; set; }
         public int? IdParceiro { get; set; }
         public int? IdFornecedor { get; set; }
+        public int? IdContratoAdm { get; set; }
     }
 }

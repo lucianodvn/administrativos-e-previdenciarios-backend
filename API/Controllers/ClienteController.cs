@@ -1,7 +1,5 @@
 ﻿using Application.DTOs.Clientes;
 using Application.Interfaces.UseCase;
-using Application.UseCases;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -18,13 +16,13 @@ namespace API.Controllers
         }
 
         [HttpPost("salvar")]
-        public async Task<IActionResult> SalvarCliente([FromBody]ClienteRequest clienteRequest)
+        public async Task<IActionResult> SalvarCliente([FromBody] ClienteRequest clienteRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-                
+
             var clienteResponse = await _useCaseGeneric.Salvar(clienteRequest);
             return Ok(clienteResponse);
         }
@@ -58,15 +56,25 @@ namespace API.Controllers
         [HttpPut("alterar")]
         public async Task<IActionResult> AlterarCliente([FromBody] ClienteRequest clienteRequest)
         {
-            if(clienteRequest == null)
+            if (clienteRequest == null)
             {
                 return BadRequest("Cliente Inexistente");
             }
 
             await _useCaseGeneric.Alterar(clienteRequest.Id, clienteRequest);
             return Ok();
-
         }
 
+        [HttpDelete("excluir/{id}")]
+        public async Task<IActionResult> ExcluirClinte(int id)
+        {
+            var response = await _useCaseGeneric.Excluir(id);
+            if (!response)
+            {
+                return NotFound("Erro ao Excluir Cliente.");
+            }
+
+            return Ok(response);
+        }
     }
 }

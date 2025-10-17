@@ -13,5 +13,6 @@ namespace Domain.Entities
         public virtual Parceiro? Parceiro { get; set; }
         public string? senhaGov { get; set; }
         public string? numeroDoProcesso { get; set; }
+        public double? Valor { get; set; }
     }
 }

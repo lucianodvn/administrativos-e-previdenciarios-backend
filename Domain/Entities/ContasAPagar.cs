@@ -17,5 +17,6 @@ namespace Domain.Entities
         public int? IdFornecedor { get; set; }
         public virtual Fornecedor? Fornecedor { get; set; }
         public bool IsPago { get; set; }
+        public string Item { get; set; }
     }
 }

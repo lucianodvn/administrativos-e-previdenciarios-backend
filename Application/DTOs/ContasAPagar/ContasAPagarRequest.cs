@@ -9,5 +9,6 @@
         public int? IdParceiro { get; set; }
         public int? IdFornecedor { get; set; }
         public bool IsPago { get; set; }
+        public string Item { get; set; }
     }
 }

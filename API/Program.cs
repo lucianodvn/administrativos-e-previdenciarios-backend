@@ -45,6 +45,7 @@ builder.Services.AddScoped<IVinculoClienteRepository, VinculoClienteRepository>(
 builder.Services.AddScoped<IVinculoClienteParceiroRepository, VinculoClienteParceiroRepository>();
 builder.Services.AddScoped<IContasAPagarRepository, ContasAPagarRepository>();
 builder.Services.AddScoped<IContasAReceberRepository, ContasAReceberRepository>();
+builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LucroService>();
@@ -52,6 +53,7 @@ builder.Services.AddScoped<VinculoClienteService>();
 builder.Services.AddScoped<VinculoClienteParceiroService>();
 builder.Services.AddScoped<ContasAPagarService>();
 builder.Services.AddScoped<ContasAReceberService>();
+builder.Services.AddScoped<ContratoService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<EtapaServicoRequest, EtapaServicoResponse>, UseCaseGeneric<EtapaServico, EtapaServicoRequest, EtapaServicoResponse>>();

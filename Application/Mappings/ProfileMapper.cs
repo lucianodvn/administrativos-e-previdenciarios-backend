@@ -23,7 +23,8 @@ namespace Application.Mappings
             CreateMap<ClienteRequest, Cliente>();
             CreateMap<Cliente, ClienteResponse>();
             CreateMap<ContratoRequest, Contrato>();
-            CreateMap<Contrato, ContratoResponse>();
+            CreateMap<Contrato, ContratoResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente));
             CreateMap<UsuarioRequest, Usuarios>();
             CreateMap<Usuarios, UsuarioResponse>()
                 .ForMember(dest => dest.NomeDoUsuario, opt => opt.MapFrom(src => src.UserName))
@@ -36,7 +37,8 @@ namespace Application.Mappings
             CreateMap<ContasAReceber, ContasAReceberResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
                 .ForMember(dest => dest.Fornecedor, opt => opt.MapFrom(src => src.Fornecedor))
-                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
+                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro))
+                .ForMember(dest => dest.Contrato, opt => opt.MapFrom(src => src.Contrato));
             CreateMap<BeneficiosServicosRequest, BeneficiosServicos>();
             CreateMap<BeneficiosServicos, BeneficiosServicosResponse>();
             CreateMap<EtapaServicoRequest, EtapaServico>();

@@ -386,6 +386,29 @@
         }
       }
     },
+    "/cliente/excluir/{id}": {
+      "delete": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/contas-a-pagar/salvar": {
       "post": {
         "tags": [
@@ -506,6 +529,18 @@
         }
       }
     },
+    "/contas-a-pagar/contas-vencendo-hoje": {
+      "get": {
+        "tags": [
+          "ContasAPagar"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/contas-a-receber/alterar": {
       "put": {
         "tags": [
@@ -605,6 +640,126 @@
     },
     "/contratos/salvar": {
       "post": {
+        "tags": [
+          "Contrato"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contratos/listar": {
+      "get": {
+        "tags": [
+          "Contrato"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contratos/buscar/{id}": {
+      "get": {
+        "tags": [
+          "Contrato"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contratos/deletar/{id}": {
+      "delete": {
+        "tags": [
+          "Contrato"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contratos/alterar": {
+      "put": {
+        "tags": [
+          "Contrato"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contratos/atualizar-contrato": {
+      "put": {
         "tags": [
           "Contrato"
         ],
@@ -1805,6 +1960,10 @@
           },
           "isPago": {
             "type": "boolean"
+          },
+          "item": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1862,6 +2021,11 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "idContratoAdm": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1869,12 +2033,98 @@
       "ContratoRequest": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "clienteId": {
             "type": "integer",
             "format": "int32"
           },
+          "cliente": {
+            "$ref": "#/components/schemas/ClienteRequest"
+          },
           "htmlContrato": {
             "type": "string",
+            "nullable": true
+          },
+          "valorTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorEntrada": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "dataDoPagamentoDaEntrada": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataDoVencimentoValorEntrada": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "totalDeParcelas": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "parcelasPagas": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "parcelasFaltantes": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "statusContrato": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorDasParcelas": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorPagoParcela": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorRestanteDoContrato": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "diaDoVencimentoParcelas": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dataDoVencimentoTotal": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataDoVencimentoParcela": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataPagamentoDaParcela": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "proximoVencimentoDaParcela": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },
@@ -2066,6 +2316,11 @@
           },
           "numeroDoProcesso": {
             "type": "string",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },

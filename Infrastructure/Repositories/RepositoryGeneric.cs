@@ -1,12 +1,7 @@
 ﻿using Domain.Interfaces.Repository;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -28,7 +23,27 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-       async Task<T> IRepositoryGeneric<T>.ConsultarPorId(object id)
+        public async Task AlterarSomenteNecessario<T>(T entity, object id)
+        {
+            var original = await _dbSet.FindAsync(id);
+
+            if (original != null)
+            {
+                _context.Entry(original).CurrentValues.SetValues(entity);
+
+                // Ignora propriedades nulas
+                foreach (var prop in typeof(T).GetProperties())
+                {
+                    var value = prop.GetValue(entity);
+                    if (value == null)
+                        _context.Entry(original).Property(prop.Name).IsModified = false;
+                }
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        async Task<T> IRepositoryGeneric<T>.ConsultarPorId(object id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -51,9 +66,9 @@ namespace Infrastructure.Repositories
 
         async Task<T> IRepositoryGeneric<T>.Salvar(T entity)
         {
-           await _dbSet.AddAsync(entity);
-           await _context.SaveChangesAsync();
-           return entity;
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         async Task<bool> IRepositoryGeneric<T>.Existe(string numeroRecibo)

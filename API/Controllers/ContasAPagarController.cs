@@ -38,16 +38,11 @@ namespace API.Controllers
             }
 
             var contasDoMesVigente = contasAPagarResponse
-                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year)
+                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year && !x.IsPago)
                 .ToList();
 
-            var totalAPagar = contasDoMesVigente.Sum(x => x.Valor);
+            return Ok(contasDoMesVigente);
 
-            return Ok(new
-            {
-                Contas = contasDoMesVigente,
-                TotalAPagar = totalAPagar
-            });
         }
 
         [HttpGet("buscar/{id}")]
@@ -83,5 +78,22 @@ namespace API.Controllers
             await _useCaseGeneric.Excluir(id);
             return Ok(new { mensagem = "Conta a pagar excluída com sucesso." });
         }
+
+        [HttpGet("contas-vencendo-hoje")]
+        public async Task<IActionResult> VerficarContasVenceHoje()
+        {
+            var contasAPagarResponse = await _contasAPagar.ConsultarTodos();
+            if (contasAPagarResponse == null || !contasAPagarResponse.Any())
+            {
+                return NotFound("Nenhuma conta a pagar encontrada.");
+            }
+
+            var possuiContasVencendoHoje = contasAPagarResponse
+                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year && x.IsPago == false)
+                .Any();
+
+            return Ok(possuiContasVencendoHoje);
+        }
+
     }
 }

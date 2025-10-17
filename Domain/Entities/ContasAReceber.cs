@@ -26,5 +26,8 @@ namespace Domain.Entities
         [ForeignKey("IdFornecedor")]
         public int? IdFornecedor { get; set; }
         public virtual Fornecedor? Fornecedor { get; set; }
+        [ForeignKey("IdContratoAdm")]
+        public int? IdContratoAdm { get; set; }
+        public virtual Contrato? Contrato { get; set; }
     }
 }

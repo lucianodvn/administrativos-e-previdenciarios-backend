@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Clientes;
+using Application.DTOs.Contrato;
 using Application.DTOs.Fornecedor;
 using Application.DTOs.Parceiro;
 
@@ -21,5 +22,7 @@ namespace Application.DTOs.ContasAReceber
         public ParceiroResponse? Parceiro { get; set; }
         public int? IdFornecedor { get; set; }
         public FornecedorResponse? Fornecedor { get; set; }
+        public int? IdContratoAdm { get; set; }
+        public virtual ContratoResponse? Contrato { get; set; }
     }
 }

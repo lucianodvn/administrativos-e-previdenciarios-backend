@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Interfaces.Service
+﻿namespace Application.Interfaces.Service
 {
     public interface IServiceGeneric<T> where T : class
     {
@@ -13,6 +6,7 @@ namespace Application.Interfaces.Service
         Task<IEnumerable<T>> ConsultarTodos();
         Task<T> Salvar(T entity);
         Task Alterar(T entity);
+        Task AlterarSomenteNecessario<T>(T entity, object id);
         Task Excluir(T entity);
         Task<bool> Existe(string numeroRecibo);
     }

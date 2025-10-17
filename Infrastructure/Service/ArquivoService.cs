@@ -1,13 +1,9 @@
 ﻿using Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Service
 {
@@ -48,7 +44,7 @@ namespace Infrastructure.Service
 
         private string SanitizarNome(string nome)
         {
-            var nomeLimpo = nome.Normalize(System.Text.NormalizationForm.FormD);
+            var nomeLimpo = nome.Normalize(NormalizationForm.FormD);
             var chars = nomeLimpo.Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark).ToArray();
             nomeLimpo = new string(chars);
             return Regex.Replace(nomeLimpo, @"[^a-zA-Z0-9_\-]", "_").ToLower();
