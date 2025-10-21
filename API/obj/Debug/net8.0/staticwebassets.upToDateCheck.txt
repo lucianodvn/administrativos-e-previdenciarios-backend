@@ -32,6 +32,12 @@ wwwroot\arquivos\luciano_del_vecchio_neves\contrato__6_\bf028f21-1483-4197-8d8d-
 wwwroot\arquivos\luciano_del_vecchio_neves\contrato__6_\d5ee2c94-d680-475c-90d0-03c40fdb6e2f.pdf
 wwwroot\arquivos\luciano_del_vecchio_neves\contrato__6_\e92248b7-84ed-4d45-9d83-1221c7090fa5.pdf
 wwwroot\arquivos\luciano_del_vecchio_neves\contrato__6_\f2d9cee0-8914-436c-ac4f-690dc3608476.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\luciano_del_vecchio_neves-contrato\64953d55-8efc-4c13-93a1-f35cd48be736.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\luciano_del_vecchio_neves-contrato\b527db2e-e300-454c-b17e-a064c46a77cd.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\testando_123123123-contrato\2f06be7f-6d34-491e-9a3b-60eb83f4bc5a.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\testando_123123123-contrato\323ccc31-128e-421a-b0b4-7f5c096aff59.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\testando_123123123-contrato\b075bd79-c937-49b8-84fa-bda2029ddfea.pdf
+wwwroot\arquivos\luciano_del_vecchio_neves\testando_123123123-contrato\d52c3cdc-25d0-42c2-97de-91a0de78c51b.pdf
 wwwroot\arquivos\testando_parceria\teste\599efebb-ec07-4cf2-bd37-4b77c31fa096.pdf
 wwwroot\arquivos\teste_del_vecchio_neves\contrato__1_\48898966-e4ec-4569-8280-fc860184041f.pdf
 wwwroot\arquivos\teste_del_vecchio_neves\contrato__2_\298c7919-7cc7-402a-8b31-d5c91a5b37d6.pdf

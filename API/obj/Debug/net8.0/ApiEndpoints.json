@@ -394,6 +394,96 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "AtualizarContrato",
+    "RelativePath": "contrato-judicial/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.Contrato.ContratoJudicialRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "AtualizarSomenteNecessario",
+    "RelativePath": "contrato-judicial/atualizar-contrato",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.Contrato.ContratoJudicialRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "BuscarContratoPorId",
+    "RelativePath": "contrato-judicial/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "DeletarContrato",
+    "RelativePath": "contrato-judicial/deletar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "ListarContratos",
+    "RelativePath": "contrato-judicial/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContratoJudicialController",
+    "Method": "SalvarContrato",
+    "RelativePath": "contrato-judicial/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.Contrato.ContratoJudicialRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ContratoController",
     "Method": "AtualizarContrato",
     "RelativePath": "contratos/alterar",

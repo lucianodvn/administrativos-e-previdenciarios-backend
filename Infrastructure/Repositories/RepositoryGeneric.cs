@@ -29,14 +29,20 @@ namespace Infrastructure.Repositories
 
             if (original != null)
             {
-                _context.Entry(original).CurrentValues.SetValues(entity);
+                var entry = _context.Entry(original);
+                entry.CurrentValues.SetValues(entity);
 
-                // Ignora propriedades nulas
+                // Obtém propriedades mapeadas pelo EF
+                var mappedProperties = entry.Properties.Select(p => p.Metadata.Name).ToHashSet();
+
+                // Ignora propriedades nulas que estão mapeadas
                 foreach (var prop in typeof(T).GetProperties())
                 {
                     var value = prop.GetValue(entity);
-                    if (value == null)
-                        _context.Entry(original).Property(prop.Name).IsModified = false;
+                    if (value == null && mappedProperties.Contains(prop.Name))
+                    {
+                        entry.Property(prop.Name).IsModified = false;
+                    }
                 }
 
                 await _context.SaveChangesAsync();

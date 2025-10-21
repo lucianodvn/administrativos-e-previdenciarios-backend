@@ -13,6 +13,7 @@ using Application.DTOs.VinculoClienteBeneficioEtapa;
 using Application.DTOs.VinculoClienteParceiro;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Mappings
 {
@@ -58,6 +59,11 @@ namespace Application.Mappings
                 .ForMember(dest => dest.BeneficiosServicos, opt => opt.MapFrom(src => src.BeneficiosServicos));
             CreateMap<VinculoClienteParceiroRequest, VinculoClienteParceiro>();
             CreateMap<VinculoClienteParceiro, VinculoClienteParceiroResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
+            CreateMap<ContratoJudicialRequest, ContratoJudicial>()
+                .ForMember(dest => dest.TipoDeContrato, opt => opt.MapFrom(src => src.TipoDeContrato.ToTipoDeContratoEnum()));
+            CreateMap<ContratoJudicial, ContratoJudicialResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
                 .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
         }

@@ -46,10 +46,28 @@ namespace Infrastructure.Context
                     v => v.ToStatusEnum().Value
                 );
 
+            modelBuilder
+                .Entity<ContratoJudicial>()
+                .Property(c => c.TipoDeContrato)
+                .HasConversion(
+                    v => v.GetTipoDescricao(),
+                    v => v.ToTipoDeContratoEnum().Value
+                );
+
             modelBuilder.Entity<Contrato>()
                 .HasOne(c => c.Cliente)
                 .WithMany()
                 .HasForeignKey(c => c.ClienteId);
+
+            modelBuilder.Entity<ContratoJudicial>()
+                .HasOne(p => p.Parceiro)
+                .WithMany()
+                .HasForeignKey(p => p.IdParceiro);
+
+            modelBuilder.Entity<ContratoJudicial>()
+                .HasOne(p => p.Cliente)
+                .WithMany()
+                .HasForeignKey(p => p.IdCliente);
         }
 
         public DbSet<Cliente> Clientes { get; set; }
@@ -64,5 +82,6 @@ namespace Infrastructure.Context
         public DbSet<VinculoClienteParceiro> VinculoClienteParceiros { get; set; }
         public DbSet<Agendamento> Agendamentos { get; set; }
         public DbSet<Fornecedor> Fornecedor { get; set; }
+        public DbSet<ContratoJudicial> ContratoJudicial { get; set; }
     }
 }

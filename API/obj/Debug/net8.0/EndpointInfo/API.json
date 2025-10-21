@@ -789,6 +789,157 @@
         }
       }
     },
+    "/contrato-judicial/salvar": {
+      "post": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contrato-judicial/listar": {
+      "get": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contrato-judicial/buscar/{id}": {
+      "get": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contrato-judicial/deletar/{id}": {
+      "delete": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contrato-judicial/alterar": {
+      "put": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/contrato-judicial/atualizar-contrato": {
+      "put": {
+        "tags": [
+          "ContratoJudicial"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContratoJudicialRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/etapaservico/salvar": {
       "post": {
         "tags": [
@@ -1820,6 +1971,10 @@
             "type": "string",
             "nullable": true
           },
+          "nomeDaMae": {
+            "type": "string",
+            "nullable": true
+          },
           "dataDeNascimento": {
             "type": "string",
             "format": "date-time"
@@ -2030,6 +2185,48 @@
         },
         "additionalProperties": false
       },
+      "ContratoJudicialRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idCliente": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idParceiro": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "dataPagamento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "htmlContrato": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDeContrato": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ContratoRequest": {
         "type": "object",
         "properties": {
@@ -2187,6 +2384,90 @@
             "format": "int32"
           },
           "nomeParceiro": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroOAB": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cepEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairroEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidadeEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "estadoEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpjEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "enderecoEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "estadoCivilParceiro": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeFantasia": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroOabDaEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "rgParceiro": {
+            "type": "string",
+            "nullable": true
+          },
+          "nacionalidadeParceiro": {
             "type": "string",
             "nullable": true
           }
