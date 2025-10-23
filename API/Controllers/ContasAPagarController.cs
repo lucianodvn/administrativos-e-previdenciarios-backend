@@ -89,7 +89,7 @@ namespace API.Controllers
             }
 
             var possuiContasVencendoHoje = contasAPagarResponse
-                .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year && x.IsPago == false)
+                .Where(x => x.DataVencimento.Day == DateTime.Now.Day && x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year && x.IsPago == false)
                 .Any();
 
             return Ok(possuiContasVencendoHoje);

@@ -16,36 +16,60 @@ namespace Infrastructure.Repositories
             _mapper = mapper;
             _context = context;
         }
-        public async Task<ContasAReceberResponse> ConsultarPorId(int id)
-        {
-            var response = await _context.ContasAReceber
-                 .Include(v => v.Cliente)
-                 .Include(v => v.Parceiro)
-                 .Include(v => v.Fornecedor)
-                 .FirstOrDefaultAsync(v => v.Id == id);
-
-            if (response == null)
-            {
-                return null;
-            }
-
-            return _mapper.Map<ContasAReceberResponse>(response);
-        }
 
         public async Task<List<ContasAReceberResponse>> ConsultarTodosAsync()
         {
-            var response = await _context.ContasAReceber
-                .Include(v => v.Cliente)
-                .Include(v => v.Parceiro)
-                .Include(v => v.Fornecedor)
+            var contratoJudicial = await _context.ContratoJudicial
+                .Include(x => x.Cliente)
+                .Include(x => x.Parceiro)
                 .ToListAsync();
 
-            if (response == null)
+            var contratoAdm = await _context.Contrato
+                .Include(x => x.Cliente)
+                .ToListAsync();
+
+            ContasAReceberResponse contas = new ContasAReceberResponse();
+            List<ContasAReceberResponse> listaDeContas = new List<ContasAReceberResponse>();
+
+            if (contratoJudicial.Any())
             {
-                return null;
+                foreach (var reponseJudicial in contratoJudicial)
+                {
+                    listaDeContas.Add(new ContasAReceberResponse
+                    {
+                        Id = reponseJudicial.Id,
+                        TipoClienteOuParceiro = "Parceiro",
+                        Nome = $"{reponseJudicial.Parceiro?.NomeParceiro}({reponseJudicial.Cliente?.NomeCompleto})",
+                        TipoDeContrato = "Judicial",
+                        ValorTotal = reponseJudicial.Valor,
+                        ValorEntrada = 0,
+                        ValorParcela = 0,
+                        DataDeVencimentoTotal = null
+                    });
+                }
             }
 
-            return _mapper.Map<List<ContasAReceberResponse>>(response);
+            if (contratoAdm.Any())
+            {
+                foreach (var responseAdm in contratoAdm)
+                {
+                    listaDeContas.Add(new ContasAReceberResponse
+                    {
+                        Id = responseAdm.Id,
+                        TipoClienteOuParceiro = "Cliente",
+                        Nome = responseAdm.Cliente?.NomeCompleto,
+                        TipoDeContrato = "Administrativo",
+                        ValorTotal = responseAdm.ValorTotal ?? 0,
+                        ValorEntrada = responseAdm.ValorEntrada ?? 0,
+                        ValorParcela = responseAdm.ValorDasParcelas ?? 0,
+                        DataDeVencimentoTotal = responseAdm.DataDoVencimentoTotal,
+                        DataDeVencimentoDaParcela = responseAdm.DataPagamentoDaParcela,
+                        DataDoVencimentoValorEntrada = responseAdm.DataDoVencimentoValorEntrada
+                    });
+                }
+            }
+
+            return listaDeContas;
         }
     }
 }

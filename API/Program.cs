@@ -3,7 +3,6 @@ using Application.DTOs.Agendamento;
 using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
-using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
@@ -63,7 +62,6 @@ builder.Services.AddScoped<IUseCaseGeneric<ContratoRequest, ContratoResponse>, U
 builder.Services.AddScoped<IUseCaseGeneric<UsuarioRequest, UsuarioResponse>, UseCaseGeneric<Usuarios, UsuarioRequest, UsuarioResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ParceiroRequest, ParceiroResponse>, UseCaseGeneric<Parceiro, ParceiroRequest, ParceiroResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ReciboRequest, ReciboResponse>, UseCaseGeneric<Recibo, ReciboRequest, ReciboResponse>>();
-builder.Services.AddScoped<IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse>, UseCaseGeneric<ContasAReceber, ContasAReceberRequest, ContasAReceberResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<FornecedorRequest, FornecedorResponse>, UseCaseGeneric<Fornecedor, FornecedorRequest, FornecedorResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>, UseCaseGeneric<VinculoClienteBeneficioEtapa, VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>, UseCaseGeneric<VinculoClienteParceiro, VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>>();
@@ -97,9 +95,15 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
+    //options.AddPolicy("CorsPolicy", policy =>
+    //{
+    //    policy.WithOrigins("http://localhost:4200")
+    //          .AllowAnyHeader()
+    //          .AllowAnyMethod();
+    //});
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://192.168.0.158:4200")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -118,14 +122,32 @@ builder.Services.AddDbContext<DataDbContext>(options =>
 
 var app = builder.Build();
 
-app.UseRouting();
+
 app.UseCors("CorsPolicy");
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseSwagger();
-app.UseSwaggerUI();
-
 app.MapControllers();
 
 app.Run();
+
+//var app = builder.Build();
+
+//app.UseRouting();
+//app.UseCors("CorsPolicy");
+//app.UseAuthentication();
+//app.UseAuthorization();
+
+//app.UseSwagger();
+//app.UseSwaggerUI();
+
+//app.MapControllers();
+
+//app.Run();

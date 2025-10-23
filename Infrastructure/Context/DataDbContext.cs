@@ -23,20 +23,25 @@ namespace Infrastructure.Context
                 .WithMany()
                 .HasForeignKey(p => p.IdParceiro);
 
-            modelBuilder.Entity<ContasAReceber>()
-                .HasOne(p => p.Fornecedor)
-                .WithMany()
-                .HasForeignKey(p => p.IdFornecedor);
+            //modelBuilder.Entity<ContasAReceber>()
+            //    .HasOne(p => p.Fornecedor)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.IdFornecedor);
 
-            modelBuilder.Entity<ContasAReceber>()
-                .HasOne(p => p.Parceiro)
-                .WithMany()
-                .HasForeignKey(p => p.IdParceiro);
+            //modelBuilder.Entity<ContasAReceber>()
+            //    .HasOne(p => p.Parceiro)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.IdParceiro);
 
-            modelBuilder.Entity<ContasAReceber>()
-                .HasOne(p => p.Contrato)
-                .WithMany()
-                .HasForeignKey(p => p.IdContratoAdm);
+            //modelBuilder.Entity<ContasAReceber>()
+            //    .HasOne(p => p.Contrato)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.IdContratoAdm);
+
+            //modelBuilder.Entity<ContasAReceber>()
+            //    .HasOne(p => p.ContratoJudicial)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.IdContratoJud);
 
             modelBuilder
                 .Entity<Contrato>()
@@ -73,7 +78,7 @@ namespace Infrastructure.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Contrato> Contrato { get; set; }
         public DbSet<Parceiro> Parceiros { get; set; }
-        public DbSet<ContasAReceber> ContasAReceber { get; set; }
+        //public DbSet<ContasAReceber> ContasAReceber { get; set; }
         public DbSet<Recibo> Recibos { get; set; }
         public DbSet<BeneficiosServicos> BeneficiosServicos { get; set; }
         public DbSet<EtapaServico> EtapaServico { get; set; }

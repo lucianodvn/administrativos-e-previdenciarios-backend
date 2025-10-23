@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Entities\Agenda.cs" />
+    <Compile Remove="Entities\ContasAReceber.cs" />
     <Compile Remove="Entities\RepresentanteLegal.cs" />
     <Compile Remove="Interfaces\IClienteRepository.cs" />
     <Compile Remove="Interfaces\ILoginRepository.cs" />

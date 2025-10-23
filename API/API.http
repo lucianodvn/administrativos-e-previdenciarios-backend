@@ -1,4 +1,4 @@
-@API_HostAddress = http://localhost:5088
+@API_HostAddress = http://192.168.0.158:5088
 
 GET {{API_HostAddress}}
 Accept: application/json

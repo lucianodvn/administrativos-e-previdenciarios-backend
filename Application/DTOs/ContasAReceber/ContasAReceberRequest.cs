@@ -15,5 +15,6 @@
         public int? IdParceiro { get; set; }
         public int? IdFornecedor { get; set; }
         public int? IdContratoAdm { get; set; }
+        public int? IdContratoJud { get; set; }
     }
 }

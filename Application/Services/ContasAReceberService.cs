@@ -20,18 +20,20 @@ namespace Application.Services
             {
                 return null;
             }
-            return response.OrderBy(x => x.DataVencimento).ToList();
-        }
 
-        public async Task<ContasAReceberResponse> ConsultarPorId(int id)
-        {
-            var response = await _repository.ConsultarPorId(id);
-            if (response == null)
-            {
-                return null;
-            }
+            var resultado = response
+            .Where(x =>
+                (x.DataDeVencimentoTotal?.Month == DateTime.Now.Month &&
+                 x.DataDeVencimentoTotal?.Year == DateTime.Now.Year) ||
 
-            return response;
+                (x.DataDeVencimentoDaParcela?.Month == DateTime.Now.Month &&
+                 x.DataDeVencimentoDaParcela?.Year == DateTime.Now.Year) ||
+
+                (x.DataDeVencimentoTotal == null && x.DataDeVencimentoDaParcela == null)
+            )
+            .ToList();
+
+            return resultado.OrderBy(x => x.DataDeVencimentoTotal ?? x.DataDeVencimentoDaParcela).ToList();
         }
     }
 }

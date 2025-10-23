@@ -59,6 +59,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAtendido")
+                        .HasColumnType("bit");
+
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -194,6 +197,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("NomeCompletoRepresentateLegal")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NomeDaMae")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Profissao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -237,7 +243,16 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("DataVencimento")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NomeDaConta")
+                    b.Property<int?>("IdFornecedor")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdParceiro")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsPago")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Item")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -245,6 +260,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdFornecedor");
+
+                    b.HasIndex("IdParceiro");
 
                     b.ToTable("ContasAPagar");
                 });
@@ -257,7 +276,7 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DataPagamento")
@@ -269,6 +288,15 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdContratoAdm")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdFornecedor")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdParceiro")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsPago")
                         .HasColumnType("bit");
@@ -287,6 +315,14 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("IdContratoAdm");
+
+                    b.HasIndex("IdFornecedor");
+
+                    b.HasIndex("IdParceiro");
+
                     b.ToTable("ContasAReceber");
                 });
 
@@ -304,15 +340,102 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DataDoPagamentoDaEntrada")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataDoVencimentoParcela")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataDoVencimentoTotal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataDoVencimentoValorEntrada")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataPagamentoDaParcela")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DiaDoVencimentoParcelas")
+                        .HasColumnType("int");
+
                     b.Property<string>("HtmlContrato")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParcelasFaltantes")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParcelasPagas")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ProximoVencimentoDaParcela")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StatusContrato")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TotalDeParcelas")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("ValorDasParcelas")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorEntrada")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorPagoParcela")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorRestanteDoContrato")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorTotal")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Contrato");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ContratoJudicial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DataPagamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HtmlContrato")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("IdCliente")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdParceiro")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TipoDeContrato")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Valor")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdCliente");
+
+                    b.HasIndex("IdParceiro");
+
+                    b.ToTable("ContratoJudicial");
                 });
 
             modelBuilder.Entity("Domain.Entities.EtapaServico", b =>
@@ -332,6 +455,23 @@ namespace Infrastructure.Migrations
                     b.ToTable("EtapaServico");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Fornecedor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NomeDoFornecedor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fornecedor");
+                });
+
             modelBuilder.Entity("Domain.Entities.Parceiro", b =>
                 {
                     b.Property<int>("Id")
@@ -340,8 +480,71 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Bairro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BairroEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Celular")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CepEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CidadeEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CnpjEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cpf")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Endereco")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnderecoEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EstadoCivilParceiro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EstadoEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NacionalidadeParceiro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeFantasia")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NomeParceiro")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroOAB")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroOabDaEmpresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RgParceiro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -439,6 +642,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("ParceiroId")
                         .HasColumnType("int");
 
+                    b.Property<double?>("Valor")
+                        .HasColumnType("float");
+
                     b.Property<string>("numeroDoProcesso")
                         .HasColumnType("nvarchar(max)");
 
@@ -454,6 +660,48 @@ namespace Infrastructure.Migrations
                     b.ToTable("VinculoClienteParceiros");
                 });
 
+            modelBuilder.Entity("Domain.Entities.ContasAPagar", b =>
+                {
+                    b.HasOne("Domain.Entities.Fornecedor", "Fornecedor")
+                        .WithMany()
+                        .HasForeignKey("IdFornecedor");
+
+                    b.HasOne("Domain.Entities.Parceiro", "Parceiro")
+                        .WithMany()
+                        .HasForeignKey("IdParceiro");
+
+                    b.Navigation("Fornecedor");
+
+                    b.Navigation("Parceiro");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ContasAReceber", b =>
+                {
+                    b.HasOne("Domain.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("Domain.Entities.Contrato", "Contrato")
+                        .WithMany()
+                        .HasForeignKey("IdContratoAdm");
+
+                    b.HasOne("Domain.Entities.Fornecedor", "Fornecedor")
+                        .WithMany()
+                        .HasForeignKey("IdFornecedor");
+
+                    b.HasOne("Domain.Entities.Parceiro", "Parceiro")
+                        .WithMany()
+                        .HasForeignKey("IdParceiro");
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Contrato");
+
+                    b.Navigation("Fornecedor");
+
+                    b.Navigation("Parceiro");
+                });
+
             modelBuilder.Entity("Domain.Entities.Contrato", b =>
                 {
                     b.HasOne("Domain.Entities.Cliente", "Cliente")
@@ -463,6 +711,21 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ContratoJudicial", b =>
+                {
+                    b.HasOne("Domain.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("IdCliente");
+
+                    b.HasOne("Domain.Entities.Parceiro", "Parceiro")
+                        .WithMany()
+                        .HasForeignKey("IdParceiro");
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Parceiro");
                 });
 
             modelBuilder.Entity("Domain.Entities.VinculoClienteBeneficioEtapa", b =>
