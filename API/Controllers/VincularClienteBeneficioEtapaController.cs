@@ -1,11 +1,13 @@
 ﻿using Application.DTOs.VinculoClienteBeneficioEtapa;
 using Application.Interfaces.UseCase;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("vincular-cliente-beneficio-etapa")]
     public class VincularClienteBeneficioEtapaController : ControllerBase
     {

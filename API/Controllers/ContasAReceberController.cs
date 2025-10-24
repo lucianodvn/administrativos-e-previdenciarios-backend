@@ -1,9 +1,11 @@
 ﻿using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("contas-a-receber")]
     public class ContasAReceberController : ControllerBase
     {

@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Service;
+﻿using Application.Interfaces.Logging;
+using Application.Interfaces.Service;
 using Domain.Interfaces.Repository;
 
 namespace Application.Services
@@ -6,47 +7,103 @@ namespace Application.Services
     public class ServiceGeneric<T> : IServiceGeneric<T> where T : class
     {
         private readonly IRepositoryGeneric<T> _repository;
+        private readonly ILoggerManager _logger;
 
-        public ServiceGeneric(IRepositoryGeneric<T> repository)
+        public ServiceGeneric(IRepositoryGeneric<T> repository, ILoggerManager logger)
         {
             _repository = repository;
+            _logger = logger;
         }
         public async Task Alterar(T entity)
         {
-            await _repository.Alterar(entity);
+            try
+            {
+                await _repository.Alterar(entity);
+                await Task.CompletedTask;
 
-            await Task.CompletedTask;
+                _logger.LogInfo($"{entity} Aterado com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao alterar: {ex.Message}");
+                throw new Exception($"Erro interno ao alterar.");
+            }
+
         }
 
         public async Task<T> ConsultarPorId(object id)
         {
-            return await _repository.ConsultarPorId(id);
+            try
+            {
+                return await _repository.ConsultarPorId(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar {id}: {ex.Message}");
+                throw new Exception($"Erro interno ao consultar.");
+            }
         }
 
         public async Task<IEnumerable<T>> ConsultarTodos()
         {
-            return await _repository.ConsultarTodos();
+            try
+            {
+                return await _repository.ConsultarTodos();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar: {ex.Message}");
+                throw new Exception($"Erro interno ao consultar.");
+            }
         }
 
         public async Task Excluir(T entity)
         {
-            await _repository.Excluir(entity);
-            await Task.CompletedTask;
+            try
+            {
+                await _repository.Excluir(entity);
+                await Task.CompletedTask;
+                _logger.LogInfo($"{entity} Excluído com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao excluir{entity}: {ex.Message}");
+                throw new Exception($"Erro interno ao consultar.");
+            }
         }
 
         public async Task<T> Salvar(T entity)
         {
-            return await _repository.Salvar(entity);
+            try
+            {
+                return await _repository.Salvar(entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao salvar{entity}: {ex.Message}");
+                throw new Exception($"Erro interno ao salvar.");
+            }
         }
 
         public async Task<bool> Existe(string numeroRecibo)
         {
-            var existe = await _repository.Existe(numeroRecibo);
-            if (existe)
+            try
             {
-                throw new Exception("Número de recibo já existe.");
+                var existe = await _repository.Existe(numeroRecibo);
+                if (existe)
+                {
+                    _logger.LogWarn($"Número de recibo já existe: {numeroRecibo}");
+                    throw new Exception("Número de recibo já existe.");
+                }
+                _logger.LogInfo($"{existe} Recibo.");
+                return existe;
             }
-            return existe;
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro: {ex.Message}");
+                throw new Exception($"Erro interno.");
+            }
+
         }
 
         public async Task AlterarSomenteNecessario<T>(T entity, object id)

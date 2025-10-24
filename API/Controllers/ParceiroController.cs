@@ -1,11 +1,12 @@
 ﻿using Application.DTOs.Parceiro;
-using Application.DTOs.Usuarios;
 using Application.Interfaces.UseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("parceiro")]
     public class ParceiroController : ControllerBase
     {

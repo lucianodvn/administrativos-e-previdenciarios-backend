@@ -239,6 +239,9 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\NLog.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -373,3 +376,4 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.pdb
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\ref\API.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\nlog.config

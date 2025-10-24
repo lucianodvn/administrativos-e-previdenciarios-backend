@@ -1,88 +1,172 @@
 ﻿using Application.DTOs.Agendamento;
+using Application.Interfaces.Logging;
 using Application.Interfaces.UseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("agenda")]
     public class AgendamentoController : ControllerBase
     {
         private readonly IUseCaseGeneric<AgendamentoRequest, AgendamentoResponse> _useCaseGeneric;
-        public AgendamentoController(IUseCaseGeneric<AgendamentoRequest, AgendamentoResponse> useCaseGeneric)
+        private readonly ILoggerManager _logger;
+        public AgendamentoController(IUseCaseGeneric<AgendamentoRequest, AgendamentoResponse> useCaseGeneric, ILoggerManager logger)
         {
             _useCaseGeneric = useCaseGeneric;
+            _logger = logger;
         }
 
         [HttpGet("listar")]
         public async Task<IActionResult> ListarAgenda()
         {
-            var resultado = await _useCaseGeneric.ConsultarTodos();
-            if (resultado == null || !resultado.Any())
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta da Agenda");
+
+            try
             {
-                return NotFound("Nenhum agendamento encontrado.");
+                var resultado = await _useCaseGeneric.ConsultarTodos();
+                if (resultado == null || !resultado.Any())
+                {
+                    _logger.LogInfo("Nenhum agendamento encontrado.");
+                    return NotFound("Nenhum agendamento encontrado.");
+                }
+                return Ok(resultado.Where(x => x.IsAtendido == false).OrderBy(x => x.DataHoraDoAgendamento));
             }
-            return Ok(resultado.Where(x => x.IsAtendido == false).OrderBy(x => x.DataHoraDoAgendamento));
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar agenda.");
+            }
         }
 
         [HttpPost("cadastrar")]
         public async Task<IActionResult> CriarAgendamento([FromBody] AgendamentoRequest agendamentoRequest)
         {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta da Agenda");
+
             if (!ModelState.IsValid)
             {
+                _logger.LogWarn("ModelState inválido");
                 return BadRequest(ModelState);
             }
-            var agendamentoResponse = await _useCaseGeneric.Salvar(agendamentoRequest);
-            return Ok(agendamentoResponse);
+
+            try
+            {
+                var agendamentoResponse = await _useCaseGeneric.Salvar(agendamentoRequest);
+                _logger.LogInfo($"Agenda salva com sucesso.");
+                return Ok(agendamentoResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao salvar agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao salvar agenda.");
+            }
         }
 
         [HttpGet("buscar/{id}")]
         public async Task<IActionResult> ObterAgendamentoPorId(int id)
         {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta da Agenda");
+
             if (id <= 0)
             {
+                _logger.LogWarn("ID inválido");
                 return BadRequest("ID inválido.");
             }
-            var agendamentoResponse = await _useCaseGeneric.ConsultarPorId(id);
-            if (agendamentoResponse == null)
+
+            try
             {
-                return NotFound("Agendamento não encontrado.");
+                var agendamentoResponse = await _useCaseGeneric.ConsultarPorId(id);
+                if (agendamentoResponse == null)
+                {
+                    _logger.LogInfo("Agendamento não encontrado.");
+                    return NotFound("Agendamento não encontrado.");
+                }
+                return Ok(agendamentoResponse);
             }
-            return Ok(agendamentoResponse);
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar agenda.");
+            }
         }
 
         [HttpPut("alterar")]
         public async Task<IActionResult> AtualizarAgendamento([FromBody] AgendamentoRequest agendamentoRequest)
         {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando alterar a Agenda");
+
             if (!ModelState.IsValid)
             {
+                _logger.LogWarn("ModelState inválido");
                 return BadRequest(ModelState);
             }
 
-            await _useCaseGeneric.Alterar(agendamentoRequest.Id, agendamentoRequest);
-            return Ok();
+            try
+            {
+                await _useCaseGeneric.Alterar(agendamentoRequest.Id, agendamentoRequest);
+                _logger.LogInfo($"Agenda {agendamentoRequest} alterada com sucesso.");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao alterar agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao alterar agenda.");
+            }
         }
 
         [HttpDelete("excluir/{id}")]
         public async Task<IActionResult> DeletarAgendamento(int id)
         {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando exclusão da Agenda");
+
             if (id <= 0)
             {
+                _logger.LogWarn("ID inválido");
                 return BadRequest("ID inválido.");
             }
-            var sucesso = await _useCaseGeneric.Excluir(id);
-            if (!sucesso)
+            try
             {
-                return NotFound("Agendamento não encontrado.");
+                var sucesso = await _useCaseGeneric.Excluir(id);
+                if (!sucesso)
+                {
+                    _logger.LogInfo("Agendamento não encontrado.");
+                    return NotFound("Agendamento não encontrado.");
+                }
+                return Ok(new { mensagem = "Agendamento excluído com sucesso." });
             }
-            return Ok(new { mensagem = "Agendamento excluído com sucesso." });
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao excluir agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao excluir agenda.");
+            }
         }
 
         [HttpGet("registros")]
         public async Task<int> ConsultarQuantidadeRegistros()
         {
-            var response = await _useCaseGeneric.ConsultarTodos();
-            return response.Where(x => x.IsAtendido == false && x.DataHoraDoAgendamento.Date <= DateTime.Now.AddDays(3).Date).Count();
+            try
+            {
+                var response = await _useCaseGeneric.ConsultarTodos();
+                return response.Where(x => x.IsAtendido == false && x.DataHoraDoAgendamento.Date <= DateTime.Now.AddDays(3).Date).Count();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao excluir agenda: {ex.Message}");
+                throw new ApplicationException(ex.Message);
+            }
         }
 
         [HttpGet("consultaragendamento")]

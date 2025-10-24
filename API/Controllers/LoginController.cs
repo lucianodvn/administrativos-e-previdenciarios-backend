@@ -1,8 +1,5 @@
 ﻿using Application.DTOs.Login;
-using Application.DTOs.Usuarios;
-using Application.Interfaces;
 using Application.Services;
-using Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

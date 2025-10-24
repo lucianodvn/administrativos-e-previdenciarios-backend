@@ -1,11 +1,13 @@
 ﻿using Application.DTOs.Contrato;
 using Application.Interfaces.UseCase;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("contrato-judicial")]
     public class ContratoJudicialController : ControllerBase
     {

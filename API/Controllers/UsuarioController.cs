@@ -1,13 +1,14 @@
-﻿using Application.DTOs.Clientes;
-using Application.DTOs.Login;
+﻿using Application.DTOs.Login;
 using Application.DTOs.Usuarios;
 using Application.Interfaces.UseCase;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("usuario")]
     public class UsuarioController : ControllerBase
     {

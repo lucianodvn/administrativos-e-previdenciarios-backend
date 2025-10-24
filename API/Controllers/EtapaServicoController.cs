@@ -1,10 +1,12 @@
 ﻿using Application.DTOs.EtapaServico;
 using Application.Interfaces.UseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("etapaservico")]
     public class EtapaServicoController : ControllerBase
     {

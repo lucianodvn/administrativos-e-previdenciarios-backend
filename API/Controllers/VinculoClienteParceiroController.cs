@@ -1,11 +1,13 @@
 ﻿using Application.DTOs.VinculoClienteParceiro;
 using Application.Interfaces.UseCase;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("vinculo-cliente-parceiro")]
     public class VinculoClienteParceiroController : ControllerBase
     {

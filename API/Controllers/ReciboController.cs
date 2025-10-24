@@ -1,11 +1,13 @@
 ﻿using Application.DTOs.Clientes;
 using Application.DTOs.Recibo;
 using Application.Interfaces.UseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("recibo")]
     public class ReciboController : ControllerBase
     {

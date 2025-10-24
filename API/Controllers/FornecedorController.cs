@@ -1,10 +1,12 @@
 ﻿using Application.DTOs.Fornecedor;
 using Application.Interfaces.UseCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("fornecedor")]
     public class FornecedorController : ControllerBase
     {

@@ -22,6 +22,7 @@ using Domain.Interfaces.Repository;
 using Domain.Interfaces.Service;
 using Infrastructure.Context;
 using Infrastructure.Context.Identity;
+using Infrastructure.DependencyInjection;
 using Infrastructure.Repositories;
 using Infrastructure.Service;
 using MediatR;
@@ -29,6 +30,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Web;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -77,6 +79,8 @@ builder.Services.AddScoped<TokenService>();
 
 var secretKey = builder.Configuration["SymmetricSecurityKey"];
 
+var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -99,13 +103,15 @@ builder.Services.AddCors(options =>
     //{
     //    policy.WithOrigins("http://localhost:4200")
     //          .AllowAnyHeader()
-    //          .AllowAnyMethod();
+    //          .AllowAnyMethod()
+    //          .AllowCredentials();
     //});
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy.WithOrigins("http://192.168.0.158:4200")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 
 });
@@ -120,23 +126,37 @@ builder.Services.AddDbContext<DataDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-var app = builder.Build();
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+builder.Services.AddInfrastructureServices();
 
-
-app.UseCors("CorsPolicy");
-
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    logger.Info("Iniciando aplicação...");
+
+    var app = builder.Build();
+
+    app.UseCors("CorsPolicy");
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
+}
+catch (Exception ex)
+{
+    logger.Error(ex, "Erro ao iniciar");
+    throw;
 }
 
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
 
-app.Run();
 
 //var app = builder.Build();
 
