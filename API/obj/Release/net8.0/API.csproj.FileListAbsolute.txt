@@ -194,3 +194,7 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\API.pdb
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\API.genruntimeconfig.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\ref\API.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Release\net8.0\nlog.config
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Release\net8.0\NLog.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Release\net8.0\NLog.Extensions.Logging.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Release\net8.0\NLog.Web.AspNetCore.dll

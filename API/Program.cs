@@ -136,18 +136,30 @@ try
 
     var app = builder.Build();
 
+    //app.UseCors("CorsPolicy");
+
+    //if (app.Environment.IsDevelopment())
+    //{
+    //    app.UseSwagger();
+    //    app.UseSwaggerUI();
+    //}
+
+    //app.UseHttpsRedirection();
+    //app.UseAuthentication();
+    //app.UseAuthorization();
+    //app.MapControllers();
+    //app.Run();
+
+    app.UseRouting();
     app.UseCors("CorsPolicy");
-
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
-
-    app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
     app.MapControllers();
+
     app.Run();
 }
 catch (Exception ex)

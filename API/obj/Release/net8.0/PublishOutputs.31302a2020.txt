@@ -1,4 +1,5 @@
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\API.exe
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\nlog.config
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\appsettings.json
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\API.dll
@@ -46,6 +47,9 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\NLog.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\NLog.Extensions.Logging.dll
+C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\NLog.Web.AspNetCore.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
