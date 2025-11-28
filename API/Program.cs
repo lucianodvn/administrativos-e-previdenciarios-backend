@@ -139,6 +139,7 @@ try
 
     var app = builder.Build();
 
+<<<<<<< HEAD
     app.Use(async (context, next) =>
     {
         context.Response.Headers.Add("Access-Control-Allow-Origin", "http://192.168.0.101:4200, http://localhost:4200");
@@ -148,6 +149,9 @@ try
         await next();
     });
 
+=======
+    //app.UseCors("CorsPolicy");
+>>>>>>> 0a33015d5670c02fec493aff662fa301d32cbae0
 
     //if (app.Environment.IsDevelopment())
     //{
@@ -161,8 +165,11 @@ try
     //app.MapControllers();
     //app.Run();
 
+<<<<<<< HEAD
     //var app = builder.Build();
 
+=======
+>>>>>>> 0a33015d5670c02fec493aff662fa301d32cbae0
     app.UseRouting();
     app.UseCors("CorsPolicy");
     app.UseAuthentication();
