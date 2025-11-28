@@ -23,6 +23,16 @@ namespace Infrastructure.Context
                 .WithMany()
                 .HasForeignKey(p => p.IdParceiro);
 
+            modelBuilder.Entity<Cliente>()
+              .HasOne(p => p.Beneficio)
+              .WithMany()
+              .HasForeignKey(p => p.TipoBeneficioId);
+
+            modelBuilder.Entity<Cliente>()
+                .HasOne(p => p.Etapa)
+                .WithMany()
+                .HasForeignKey(p => p.EtapaServicoId);
+
             //modelBuilder.Entity<ContasAReceber>()
             //    .HasOne(p => p.Fornecedor)
             //    .WithMany()

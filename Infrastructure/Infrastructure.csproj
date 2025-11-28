@@ -12,7 +12,6 @@
     <Compile Remove="Migrations\20250722185424_correcaotabelarepresentantelegal.cs" />
     <Compile Remove="Migrations\20250722185424_correcaotabelarepresentantelegal.Designer.cs" />
     <Compile Remove="Migrations\DataDbContextModelSnapshot.cs" />
-    <Compile Remove="Repositories\ClienteRepository.cs" />
     <Compile Remove="Repositories\LoginRepository.cs" />
     <Compile Remove="Repositories\RepresentanteLegalRepository.cs" />
   </ItemGroup>

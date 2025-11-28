@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entities
 {
     public class Cliente
     {
@@ -8,7 +10,7 @@
         public string EstadoCivil { get; set; }
         public string Profissao { get; set; }
         public string Endereco { get; set; }
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
         public string Celular { get; set; }
         public string? Complemento { get; set; }
         public string Cep { get; set; }
@@ -18,9 +20,11 @@
         public string? NomeDaMae { get; set; }
         public DateTime DataDeNascimento { get; set; }
         public int Idade { get; set; }
-        public string Rg { get; set; }
+        public string? Rg { get; set; }
         public string Cpf { get; set; }
-        public string Email { get; set; }
+        public string? Email { get; set; }
+        public string? SenhaInss { get; set; }
+        public string? NumeroProcesso { get; set; }
         public bool IsProprioCliente { get; set; }
         public string? NomeCompletoRepresentateLegal { get; set; }
         public string? NacionalidadeRepresentateLegal { get; set; }
@@ -40,5 +44,13 @@
         public string? EmailRepresentateLegal { get; set; }
         public string? TipoDeRepresentante { get; set; }
         public string? EstadoCivilRepresentateLegal { get; set; }
+        public string?  outrosRepresentateLegal { get; set; }
+
+        [ForeignKey("TipoBeneficioId")]
+        public int? TipoBeneficioId { get; set; }
+        public virtual BeneficiosServicos? Beneficio { get; set; }
+        [ForeignKey("EtapaServicoId")]
+        public int? EtapaServicoId { get; set; }
+        public virtual EtapaServico? Etapa { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace API.Controllers
                     _logger.LogInfo("Nenhum agendamento encontrado.");
                     return NotFound("Nenhum agendamento encontrado.");
                 }
-                return Ok(resultado.Where(x => x.IsAtendido == false).OrderBy(x => x.DataHoraDoAgendamento));
+                return Ok(resultado.OrderBy(x => x.DataHoraDoAgendamento));
             }
             catch (Exception ex)
             {

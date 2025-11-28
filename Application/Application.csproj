@@ -16,7 +16,6 @@
     <Compile Remove="Interfaces\IClienteService.cs" />
     <Compile Remove="Interfaces\IClienteUseCase.cs" />
     <Compile Remove="Interfaces\ILoginUseCase.cs" />
-    <Compile Remove="Services\ClienteService.cs" />
     <Compile Remove="UseCases\ClienteUseCase.cs" />
     <Compile Remove="UseCases\LoginUseCase.cs" />
     <Compile Remove="UseCases\RepresentanteLegalUseCase.cs" />

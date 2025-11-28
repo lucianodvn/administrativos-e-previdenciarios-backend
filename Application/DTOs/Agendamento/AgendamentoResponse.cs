@@ -14,5 +14,7 @@
         public string? Email { get; set; }
         public DateTime DataHoraDoAgendamento { get; set; }
         public bool IsAtendido { get; set; }
+        public string? Atividade { get; set; }
+        public string? Local { get; set; }
     }
 }

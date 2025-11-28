@@ -21,11 +21,14 @@ namespace Application.Mappings
         public ProfileMapper()
         {
             CreateMap<ClienteRequest, Cliente>();
-            CreateMap<Cliente, ClienteResponse>();
+            CreateMap<Cliente, ClienteResponse>()
+                .ForMember(dest => dest.Beneficio, opt => opt.MapFrom(src => src.Beneficio))
+                .ForMember(dest => dest.Etapa, opt => opt.MapFrom(src => src.Etapa));
             CreateMap<ContratoRequest, Contrato>();
             CreateMap<Contrato, ContratoResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente));
-            CreateMap<UsuarioRequest, Usuarios>();
+            CreateMap<UsuarioRequest, Usuarios>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<Usuarios, UsuarioResponse>()
                 .ForMember(dest => dest.NomeDoUsuario, opt => opt.MapFrom(src => src.UserName))
                 .ForMember(dest => dest.SenhaDoUsuario, opt => opt.Ignore());

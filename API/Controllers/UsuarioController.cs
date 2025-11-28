@@ -24,8 +24,7 @@ namespace API.Controllers
         }
 
         [HttpPost("cadastro")]
-        public async Task<IActionResult> CadastraUsuario
-            (UsuarioRequest dto)
+        public async Task<IActionResult> CadastraUsuario([FromBody] UsuarioRequest dto)
         {
             await _usuarioService.CadastraUsuario(dto);
             return Ok(new { mensagem = "Usuário cadastrado!" });

@@ -1814,6 +1814,14 @@
           },
           "isAtendido": {
             "type": "boolean"
+          },
+          "atividade": {
+            "type": "string",
+            "nullable": true
+          },
+          "local": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1994,6 +2002,22 @@
           "estadoCivilRepresentateLegal": {
             "type": "string",
             "nullable": true
+          },
+          "senhaInss": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroProcesso": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoBeneficioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "etapaServicoId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

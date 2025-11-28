@@ -1,4 +1,8 @@
-﻿namespace Application.DTOs.Clientes
+﻿using Application.DTOs.BeneficiosServicos;
+using Application.DTOs.EtapaServico;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Application.DTOs.Clientes
 {
     public class ClienteResponse
     {
@@ -41,5 +45,15 @@
         public string? TipoDeRepresentante { get; set; }
         public string EstadoCivil { get; set; }
         public string EstadoCivilRepresentateLegal { get; set; }
+        public string? outrosRepresentateLegal { get; set; }
+
+        [ForeignKey("TipoBeneficioId")]
+        public int? TipoBeneficioId { get; set; }
+        public virtual BeneficiosServicosResponse? Beneficio { get; set; }
+        [ForeignKey("EtapaServicoId")]
+        public int? EtapaServicoId { get; set; }
+        public virtual EtapaServicoResponse? Etapa { get; set; }
+        public string? SenhaInss { get; set; }
+        public string? NumeroProcesso { get; set; }
     }
 }

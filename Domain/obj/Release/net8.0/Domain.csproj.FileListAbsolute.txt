@@ -11,3 +11,16 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\refint\Domain.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.pdb
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\ref\Domain.dll
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\bin\Release\net8.0\Domain.deps.json
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\bin\Release\net8.0\Domain.dll
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\bin\Release\net8.0\Domain.pdb
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.csproj.AssemblyReference.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.AssemblyInfoInputs.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.AssemblyInfo.cs
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.sourcelink.json
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.dll
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\refint\Domain.dll
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\Domain.pdb
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\Domain\obj\Release\net8.0\ref\Domain.dll

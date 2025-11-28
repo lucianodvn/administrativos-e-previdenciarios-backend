@@ -46,6 +46,7 @@ builder.Services.AddScoped<IContasAPagarRepository, ContasAPagarRepository>();
 builder.Services.AddScoped<IContasAReceberRepository, ContasAReceberRepository>();
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<IContratoJudicialRepository, ContratoJudicialRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LucroService>();
@@ -55,6 +56,7 @@ builder.Services.AddScoped<ContasAPagarService>();
 builder.Services.AddScoped<ContasAReceberService>();
 builder.Services.AddScoped<ContratoService>();
 builder.Services.AddScoped<ContratoJudicialService>();
+builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoJudicialRequest, ContratoJudicialResponse>, UseCaseGeneric<ContratoJudicial, ContratoJudicialRequest, ContratoJudicialResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();
@@ -90,6 +92,7 @@ builder.Services.AddAuthentication(options =>
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
+        ValidateLifetime = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SymmetricSecurityKey"])),
         ValidateAudience = false,
         ValidateIssuer = false,
@@ -108,7 +111,7 @@ builder.Services.AddCors(options =>
     //});
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://192.168.0.158:4200")
+        policy.WithOrigins("http://192.168.0.101:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -136,18 +139,40 @@ try
 
     var app = builder.Build();
 
-    app.UseCors("CorsPolicy");
-
-    if (app.Environment.IsDevelopment())
+    app.Use(async (context, next) =>
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+        context.Response.Headers.Add("Access-Control-Allow-Origin", "http://192.168.0.101:4200, http://localhost:4200");
+        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+        context.Response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
+        context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+        await next();
+    });
 
-    app.UseHttpsRedirection();
+
+    //if (app.Environment.IsDevelopment())
+    //{
+    //    app.UseSwagger();
+    //    app.UseSwaggerUI();
+    //}
+
+    //app.UseHttpsRedirection();
+    //app.UseAuthentication();
+    //app.UseAuthorization();
+    //app.MapControllers();
+    //app.Run();
+
+    //var app = builder.Build();
+
+    app.UseRouting();
+    app.UseCors("CorsPolicy");
     app.UseAuthentication();
     app.UseAuthorization();
+
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
     app.MapControllers();
+
     app.Run();
 }
 catch (Exception ex)
@@ -155,19 +180,3 @@ catch (Exception ex)
     logger.Error(ex, "Erro ao iniciar");
     throw;
 }
-
-
-
-//var app = builder.Build();
-
-//app.UseRouting();
-//app.UseCors("CorsPolicy");
-//app.UseAuthentication();
-//app.UseAuthorization();
-
-//app.UseSwagger();
-//app.UseSwaggerUI();
-
-//app.MapControllers();
-
-//app.Run();

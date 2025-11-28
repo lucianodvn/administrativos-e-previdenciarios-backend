@@ -16,7 +16,7 @@ namespace API.Controllers
         }
 
         [HttpPost("acesso")]
-        public async Task<IActionResult> LoginAsync(LoginRequest dto)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginRequest dto)
         {
             var token = await _loginService.Login(dto);
             return Ok(token);

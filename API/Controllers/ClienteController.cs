@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Clientes;
 using Application.Interfaces.Logging;
 using Application.Interfaces.UseCase;
+using Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +14,13 @@ namespace API.Controllers
     {
         private readonly IUseCaseGeneric<ClienteRequest, ClienteResponse> _useCaseGeneric;
         private readonly ILoggerManager _logger;
+        private readonly ClienteService _clienteService;
 
-        public ClienteController(IUseCaseGeneric<ClienteRequest, ClienteResponse> useCaseGeneric, ILoggerManager logger)
+        public ClienteController(IUseCaseGeneric<ClienteRequest, ClienteResponse> useCaseGeneric, ILoggerManager logger, ClienteService clienteService)
         {
             _useCaseGeneric = useCaseGeneric;
             _logger = logger;
+            _clienteService = clienteService;
         }
 
         [HttpPost("salvar")]
@@ -60,7 +63,7 @@ namespace API.Controllers
 
             try
             {
-                var clienteResponse = await _useCaseGeneric.ConsultarPorId(id);
+                var clienteResponse = await _clienteService.ConsultarPorId(id);
                 if (clienteResponse == null)
                 {
                     _logger.LogWarn($"Cliente com {id} não encontrado.");
@@ -73,7 +76,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Erro ao consultar cliente: {ex.Message}");
-                return StatusCode(500, "Erro interno ao salvar cliente.");
+                return StatusCode(500, "Erro interno ao consultar cliente.");
             }
         }
 
@@ -86,7 +89,7 @@ namespace API.Controllers
 
             try
             {
-                var clientesResponse = await _useCaseGeneric.ConsultarTodos();
+                var clientesResponse = await _clienteService.ConsultarTodos();
                 if (clientesResponse == null || !clientesResponse.Any())
                 {
                     _logger.LogWarn("ModelState cliente inválido");
@@ -99,7 +102,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Erro ao consultar cliente: {ex.Message}");
-                return StatusCode(500, "Erro interno ao salvar cliente.");
+                return StatusCode(500, "Erro interno ao consultar cliente.");
             }
         }
 

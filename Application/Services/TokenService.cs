@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,9 +38,8 @@ namespace Application.Services
 
             var token = new JwtSecurityToken
                 (
-                expires: DateTime.Now.AddMinutes(10),
-                claims: claims,
-                signingCredentials: signingCredentials
+                    claims: claims,
+                    signingCredentials: signingCredentials
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
