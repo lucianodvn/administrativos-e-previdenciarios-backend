@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "J4tLC1gucoI=",
-=======
-  "dgSpecHash": "31GVh5kxhJ4=",
->>>>>>> 0a33015d5670c02fec493aff662fa301d32cbae0
   "success": true,
   "projectFilePath": "C:\\sistema-atitude\\administrativos-e-previdenciarios-backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [

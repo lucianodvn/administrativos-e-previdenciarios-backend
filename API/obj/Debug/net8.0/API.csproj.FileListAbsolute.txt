@@ -377,6 +377,15 @@ C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-bac
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\ref\API.dll
 C:\Projetos Luciano\Atitude-Administrativo\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\nlog.config
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.AssemblyInfo.cs
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.sourcelink.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\nlog.config
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\appsettings.Development.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\appsettings.json
@@ -553,15 +562,6 @@ C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Application.pdb
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Infrastructure.pdb
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\bin\Debug\net8.0\Domain.pdb
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\rpswa.dswa.cache.json
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.AssemblyInfo.cs
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.sourcelink.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

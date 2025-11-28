@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "N6Aa78ndmNI=",
-=======
-  "dgSpecHash": "Z8NwU5SyIck=",
->>>>>>> 0a33015d5670c02fec493aff662fa301d32cbae0
   "success": true,
   "projectFilePath": "C:\\sistema-atitude\\administrativos-e-previdenciarios-backend\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
