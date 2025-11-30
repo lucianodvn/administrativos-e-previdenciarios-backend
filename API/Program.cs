@@ -6,6 +6,7 @@ using Application.DTOs.ContasAPagar;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
+using Application.DTOs.FornecedorEmpresa;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -70,6 +71,7 @@ builder.Services.AddScoped<IUseCaseGeneric<FornecedorRequest, FornecedorResponse
 builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>, UseCaseGeneric<VinculoClienteBeneficioEtapa, VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapaResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>, UseCaseGeneric<VinculoClienteParceiro, VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<AgendamentoRequest, AgendamentoResponse>, UseCaseGeneric<Agendamento, AgendamentoRequest, AgendamentoResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<FornecedorEmpresaRequest, FornecedorEmpresaResponse>, UseCaseGeneric<FornecedorEmpresa, FornecedorEmpresaRequest, FornecedorEmpresaResponse>>();
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));
@@ -102,20 +104,20 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    //options.AddPolicy("CorsPolicy", policy =>
-    //{
-    //    policy.WithOrigins("http://localhost:4200")
-    //          .AllowAnyHeader()
-    //          .AllowAnyMethod()
-    //          .AllowCredentials();
-    //});
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://192.168.0.101:4200")
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
+    //options.AddPolicy("CorsPolicy", policy =>
+    //{
+    //    policy.WithOrigins("http://192.168.0.101:4200")
+    //          .AllowAnyHeader()
+    //          .AllowAnyMethod()
+    //          .AllowCredentials();
+    //});
 
 });
 

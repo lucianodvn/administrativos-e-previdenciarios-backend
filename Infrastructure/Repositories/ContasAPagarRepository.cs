@@ -19,9 +19,24 @@ namespace Infrastructure.Repositories
         public async Task<ContasAPagarResponse> ConsultarPorId(int id)
         {
             var response = await _context.ContasAPagar
-                 .Include(v => v.Parceiro)
+                 .Include(v => v.FornecedorEmpresa)
                  .Include(v => v.Fornecedor)
                  .FirstOrDefaultAsync(v => v.Id == id);
+
+            if (response == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<ContasAPagarResponse>(response);
+        }
+
+        public async Task<ContasAPagarResponse> ConsultarPorEmpresaId(int id)
+        {
+            var response = await _context.ContasAPagar
+                 .Include(v => v.FornecedorEmpresa)
+                 .Include(v => v.Fornecedor)
+                 .FirstOrDefaultAsync(v => v.IdFornecedor == id);
 
             if (response == null)
             {
@@ -34,7 +49,7 @@ namespace Infrastructure.Repositories
         public async Task<List<ContasAPagarResponse>> ConsultarTodosAsync()
         {
             var response = await _context.ContasAPagar
-                .Include(v => v.Parceiro)
+                .Include(v => v.FornecedorEmpresa)
                 .Include(v => v.Fornecedor)
                 .ToListAsync();
 

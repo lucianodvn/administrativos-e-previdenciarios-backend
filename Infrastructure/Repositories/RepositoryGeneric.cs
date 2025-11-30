@@ -56,7 +56,14 @@ namespace Infrastructure.Repositories
 
         async Task<IEnumerable<T>> IRepositoryGeneric<T>.ConsultarTodos()
         {
-            return await _dbSet.ToListAsync();
+            try
+            {
+                return await _dbSet.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao consultar todos os registros: " + ex.Message);
+            }
         }
 
         async Task IRepositoryGeneric<T>.Excluir(T entity)

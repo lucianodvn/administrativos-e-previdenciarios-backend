@@ -56,5 +56,26 @@ namespace Application.Services
                 throw new Exception("Erro interno ao consultar contas a pagar.");
             }
         }
+
+        public async Task<ContasAPagarResponse> ConsultarPorEmpresaId(int id)
+        {
+            try
+            {
+                var response = await _repository.ConsultarPorEmpresaId(id);
+                if (response == null)
+                {
+                    _logger.LogWarn("Contas a Pagar não encontrado");
+                    return null;
+                }
+
+                _logger.LogInfo($"Consulta Contas a Pagar: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar contas a pagar: {ex.Message}");
+                throw new Exception("Erro interno ao consultar contas a pagar.");
+            }
+        }
     }
 }

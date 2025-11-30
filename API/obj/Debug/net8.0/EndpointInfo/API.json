@@ -475,6 +475,29 @@
         }
       }
     },
+    "/contas-a-pagar/empresa/buscar/{id}": {
+      "get": {
+        "tags": [
+          "ContasAPagar"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/contas-a-pagar/alterar": {
       "put": {
         "tags": [
@@ -1076,6 +1099,126 @@
       "delete": {
         "tags": [
           "Fornecedor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fornecedorEmpresa/listar": {
+      "get": {
+        "tags": [
+          "FornecedorEmpresa"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fornecedorEmpresa/cadastrar": {
+      "post": {
+        "tags": [
+          "FornecedorEmpresa"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fornecedorEmpresa/buscar/{id}": {
+      "get": {
+        "tags": [
+          "FornecedorEmpresa"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fornecedorEmpresa/alterar": {
+      "put": {
+        "tags": [
+          "FornecedorEmpresa"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FornecedorEmpresaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/fornecedorEmpresa/excluir/{id}": {
+      "delete": {
+        "tags": [
+          "FornecedorEmpresa"
         ],
         "parameters": [
           {
@@ -1991,6 +2134,10 @@
             "type": "string",
             "nullable": true
           },
+          "outrosRepresentateLegal": {
+            "type": "string",
+            "nullable": true
+          },
           "tipoDeRepresentante": {
             "type": "string",
             "nullable": true
@@ -2042,7 +2189,7 @@
             "format": "date-time",
             "nullable": true
           },
-          "idParceiro": {
+          "idFornecedorEmpresa": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -2055,8 +2202,9 @@
           "isPago": {
             "type": "boolean"
           },
-          "item": {
-            "type": "string",
+          "valorPago": {
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },
@@ -2217,6 +2365,57 @@
           "nomeEtapaServico": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FornecedorEmpresaRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeFornecedorEmpresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpjCpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "diaVencimento": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "formaPagamento": {
+            "type": "string",
+            "nullable": true
+          },
+          "banco": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDeConta": {
+            "type": "string",
+            "nullable": true
+          },
+          "agencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "conta": {
+            "type": "string",
+            "nullable": true
+          },
+          "chavePix": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

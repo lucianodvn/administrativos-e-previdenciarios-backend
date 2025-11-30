@@ -81,6 +81,21 @@ namespace API.Controllers
             return Ok(contasAPagarResponse);
         }
 
+        [HttpGet("empresa/buscar/{id}")]
+        public async Task<IActionResult> BuscarContaAPagarPorEmpresaId(int id)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta Contas a Pagar");
+
+            var contasAPagarResponse = await _contasAPagar.ConsultarPorEmpresaId(id);
+            if (contasAPagarResponse == null)
+            {
+                return NotFound("Nenhuma conta a pagar encontrada.");
+            }
+            return Ok(contasAPagarResponse);
+        }
+
         [HttpPut("alterar")]
         public async Task<IActionResult> AlterarContaAPagar([FromBody] ContasAPagarRequest contasAPagarRequest)
         {

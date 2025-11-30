@@ -6,5 +6,6 @@ namespace Application.Interfaces.Repository
     {
         Task<List<ContasAPagarResponse>> ConsultarTodosAsync();
         Task<ContasAPagarResponse> ConsultarPorId(int id);
+        Task<ContasAPagarResponse> ConsultarPorEmpresaId(int id);
     }
 }

@@ -295,6 +295,22 @@
   },
   {
     "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "BuscarContaAPagarPorEmpresaId",
+    "RelativePath": "contas-a-pagar/empresa/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
     "Method": "DeletarContaAPagar",
     "RelativePath": "contas-a-pagar/excluir/{id}",
     "HttpMethod": "DELETE",
@@ -671,6 +687,80 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "AtualizarFornecedor",
+    "RelativePath": "fornecedorEmpresa/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.FornecedorEmpresa.FornecedorEmpresaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "ObterFornecedorPorId",
+    "RelativePath": "fornecedorEmpresa/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "CriarFornecedor",
+    "RelativePath": "fornecedorEmpresa/cadastrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTOs.FornecedorEmpresa.FornecedorEmpresaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "DeletarFornecedor",
+    "RelativePath": "fornecedorEmpresa/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "ListarFornecedor",
+    "RelativePath": "fornecedorEmpresa/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

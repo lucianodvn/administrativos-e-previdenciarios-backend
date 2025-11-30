@@ -19,9 +19,9 @@ namespace Infrastructure.Context
                 .HasForeignKey(p => p.IdFornecedor);
 
             modelBuilder.Entity<ContasAPagar>()
-                .HasOne(p => p.Parceiro)
+                .HasOne(p => p.FornecedorEmpresa)
                 .WithMany()
-                .HasForeignKey(p => p.IdParceiro);
+                .HasForeignKey(p => p.IdFornecedorEmpresa);
 
             modelBuilder.Entity<Cliente>()
               .HasOne(p => p.Beneficio)
@@ -98,5 +98,6 @@ namespace Infrastructure.Context
         public DbSet<Agendamento> Agendamentos { get; set; }
         public DbSet<Fornecedor> Fornecedor { get; set; }
         public DbSet<ContratoJudicial> ContratoJudicial { get; set; }
+        public DbSet<FornecedorEmpresa> FornecedorEmpresa { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using Application.DTOs.ContasAPagar;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
+using Application.DTOs.FornecedorEmpresa;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -43,7 +44,7 @@ namespace Application.Mappings
             CreateMap<ContasAPagarRequest, ContasAPagar>();
             CreateMap<ContasAPagar, ContasAPagarResponse>()
                 .ForMember(dest => dest.Fornecedor, opt => opt.MapFrom(src => src.Fornecedor))
-                .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
+                .ForMember(dest => dest.FornecedorEmpresa, opt => opt.MapFrom(src => src.FornecedorEmpresa));
             CreateMap<AgendamentoRequest, Agendamento>();
             CreateMap<Agendamento, AgendamentoResponse>();
             CreateMap<VinculoClienteBeneficioEtapaRequest, VinculoClienteBeneficioEtapa>();
@@ -62,6 +63,8 @@ namespace Application.Mappings
             CreateMap<ContratoJudicial, ContratoJudicialResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
                 .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
+            CreateMap<FornecedorEmpresaRequest, FornecedorEmpresa>();
+            CreateMap<FornecedorEmpresa, FornecedorEmpresaResponse>();
         }
     }
 }
