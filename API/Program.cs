@@ -104,20 +104,20 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    //options.AddPolicy("CorsPolicy", policy =>
-    //{
-    //    policy.WithOrigins("http://localhost:4200")
-    //          .AllowAnyHeader()
-    //          .AllowAnyMethod()
-    //          .AllowCredentials();
-    //});
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://192.168.0.101:4200")
+        policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
+    //options.AddPolicy("CorsPolicy", policy =>
+    //{
+    //    policy.WithOrigins("http://192.168.0.101:4200")
+    //          .AllowAnyHeader()
+    //          .AllowAnyMethod()
+    //          .AllowCredentials();
+    //});
 
 });
 

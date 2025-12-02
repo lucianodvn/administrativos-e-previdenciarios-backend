@@ -1,8 +1,11 @@
-﻿namespace Application.Interfaces.Service
+﻿using Domain.Entities;
+
+namespace Application.Interfaces.Service
 {
     public interface IServiceGeneric<T> where T : class
     {
         Task<T> ConsultarPorId(object id);
+        Task<Agendamento> ConsultarPorNome(string nome);
         Task<IEnumerable<T>> ConsultarTodos();
         Task<T> Salvar(T entity);
         Task Alterar(T entity);

@@ -80,6 +80,37 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("buscarpornome")]
+        public async Task<IActionResult> BuscarClientePorNome(string nome)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta do Cliente: {nome}.");
+
+            if (string.IsNullOrEmpty(nome))
+            {
+                return BadRequest("nome inválido.");
+            }
+
+            try
+            {
+                var clienteResponse = await _clienteService.ConsultarPorNome(nome);
+                if (clienteResponse == null)
+                {
+                    _logger.LogWarn($"Cliente com {nome} não encontrado.");
+                    return NotFound("Cliente não encontrado.");
+                }
+
+                _logger.LogInfo($"Consulta do Cliente: {nome}: {clienteResponse}");
+                return Ok(clienteResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar cliente: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar cliente.");
+            }
+        }
+
         [HttpGet("buscar")]
         public async Task<IActionResult> BuscarTodosClientes()
         {

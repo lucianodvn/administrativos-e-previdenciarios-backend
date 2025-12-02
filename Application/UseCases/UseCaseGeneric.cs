@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Service;
+﻿using Application.DTOs.Agendamento;
+using Application.Interfaces.Service;
 using Application.Interfaces.UseCase;
 using AutoMapper;
 
@@ -66,6 +67,17 @@ namespace Application.UseCases
         {
             var entidade = _mapper.Map<TEntity>(request);
             await _serviceGeneric.AlterarSomenteNecessario(entidade, id);
+        }
+
+        public async Task<TResponse> ConsultarPorNome(string nome)
+        {
+            var entidade = await _serviceGeneric.ConsultarPorNome(nome);
+            if (entidade == null)
+            {
+                return default;
+            }
+            return _mapper.Map<TResponse>(entidade);
+
         }
     }
 }

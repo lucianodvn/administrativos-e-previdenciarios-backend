@@ -199,5 +199,35 @@ namespace API.Controllers
             }
             return new JsonResult(resultado);
         }
+
+        [HttpGet("buscarpornome")]
+        public async Task<IActionResult> ObterAgendamentoPorNome([FromQuery] string nome)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta da Agenda");
+
+            if (string.IsNullOrEmpty(nome))
+            {
+                _logger.LogWarn("Nome inválido");
+                return BadRequest("Nome inválido.");
+            }
+
+            try
+            {
+                var agendamentoResponse = await _useCaseGeneric.ConsultarPorNome(nome);
+                if (agendamentoResponse == null)
+                {
+                    _logger.LogInfo("Agendamento não encontrado.");
+                    return NotFound("Agendamento não encontrado.");
+                }
+                return Ok(agendamentoResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar agenda: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar agenda.");
+            }
+        }
     }
 }

@@ -62,6 +62,27 @@ namespace Application.Services
                 throw new Exception("Erro interno ao consultar Cliente.");
             }
         }
+
+        public async Task<ClienteResponse> ConsultarPorNome(string nome)
+        {
+            try
+            {
+                var response = await _repository.ConsultarPorNome(nome);
+                if (response == null)
+                {
+                    _logger.LogWarn("Cliente não encontrado");
+                    return null;
+                }
+
+                _logger.LogInfo($"Cliente: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar Cliente: {ex.Message}");
+                throw new Exception("Erro interno ao consultar Cliente.");
+            }
+        }
     }
 }
 

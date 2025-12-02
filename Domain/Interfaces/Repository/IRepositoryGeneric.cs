@@ -1,10 +1,12 @@
-﻿using System.Linq.Expressions;
+﻿using Domain.Entities;
+using System.Linq.Expressions;
 
 namespace Domain.Interfaces.Repository
 {
     public interface IRepositoryGeneric<T> where T : class
     {
         Task<T> ConsultarPorId(object id);
+        Task<Agendamento> ConsultarPorNome(string nome);
         Task<IEnumerable<T>> ConsultarTodos();
         Task<IEnumerable<T>> Pesquisar(Expression<Func<T, bool>> predicate);
         Task<T> Salvar(T entity);

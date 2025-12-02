@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "API.Controllers.AgendamentoController",
+    "Method": "ObterAgendamentoPorNome",
+    "RelativePath": "agenda/buscarpornome",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AgendamentoController",
     "Method": "CriarAgendamento",
     "RelativePath": "agenda/cadastrar",
     "HttpMethod": "POST",
@@ -215,6 +231,22 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ClienteController",
+    "Method": "BuscarClientePorNome",
+    "RelativePath": "cliente/buscarpornome",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

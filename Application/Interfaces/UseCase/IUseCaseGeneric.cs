@@ -1,4 +1,6 @@
-﻿namespace Application.Interfaces.UseCase
+﻿using Application.DTOs.Agendamento;
+
+namespace Application.Interfaces.UseCase
 {
     public interface IUseCaseGeneric<TRequest, TResponse>
     {
@@ -9,5 +11,6 @@
         Task<bool> Excluir(int id);
         Task<bool> Existe(string numeroRecibo);
         Task AlterarSomenteNecessario<T>(T entity, object id);
+        Task<TResponse> ConsultarPorNome(string nome);
     }
 }

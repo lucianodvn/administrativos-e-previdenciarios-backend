@@ -37,6 +37,21 @@ namespace Infrastructure.Repositories
             return _mapper.Map<ClienteResponse>(response);
         }
 
+        public async Task<ClienteResponse> ConsultarPorNome(string nome)
+        {
+            var response = await _context.Clientes
+                 .Include(v => v.Beneficio)
+                 .Include(v => v.Etapa)
+                 .FirstOrDefaultAsync(v => v.NomeCompleto == nome);
+
+            if (response == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<ClienteResponse>(response);
+        }
+
         public async Task<List<ClienteResponse>> ConsultarTodosAsync()
         {
             var response = await _context.Clientes

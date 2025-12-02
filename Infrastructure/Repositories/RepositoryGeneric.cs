@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.Repository;
+﻿using Domain.Entities;
+using Domain.Interfaces.Repository;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -52,6 +53,11 @@ namespace Infrastructure.Repositories
         async Task<T> IRepositoryGeneric<T>.ConsultarPorId(object id)
         {
             return await _dbSet.FindAsync(id);
+        }
+
+       public async Task<Agendamento> ConsultarPorNome(string nome)
+        {
+            return await _context.Agendamentos.FirstOrDefaultAsync(x => x.NomeCompleto == nome);
         }
 
         async Task<IEnumerable<T>> IRepositoryGeneric<T>.ConsultarTodos()

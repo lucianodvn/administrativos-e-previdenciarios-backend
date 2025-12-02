@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Logging;
 using Application.Interfaces.Service;
+using Domain.Entities;
 using Domain.Interfaces.Repository;
 
 namespace Application.Services
@@ -111,6 +112,19 @@ namespace Application.Services
             await _repository.AlterarSomenteNecessario(entity, id);
 
             await Task.CompletedTask;
+        }
+
+        public async Task<Agendamento> ConsultarPorNome(string nome)
+        {
+            try
+            {
+                return await _repository.ConsultarPorNome(nome);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar {nome}: {ex.Message}");
+                throw new Exception($"Erro interno ao consultar.");
+            }
         }
     }
 }
