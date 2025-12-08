@@ -27,7 +27,8 @@ namespace Application.Mappings
                 .ForMember(dest => dest.Etapa, opt => opt.MapFrom(src => src.Etapa));
             CreateMap<ContratoRequest, Contrato>();
             CreateMap<Contrato, ContratoResponse>()
-                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente));
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Beneficios, opt => opt.MapFrom(src => src.Beneficios));
             CreateMap<UsuarioRequest, Usuarios>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<Usuarios, UsuarioResponse>()

@@ -53,13 +53,13 @@ namespace Infrastructure.Context
             //    .WithMany()
             //    .HasForeignKey(p => p.IdContratoJud);
 
-            modelBuilder
-                .Entity<Contrato>()
-                .Property(c => c.StatusContrato)
-                .HasConversion(
-                    v => v.GetStatusDescricao(),
-                    v => v.ToStatusEnum().Value
-                );
+            //modelBuilder
+            //    .Entity<Contrato>()
+            //    .Property(c => c.StatusContrato)
+            //    .HasConversion(
+            //        v => v.GetStatusDescricao(),
+            //        v => v.ToStatusEnum().Value
+            //    );
 
             modelBuilder
                 .Entity<ContratoJudicial>()
@@ -73,6 +73,11 @@ namespace Infrastructure.Context
                 .HasOne(c => c.Cliente)
                 .WithMany()
                 .HasForeignKey(c => c.ClienteId);
+
+            modelBuilder.Entity<Contrato>()
+                .HasOne(c => c.Beneficios)
+                .WithMany()
+                .HasForeignKey(c => c.IdBeneficioServico);
 
             modelBuilder.Entity<ContratoJudicial>()
                 .HasOne(p => p.Parceiro)

@@ -57,6 +57,7 @@ namespace Infrastructure.Repositories
             var response = await _context.Clientes
                .Include(v => v.Beneficio)
                .Include(v => v.Etapa)
+               .OrderBy(x => x.NomeCompleto)
                .ToListAsync();
 
             if (response == null)

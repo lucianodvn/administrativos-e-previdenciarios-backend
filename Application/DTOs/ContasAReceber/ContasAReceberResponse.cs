@@ -12,6 +12,5 @@
         public DateTime? DataDeVencimentoTotal { get; set; }
         public DateTime? DataDeVencimentoDaParcela { get; set; }
         public DateTime? DataDoVencimentoValorEntrada { get; set; }
-
     }
 }

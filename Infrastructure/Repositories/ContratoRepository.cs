@@ -21,6 +21,7 @@ namespace Infrastructure.Repositories
         {
             var response = await _context.Contrato
                  .Include(v => v.Cliente)
+                 .Include(v => v.Beneficios)
                  .FirstOrDefaultAsync(v => v.Id == id);
 
             if (response == null)
@@ -35,6 +36,7 @@ namespace Infrastructure.Repositories
         {
             var response = await _context.Contrato
                 .Include(v => v.Cliente)
+                .Include(v => v.Beneficios)
                 .ToListAsync();
 
             if (response == null)

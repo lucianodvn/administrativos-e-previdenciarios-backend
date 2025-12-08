@@ -24,7 +24,6 @@ namespace API.Controllers
         public async Task<IActionResult> SalvarContrato([FromBody] ContratoRequest request)
         {
             var contratoResponse = await _useCaseGeneric.Salvar(request);
-            contratoResponse.DataCriacao = DateTime.Now;
 
             return Ok(contratoResponse);
         }

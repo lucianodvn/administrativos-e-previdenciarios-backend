@@ -59,12 +59,12 @@ namespace Infrastructure.Repositories
                         TipoClienteOuParceiro = "Cliente",
                         Nome = responseAdm.Cliente?.NomeCompleto,
                         TipoDeContrato = "Administrativo",
-                        ValorTotal = responseAdm.ValorTotal ?? 0,
-                        ValorEntrada = responseAdm.ValorEntrada ?? 0,
-                        ValorParcela = responseAdm.ValorDasParcelas ?? 0,
-                        DataDeVencimentoTotal = responseAdm.DataDoVencimentoTotal,
-                        DataDeVencimentoDaParcela = responseAdm.DataPagamentoDaParcela,
-                        DataDoVencimentoValorEntrada = responseAdm.DataDoVencimentoValorEntrada
+                        //ValorTotal = responseAdm.ValorTotal ?? 0,
+                        //ValorEntrada = responseAdm.ValorEntrada ?? 0,
+                        //ValorParcela = responseAdm.ValorDasParcelas ?? 0,
+                        //DataDeVencimentoTotal = responseAdm.DataDoVencimentoTotal,
+                        //DataDeVencimentoDaParcela = responseAdm.DataPagamentoDaParcela,
+                        //DataDoVencimentoValorEntrada = responseAdm.DataDoVencimentoValorEntrada
                     });
                 }
             }

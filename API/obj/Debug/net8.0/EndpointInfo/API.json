@@ -2305,14 +2305,29 @@
             "type": "integer",
             "format": "int32"
           },
-          "cliente": {
-            "$ref": "#/components/schemas/ClienteRequest"
+          "diaVencimento": {
+            "type": "integer",
+            "format": "int32"
           },
-          "htmlContrato": {
+          "idBeneficioServico": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dataVencimentoInicioParcelas": {
             "type": "string",
             "nullable": true
           },
-          "valorTotal": {
+          "dataVencimentoFimParcelas": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorParcelas": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorPago": {
             "type": "number",
             "format": "double",
             "nullable": true
@@ -2322,73 +2337,26 @@
             "format": "double",
             "nullable": true
           },
-          "dataDoPagamentoDaEntrada": {
+          "dataPagamento": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "dataDoVencimentoValorEntrada": {
-            "type": "string",
-            "format": "date-time",
+          "statusPagamentoMensal": {
+            "type": "boolean",
             "nullable": true
           },
-          "totalDeParcelas": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "parcelasPagas": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "parcelasFaltantes": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "statusContrato": {
+          "statusPagamentoTotal": {
             "type": "string",
             "nullable": true
           },
-          "valorDasParcelas": {
+          "observacao": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorTotal": {
             "type": "number",
             "format": "double",
-            "nullable": true
-          },
-          "valorPagoParcela": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "valorRestanteDoContrato": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "diaDoVencimentoParcelas": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "dataDoVencimentoTotal": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "dataDoVencimentoParcela": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "dataPagamentoDaParcela": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "proximoVencimentoDaParcela": {
-            "type": "string",
-            "format": "date-time",
             "nullable": true
           }
         },

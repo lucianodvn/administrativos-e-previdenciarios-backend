@@ -1,4 +1,7 @@
-﻿using Application.DTOs.Clientes;
+﻿using Application.DTOs.BeneficiosServicos;
+using Application.DTOs.Clientes;
+using Domain.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Application.DTOs.Contrato
 {
@@ -6,25 +9,19 @@ namespace Application.DTOs.Contrato
     {
         public int Id { get; set; }
         public int ClienteId { get; set; }
-        public string? HtmlContrato { get; set; }
-        public DateTime DataCriacao { get; set; }
-        public string NomeCliente { get; set; }
-        public ClienteResponse Cliente { get; set; }
-        public double? ValorTotal { get; set; }
+        public virtual ClienteResponse? Cliente { get; set; }
+        public int DiaVencimento { get; set; }
+        public int? IdBeneficioServico { get; set; }
+        public virtual BeneficiosServicosResponse? Beneficios { get; set; }
+        public string? DataVencimentoInicioParcelas { get; set; }
+        public string? DataVencimentoFimParcelas { get; set; }
+        public double? ValorParcelas { get; set; }
+        public double? ValorPago { get; set; }
         public double? ValorEntrada { get; set; }
-        public DateTime? DataDoPagamentoDaEntrada { get; set; }
-        public DateTime? DataDoVencimentoValorEntrada { get; set; }
-        public int? TotalDeParcelas { get; set; }
-        public int? ParcelasPagas { get; set; }
-        public int? ParcelasFaltantes { get; set; }
-        public string StatusContrato { get; set; }
-        public double? ValorDasParcelas { get; set; }
-        public double? ValorPagoParcela { get; set; }
-        public double? ValorRestanteDoContrato { get; set; }
-        public int? DiaDoVencimentoParcelas { get; set; }
-        public DateTime? DataDoVencimentoTotal { get; set; }
-        public DateTime? DataDoVencimentoParcela { get; set; }
-        public DateTime? DataPagamentoDaParcela { get; set; }
-        public DateTime? ProximoVencimentoDaParcela { get; set; }
+        public DateTime? DataPagamento { get; set; }
+        public bool? StatusPagamentoMensal { get; set; }
+        public string? StatusPagamentoTotal { get; set; }
+        public string? Observacao { get; set; }
+        public double? ValorTotal { get; set; }
     }
 }
