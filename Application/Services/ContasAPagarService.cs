@@ -57,7 +57,7 @@ namespace Application.Services
             }
         }
 
-        public async Task<ContasAPagarResponse> ConsultarPorEmpresaId(int id)
+        public async Task<List<ContasAPagarResponse>> ConsultarPorEmpresaId(int id)
         {
             try
             {

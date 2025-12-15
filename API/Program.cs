@@ -1,3 +1,4 @@
+
 using Application.Arquivos;
 using Application.DTOs.Agendamento;
 using Application.DTOs.BeneficiosServicos;
@@ -104,21 +105,13 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    //options.AddPolicy("CorsPolicy", policy =>
-    //{
-    //    policy.WithOrigins("http://localhost:4200")
-    //          .AllowAnyHeader()
-    //          .AllowAnyMethod()
-    //          .AllowCredentials();
-    //});
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://192.168.0.101:4200")
+        policy.WithOrigins("http://192.168.0.101:4200", "http://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
-
 });
 
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
@@ -140,30 +133,6 @@ try
     logger.Info("Iniciando aplicação...");
 
     var app = builder.Build();
-
-    app.Use(async (context, next) =>
-    {
-        context.Response.Headers.Add("Access-Control-Allow-Origin", "http://192.168.0.101:4200, http://localhost:4200");
-        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
-        context.Response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
-        context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
-        await next();
-    });
-
-
-    //if (app.Environment.IsDevelopment())
-    //{
-    //    app.UseSwagger();
-    //    app.UseSwaggerUI();
-    //}
-
-    //app.UseHttpsRedirection();
-    //app.UseAuthentication();
-    //app.UseAuthorization();
-    //app.MapControllers();
-    //app.Run();
-
-    //var app = builder.Build();
 
     app.UseRouting();
     app.UseCors("CorsPolicy");

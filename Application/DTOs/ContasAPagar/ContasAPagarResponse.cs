@@ -15,6 +15,5 @@ namespace Application.DTOs.ContasAPagar
         public int? IdFornecedor { get; set; }
         public FornecedorResponse? Fornecedor { get; set; }
         public bool IsPago { get; set; }
-        public double? ValorPago { get; set; }
     }
 }

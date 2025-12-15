@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class ContasAPagar
     {
         public int Id { get; set; }
-        public double Valor { get; set; }
+        public double? Valor { get; set; }
         public DateTime DataVencimento { get; set; }
         public DateTime? DataPagamento { get; set; }
 
@@ -17,6 +17,5 @@ namespace Domain.Entities
         public int? IdFornecedor { get; set; }
         public virtual Fornecedor? Fornecedor { get; set; }
         public bool IsPago { get; set; }
-        public double? ValorPago { get; set; }
     }
 }

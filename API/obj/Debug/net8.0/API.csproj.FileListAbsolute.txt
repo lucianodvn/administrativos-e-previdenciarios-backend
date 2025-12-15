@@ -191,10 +191,10 @@ C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.development.json
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.csproj.Up2Date
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.dll
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\refint\API.dll
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.pdb
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\ref\API.dll
+C:\sistema-atitude\administrativos-e-previdenciarios-backend\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

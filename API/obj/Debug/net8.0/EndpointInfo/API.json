@@ -2220,7 +2220,8 @@
           },
           "valor": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "dataVencimento": {
             "type": "string",
@@ -2243,11 +2244,6 @@
           },
           "isPago": {
             "type": "boolean"
-          },
-          "valorPago": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2327,11 +2323,6 @@
             "format": "double",
             "nullable": true
           },
-          "valorPago": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
           "valorEntrada": {
             "type": "number",
             "format": "double",
@@ -2357,6 +2348,21 @@
           "valorTotal": {
             "type": "number",
             "format": "double",
+            "nullable": true
+          },
+          "quantidadeParcelas": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valorRestante": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "dataVencimentoParcelas": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },
