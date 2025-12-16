@@ -10,7 +10,7 @@ namespace Domain.Entities
         [ForeignKey("ClienteId")]
         public int ClienteId { get; set; }
         public virtual Cliente? Cliente { get; set; }
-        public int DiaVencimento { get; set; }
+        public string DiaVencimento { get; set; }
 
         [ForeignKey("IdBeneficioServico")]
         public int? IdBeneficioServico { get; set; }
@@ -20,12 +20,9 @@ namespace Domain.Entities
         public double? ValorParcelas { get; set; }
         public double? ValorEntrada { get; set; }
         public DateTime? DataPagamento { get; set; }
-        public bool? StatusPagamentoMensal { get; set; }
-        public string? StatusPagamentoTotal { get; set; }
-        public string? Observacao { get; set; }
         public double? ValorTotal { get; set; }
         public int? QuantidadeParcelas { get; set; }
         public double? ValorRestante { get; set; }
-        public DateTime? DataVencimentoParcelas { get; set; }
+        public DateTime? DataVencimentoEntrada { get; set; }
     }
 }

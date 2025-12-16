@@ -10,6 +10,7 @@ namespace Application.DTOs.FornecedorEmpresa
     public class FornecedorEmpresaRequest
     {
         public int Id { get; set; }
+        public int? IdEmpresa { get; set; }
         public string NomeFornecedorEmpresa { get; set; }
         public string? CnpjCpf { get; set; }
         public string? Descricao { get; set; }

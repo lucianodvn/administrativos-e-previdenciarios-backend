@@ -10,6 +10,10 @@ namespace Domain.Entities
     public class FornecedorEmpresa
     {
         public int Id { get; set; }
+
+        [ForeignKey("IdEmpresa")]
+        public int? IdEmpresa { get; set; }
+        public virtual Fornecedor? Empresa { get; set; }
         public string NomeFornecedorEmpresa { get; set; }
         public string? CnpjCpf { get; set; }
         public string? Descricao { get; set; }
@@ -20,5 +24,6 @@ namespace Domain.Entities
         public string? Agencia { get; set; }
         public string? Conta { get; set; }
         public string? ChavePix { get; set; }
+
     }
 }

@@ -49,6 +49,7 @@ builder.Services.AddScoped<IContasAReceberRepository, ContasAReceberRepository>(
 builder.Services.AddScoped<IContratoRepository, ContratoRepository>();
 builder.Services.AddScoped<IContratoJudicialRepository, ContratoJudicialRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IFornecedorEmpresaRepository, FornecedorEmpresaRepository>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<LucroService>();
@@ -59,6 +60,7 @@ builder.Services.AddScoped<ContasAReceberService>();
 builder.Services.AddScoped<ContratoService>();
 builder.Services.AddScoped<ContratoJudicialService>();
 builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<FornecedorEmpresaService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoJudicialRequest, ContratoJudicialResponse>, UseCaseGeneric<ContratoJudicial, ContratoJudicialRequest, ContratoJudicialResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();

@@ -2,6 +2,7 @@
 using Application.DTOs.FornecedorEmpresa;
 using Application.Interfaces.Logging;
 using Application.Interfaces.UseCase;
+using Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +14,13 @@ namespace API.Controllers
     public class FornecedorEmpresaController : ControllerBase
     {
         private readonly IUseCaseGeneric<FornecedorEmpresaRequest, FornecedorEmpresaResponse> _useCaseGeneric;
+        private FornecedorEmpresaService _fornecedorEmpresaService;
         private readonly ILoggerManager _logger;
-        public FornecedorEmpresaController(IUseCaseGeneric<FornecedorEmpresaRequest, FornecedorEmpresaResponse> useCaseGeneric, ILoggerManager logger)
+        public FornecedorEmpresaController(IUseCaseGeneric<FornecedorEmpresaRequest, FornecedorEmpresaResponse> useCaseGeneric, ILoggerManager logger, FornecedorEmpresaService fornecedorEmpresaService)
         {
             _useCaseGeneric = useCaseGeneric;
             _logger = logger;
+            _fornecedorEmpresaService = fornecedorEmpresaService;
         }
 
         [HttpGet("listar")]
@@ -29,7 +32,7 @@ namespace API.Controllers
 
             try
             {
-                var resultado = await _useCaseGeneric.ConsultarTodos();
+                var resultado = await _fornecedorEmpresaService.ConsultarTodos();
                 if (resultado == null || !resultado.Any())
                 {
                     _logger.LogInfo("Nenhum Fornecedor Empresa encontrado.");
@@ -85,7 +88,7 @@ namespace API.Controllers
 
             try
             {
-                var agendamentoResponse = await _useCaseGeneric.ConsultarPorId(id);
+                var agendamentoResponse = await _fornecedorEmpresaService.ConsultarPorId(id);
                 if (agendamentoResponse == null)
                 {
                     _logger.LogInfo("Fornecedor Empresa não encontrado.");

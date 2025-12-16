@@ -65,7 +65,8 @@ namespace Application.Mappings
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente))
                 .ForMember(dest => dest.Parceiro, opt => opt.MapFrom(src => src.Parceiro));
             CreateMap<FornecedorEmpresaRequest, FornecedorEmpresa>();
-            CreateMap<FornecedorEmpresa, FornecedorEmpresaResponse>();
+            CreateMap<FornecedorEmpresa, FornecedorEmpresaResponse>()
+                .ForMember(dest => dest.Empresa, opt => opt.MapFrom(src => src.Empresa));
         }
     }
 }

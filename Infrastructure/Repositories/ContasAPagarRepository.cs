@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
             var response = await _context.ContasAPagar
                 .Include(v => v.FornecedorEmpresa)
                 .Include(v => v.Fornecedor)
-                .Where(v => v.DataVencimento.Month == DateTime.Now.Month && v.IsPago == false)
+                .Where(v => v.DataVencimento.HasValue && v.DataVencimento.Value.Month == DateTime.Now.Month && v.IsPago == false)
                 .OrderBy(v => v.DataVencimento)
                 .ToListAsync();
 

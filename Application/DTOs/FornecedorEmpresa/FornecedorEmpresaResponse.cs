@@ -11,6 +11,8 @@ namespace Application.DTOs.FornecedorEmpresa
     public class FornecedorEmpresaResponse
     {
         public int Id { get; set; }
+        public int? IdEmpresa { get; set; }
+        public virtual FornecedorResponse? Empresa { get; set; }
         public string NomeFornecedorEmpresa { get; set; }
         public string? CnpjCpf { get; set; }
         public string? Descricao { get; set; }

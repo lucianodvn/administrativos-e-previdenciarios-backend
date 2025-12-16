@@ -2225,7 +2225,8 @@
           },
           "dataVencimento": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "dataPagamento": {
             "type": "string",
@@ -2243,7 +2244,8 @@
             "nullable": true
           },
           "isPago": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2302,8 +2304,8 @@
             "format": "int32"
           },
           "diaVencimento": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "idBeneficioServico": {
             "type": "integer",
@@ -2333,18 +2335,6 @@
             "format": "date-time",
             "nullable": true
           },
-          "statusPagamentoMensal": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "statusPagamentoTotal": {
-            "type": "string",
-            "nullable": true
-          },
-          "observacao": {
-            "type": "string",
-            "nullable": true
-          },
           "valorTotal": {
             "type": "number",
             "format": "double",
@@ -2360,7 +2350,7 @@
             "format": "double",
             "nullable": true
           },
-          "dataVencimentoParcelas": {
+          "dataVencimentoEntrada": {
             "type": "string",
             "format": "date-time",
             "nullable": true
@@ -2391,6 +2381,11 @@
           "id": {
             "type": "integer",
             "format": "int32"
+          },
+          "idEmpresa": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "nomeFornecedorEmpresa": {
             "type": "string",

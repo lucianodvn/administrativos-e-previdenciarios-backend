@@ -27,7 +27,7 @@ namespace Application.Services
             else
             {
                 double totalPagar = contaAPagar
-                    .Where(x => x.DataVencimento.Month == DateTime.Now.Month && x.DataVencimento.Year == DateTime.Now.Year)
+                    .Where(x => x.DataVencimento?.Month == DateTime.Now.Month && x.DataVencimento?.Year == DateTime.Now.Year)
                     .Sum(x => x.Valor.GetValueOrDefault());
 
                 double valorTotal = contasReceber.Sum(x => x.ValorTotal ?? 0);

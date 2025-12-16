@@ -33,6 +33,11 @@ namespace Infrastructure.Context
                 .WithMany()
                 .HasForeignKey(p => p.EtapaServicoId);
 
+            modelBuilder.Entity<FornecedorEmpresa>()
+                .HasOne(p => p.Empresa)
+                .WithMany()
+                .HasForeignKey(p => p.IdEmpresa);
+
             //modelBuilder.Entity<ContasAReceber>()
             //    .HasOne(p => p.Fornecedor)
             //    .WithMany()
