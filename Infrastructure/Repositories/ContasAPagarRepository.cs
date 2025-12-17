@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
             var response = await _context.ContasAPagar
                 .Include(v => v.FornecedorEmpresa)
                 .Include(v => v.Fornecedor)
-                .Where(v => v.DataVencimento.HasValue && v.DataVencimento.Value.Month == DateTime.Now.Month && v.IsPago == false)
+                .Where(v => v.DataVencimento.HasValue && v.DataVencimento.Value.Month == DateTime.Now.Month && (v.IsPago == false || v.IsPago == null))
                 .OrderBy(v => v.DataVencimento)
                 .ToListAsync();
 
@@ -65,6 +65,20 @@ namespace Infrastructure.Repositories
             }
 
             return _mapper.Map<List<ContasAPagarResponse>>(response);
+        }
+
+        public async Task<double> ObterValoresAPagar(int id)
+        {
+            var response = await _context.ContasAPagar
+                .Where(v => v.IdFornecedor == id && (v.IsPago == false || v.IsPago == null))
+                .SumAsync(x => x.Valor) ?? 0;
+
+            if (response == 0)
+            {
+                return 0;
+            }
+
+            return response;
         }
     }
 }

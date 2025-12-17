@@ -143,5 +143,23 @@ namespace API.Controllers
             return Ok(possuiContasVencendoHoje);
         }
 
+        [HttpGet("total/{idEmpresa}")]
+        public async Task<IActionResult> ObterValoresAPagar(int idEmpresa)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Obter Valores a Pagar");
+            try
+            {
+                var valorAPagar = await _contasAPagar.ObterValoresAPagar(idEmpresa);
+                _logger.LogInfo("Obtido Valores a Pagar");
+                return Ok(valorAPagar);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao obter valores a pagar: {ex.Message}");
+                return StatusCode(500, "Erro interno ao obter valores a pagar.");
+            }
+        }
+
     }
 }

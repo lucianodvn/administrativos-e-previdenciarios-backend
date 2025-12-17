@@ -77,5 +77,20 @@ namespace Application.Services
                 throw new Exception("Erro interno ao consultar contas a pagar.");
             }
         }
+
+        public async Task<double> ObterValoresAPagar(int idEmpresa)
+        {
+            try
+            {
+                var response = await _repository.ObterValoresAPagar(idEmpresa);
+                _logger.LogInfo($"Valor total a pagar: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao obter valores a pagar: {ex.Message}");
+                throw new Exception("Erro interno ao obter valores a pagar.");
+            }
+        }
     }
 }

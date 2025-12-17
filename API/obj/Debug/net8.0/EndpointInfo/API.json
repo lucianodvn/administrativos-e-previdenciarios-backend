@@ -606,6 +606,29 @@
         }
       }
     },
+    "/contas-a-pagar/total/{idEmpresa}": {
+      "get": {
+        "tags": [
+          "ContasAPagar"
+        ],
+        "parameters": [
+          {
+            "name": "idEmpresa",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/contas-a-receber/buscar": {
       "get": {
         "tags": [

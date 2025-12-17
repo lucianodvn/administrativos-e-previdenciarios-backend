@@ -384,6 +384,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "ObterValoresAPagar",
+    "RelativePath": "contas-a-pagar/total/{idEmpresa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpresa",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ContasAReceberController",
     "Method": "BuscarTodasContasAReceber",
     "RelativePath": "contas-a-receber/buscar",
