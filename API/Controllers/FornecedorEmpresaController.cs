@@ -157,5 +157,32 @@ namespace API.Controllers
                 return StatusCode(500, "Erro interno ao excluir Fornecedor Empresa.");
             }
         }
+
+        [HttpGet("consultar-por-empresa/{idEmpresa}")]
+        public async Task<IActionResult> ConsultarPorEmpresaId(int idEmpresa)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta do Fornecedor Empresa por Empresa ID");
+            if (idEmpresa <= 0)
+            {
+                _logger.LogWarn("ID da Empresa inválido");
+                return BadRequest("ID da Empresa inválido.");
+            }
+            try
+            {
+                var resultado = await _fornecedorEmpresaService.ConsultarPorEmpresaId(idEmpresa);
+                if (resultado == null || !resultado.Any())
+                {
+                    _logger.LogInfo("Nenhum Fornecedor Empresa encontrado para a Empresa especificada.");
+                    return NotFound("Nenhum Fornecedor Empresa encontrado para a Empresa especificada.");
+                }
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar Fornecedor Empresa por Empresa ID: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar Fornecedor Empresa por Empresa ID.");
+            }
+        }
     }
 }

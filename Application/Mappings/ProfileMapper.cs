@@ -2,6 +2,7 @@
 using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
+using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
@@ -67,6 +68,9 @@ namespace Application.Mappings
             CreateMap<FornecedorEmpresaRequest, FornecedorEmpresa>();
             CreateMap<FornecedorEmpresa, FornecedorEmpresaResponse>()
                 .ForMember(dest => dest.Empresa, opt => opt.MapFrom(src => src.Empresa));
+            CreateMap<ContasAReceberRequest, ContasAReceber>();
+            CreateMap<ContasAReceber, ContasAReceberResponse>()
+                .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente));
         }
     }
 }

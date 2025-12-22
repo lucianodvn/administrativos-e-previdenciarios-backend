@@ -71,5 +71,15 @@ namespace API.Controllers
             return Ok();
         }
 
+        [HttpDelete("excluir/{id}")]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+            await _useCaseGeneric.Excluir(id);
+            return Ok();
+        }
     }
 }

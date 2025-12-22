@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.Service;
+﻿using Domain.Entities;
+using Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
@@ -10,10 +11,12 @@ namespace Infrastructure.Service
     public class ArquivoService : IArquivoService
     {
         private readonly IWebHostEnvironment _env;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ArquivoService(IWebHostEnvironment env)
+        public ArquivoService(IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
         {
             _env = env;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<(string url, string nomeArquivo)> SalvarArquivoComSubpastaAsync(IFormFile arquivo, string nomeCliente)
@@ -26,10 +29,10 @@ namespace Infrastructure.Service
             var nomeArquivoSanitizado = SanitizarNome(nomeArquivoOriginal);
             var raiz = _env.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
 
-            var pastaBase = Path.Combine(raiz, "arquivos", nomeClienteSanitizado, nomeArquivoSanitizado);
+            var pastaBase = Path.Combine(raiz, "arquivos", nomeClienteSanitizado);
             Directory.CreateDirectory(pastaBase);
 
-            var nomeFinal = Guid.NewGuid() + Path.GetExtension(arquivo.FileName);
+            var nomeFinal = nomeArquivoOriginal + Path.GetExtension(arquivo.FileName);
             var caminhoCompleto = Path.Combine(pastaBase, nomeFinal);
 
             using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
@@ -37,7 +40,7 @@ namespace Infrastructure.Service
                 await arquivo.CopyToAsync(stream);
             }
 
-            var url = $"/arquivos/{nomeClienteSanitizado}/{nomeArquivoSanitizado}/{nomeFinal}";
+            var url = $"/arquivos/{nomeClienteSanitizado}/{nomeFinal}";
             return (url, nomeFinal);
         }
 
@@ -49,6 +52,25 @@ namespace Infrastructure.Service
             nomeLimpo = new string(chars);
             return Regex.Replace(nomeLimpo, @"[^a-zA-Z0-9_\-]", "_").ToLower();
         }
-    }
 
+        public async Task<IEnumerable<ArquivoDto>> ListarArquivosPorClienteAsync(string nomeCliente)
+        {
+            var nomeClienteSanitizado = SanitizarNome(nomeCliente);
+            var raiz = _env.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            var pastaBase = Path.Combine(raiz, "arquivos", nomeClienteSanitizado);
+
+            if (!Directory.Exists(pastaBase))
+                return Enumerable.Empty<ArquivoDto>();
+
+            var arquivos = Directory.GetFiles(pastaBase);
+
+            var lista = arquivos.Select(arquivo => new ArquivoDto
+            {
+                Url = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}/arquivos/{nomeClienteSanitizado}/{Path.GetFileName(arquivo)}",
+                NomeArquivo = Path.GetFileName(arquivo)
+            });
+
+            return await Task.FromResult(lista);
+        }
+    }
 }

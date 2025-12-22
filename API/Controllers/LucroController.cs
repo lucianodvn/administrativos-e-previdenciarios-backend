@@ -18,12 +18,12 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> ConsultarLucro()
         {
-            var response = await _lucroService.ObterLucro();
-            if (response == null)
-            {
-                return NotFound();
-            }
-            return Ok(response);
+            //var response = await _lucroService.ObterLucro();
+            //if (response == null)
+            //{
+            //    return NotFound();
+            //}
+            return Ok();
         }
     }
 }

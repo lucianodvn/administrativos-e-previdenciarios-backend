@@ -1,7 +1,10 @@
-﻿using Application.DTOs.ContasAReceber;
+﻿using Application.DTOs.ContasAPagar;
+using Application.DTOs.ContasAReceber;
 using Application.Interfaces.Repository;
 using AutoMapper;
+using Domain.Entities;
 using Infrastructure.Context;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -19,57 +22,103 @@ namespace Infrastructure.Repositories
 
         public async Task<List<ContasAReceberResponse>> ConsultarTodosAsync()
         {
-            var contratoJudicial = await _context.ContratoJudicial
-                .Include(x => x.Cliente)
-                .Include(x => x.Parceiro)
-                .ToListAsync();
-
-            var contratoAdm = await _context.Contrato
+            var response = await _context.ContasAReceber
                 .Include(x => x.Cliente)
                 .ToListAsync();
 
-            ContasAReceberResponse contas = new ContasAReceberResponse();
-            List<ContasAReceberResponse> listaDeContas = new List<ContasAReceberResponse>();
-
-            if (contratoJudicial.Any())
+            if (response == null)
             {
-                foreach (var reponseJudicial in contratoJudicial)
-                {
-                    listaDeContas.Add(new ContasAReceberResponse
-                    {
-                        Id = reponseJudicial.Id,
-                        TipoClienteOuParceiro = "Parceiro",
-                        Nome = $"{reponseJudicial.Parceiro?.NomeParceiro}({reponseJudicial.Cliente?.NomeCompleto})",
-                        TipoDeContrato = "Judicial",
-                        ValorTotal = reponseJudicial.Valor,
-                        ValorEntrada = 0,
-                        ValorParcela = 0,
-                        DataDeVencimentoTotal = null
-                    });
-                }
+                return null;
             }
 
-            if (contratoAdm.Any())
+            var dto = _mapper.Map<List<ContasAReceberResponse>>(response);
+            return dto;
+        }
+
+        public async Task<ContasAReceberResponse> ConsultarId(int id)
+        {
+            var response = await _context.ContasAReceber
+               .Include(x => x.Cliente)
+               .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (response == null)
             {
-                foreach (var responseAdm in contratoAdm)
-                {
-                    listaDeContas.Add(new ContasAReceberResponse
-                    {
-                        Id = responseAdm.Id,
-                        TipoClienteOuParceiro = "Cliente",
-                        Nome = responseAdm.Cliente?.NomeCompleto,
-                        TipoDeContrato = "Administrativo",
-                        //ValorTotal = responseAdm.ValorTotal ?? 0,
-                        //ValorEntrada = responseAdm.ValorEntrada ?? 0,
-                        //ValorParcela = responseAdm.ValorDasParcelas ?? 0,
-                        //DataDeVencimentoTotal = responseAdm.DataDoVencimentoTotal,
-                        //DataDeVencimentoDaParcela = responseAdm.DataPagamentoDaParcela,
-                        //DataDoVencimentoValorEntrada = responseAdm.DataDoVencimentoValorEntrada
-                    });
-                }
+                return null;
             }
 
-            return listaDeContas;
+            return _mapper.Map<ContasAReceberResponse>(response);
+        }
+
+        public async Task<List<ContasAReceberResponse>> ConsultarPoClienteId(int id)
+        {
+            var response = await _context.ContasAReceber
+                 .Include(v => v.Cliente)
+                 .Where(v => v.ClienteId == id)
+                 .ToListAsync();
+
+            if (response == null)
+            {
+                return null;
+            }
+
+            var dto = _mapper.Map<List<ContasAReceberResponse>>(response);
+            return dto;
+        }
+
+        public async Task SalvarTodos(List<ContasAReceberRequest> request)
+        {
+            try
+            {
+                var entidades = _mapper.Map<List<ContasAReceber>>(request);
+                await _context.ContasAReceber.AddRangeAsync(entidades);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao salvar contas a receber: " + ex.Message);
+            }
+        }
+
+        public async Task<List<ContasAReceberResponse>> ConsultarPorTipoAsync(int tipo)
+        {
+            var inicioMesAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var inicioProximoMes = inicioMesAtual.AddMonths(1);
+
+            var response = await _context.ContasAReceber
+                 .Include(v => v.Cliente)
+                 .ToListAsync();
+            if (response == null)
+            {
+                return null;
+            }
+
+            switch (tipo)
+            {
+                case 1:
+                    break;
+                case 2:
+                    response = response
+                        .Where(v => v.StatusPagamento == false
+                                 && v.DataVencimento.HasValue
+                                 && v.DataVencimento.Value < inicioProximoMes)
+                        .ToList();
+
+                    break;
+                case 3:
+                    response = response
+                        .Where(v => v.StatusPagamento == false
+                                 && v.DataVencimento.HasValue
+                                 && v.DataVencimento.Value >= inicioProximoMes)
+                        .ToList();
+
+                    break;
+                case 4:
+                    response = response.Where(v => v.StatusPagamento == true).ToList();
+                    break;
+            }
+
+            var dto = _mapper.Map<List<ContasAReceberResponse>>(response);
+            return dto;
         }
     }
 }

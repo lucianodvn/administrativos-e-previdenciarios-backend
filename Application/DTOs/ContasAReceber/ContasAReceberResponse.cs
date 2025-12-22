@@ -1,16 +1,21 @@
-﻿namespace Application.DTOs.ContasAReceber
+﻿using Application.DTOs.Clientes;
+
+namespace Application.DTOs.ContasAReceber
 {
     public class ContasAReceberResponse
     {
         public int Id { get; set; }
-        public string? TipoClienteOuParceiro { get; set; }
-        public string? Nome { get; set; }
-        public string? TipoDeContrato { get; set; }
-        public double? ValorTotal { get; set; }
-        public double? ValorEntrada { get; set; }
-        public double? ValorParcela { get; set; }
-        public DateTime? DataDeVencimentoTotal { get; set; }
-        public DateTime? DataDeVencimentoDaParcela { get; set; }
-        public DateTime? DataDoVencimentoValorEntrada { get; set; }
+        public int ClienteId { get; set; }
+        public virtual ClienteResponse? Cliente { get; set; }
+        public DateTime? DataVencimento { get; set; }
+        public DateTime? DataPagamento { get; set; }
+        public string? Descricao { get; set; }
+        public string? TipoDeAtendimento { get; set; }
+        public int? QuantidadeParcelas { get; set; }
+        public string? FormaPagamento { get; set; }
+        public bool? StatusPagamento { get; set; }
+        public double? ValorDevido { get; set; }
+        public double? ValorPago { get; set; }
+        public string? NumeroParcela { get; set; }
     }
 }

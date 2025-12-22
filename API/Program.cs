@@ -4,6 +4,7 @@ using Application.DTOs.Agendamento;
 using Application.DTOs.BeneficiosServicos;
 using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
+using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
@@ -40,6 +41,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IArquivoService, ArquivoService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IVinculoClienteRepository, VinculoClienteRepository>();
@@ -64,6 +66,7 @@ builder.Services.AddScoped<FornecedorEmpresaService>();
 builder.Services.AddScoped<IUseCaseGeneric<BeneficiosServicosRequest, BeneficiosServicosResponse>, UseCaseGeneric<BeneficiosServicos, BeneficiosServicosRequest, BeneficiosServicosResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoJudicialRequest, ContratoJudicialResponse>, UseCaseGeneric<ContratoJudicial, ContratoJudicialRequest, ContratoJudicialResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContasAPagarRequest, ContasAPagarResponse>, UseCaseGeneric<ContasAPagar, ContasAPagarRequest, ContasAPagarResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse>, UseCaseGeneric<ContasAReceber, ContasAReceberRequest, ContasAReceberResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<EtapaServicoRequest, EtapaServicoResponse>, UseCaseGeneric<EtapaServico, EtapaServicoRequest, EtapaServicoResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ClienteRequest, ClienteResponse>, UseCaseGeneric<Cliente, ClienteRequest, ClienteResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<ContratoRequest, ContratoResponse>, UseCaseGeneric<Contrato, ContratoRequest, ContratoResponse>>();
@@ -136,6 +139,7 @@ try
 
     var app = builder.Build();
 
+    app.UseStaticFiles();
     app.UseRouting();
     app.UseCors("CorsPolicy");
     app.UseAuthentication();

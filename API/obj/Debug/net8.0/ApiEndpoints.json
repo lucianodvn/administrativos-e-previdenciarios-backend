@@ -401,12 +401,124 @@
   },
   {
     "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "AlterarContasAReceber",
+    "RelativePath": "contas-a-receber/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAReceberRequest",
+        "Type": "Application.DTOs.ContasAReceber.ContasAReceberRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "BuscarContasAReceberPorIdCliente",
+    "RelativePath": "contas-a-receber/buscar-cliente/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "BuscarContasAReceberPorTipo",
+    "RelativePath": "contas-a-receber/buscar-por-tipo/{tipo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipo",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "BuscarContasAReceberPorId",
+    "RelativePath": "contas-a-receber/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "ExcluirContasAReceber",
+    "RelativePath": "contas-a-receber/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
     "Method": "BuscarTodasContasAReceber",
-    "RelativePath": "contas-a-receber/buscar",
+    "RelativePath": "contas-a-receber/listar",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "SalvarContasAReceber",
+    "RelativePath": "contas-a-receber/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAReceberRequest",
+        "Type": "Application.DTOs.ContasAReceber.ContasAReceberRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "SalvarListaContasAReceber",
+    "RelativePath": "contas-a-receber/salvar-lista",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAReceberRequest",
+        "Type": "System.Collections.Generic.List\u00601[[Application.DTOs.ContasAReceber.ContasAReceberRequest, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -787,6 +899,22 @@
   },
   {
     "ContainingType": "API.Controllers.FornecedorEmpresaController",
+    "Method": "ConsultarPorEmpresaId",
+    "RelativePath": "fornecedorEmpresa/consultar-por-empresa/{idEmpresa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpresa",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FornecedorEmpresaController",
     "Method": "DeletarFornecedor",
     "RelativePath": "fornecedorEmpresa/excluir/{id}",
     "HttpMethod": "DELETE",
@@ -980,6 +1108,22 @@
       {
         "Name": "reciboRequest",
         "Type": "Application.DTOs.Recibo.ReciboRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UploadController",
+    "Method": "ListarArquivos",
+    "RelativePath": "upload/listararquivos/{cliente}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cliente",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -1185,6 +1329,22 @@
     "Method": "BuscarPorId",
     "RelativePath": "vinculo-cliente-parceiro/buscar/{id}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.VinculoClienteParceiroController",
+    "Method": "Excluir",
+    "RelativePath": "vinculo-cliente-parceiro/excluir/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
