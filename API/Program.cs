@@ -6,9 +6,11 @@ using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
+using Application.DTOs.ControleDePonto;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
 using Application.DTOs.FornecedorEmpresa;
+using Application.DTOs.Funcionario;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -78,10 +80,14 @@ builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteBeneficioEtapaRequest, 
 builder.Services.AddScoped<IUseCaseGeneric<VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>, UseCaseGeneric<VinculoClienteParceiro, VinculoClienteParceiroRequest, VinculoClienteParceiroResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<AgendamentoRequest, AgendamentoResponse>, UseCaseGeneric<Agendamento, AgendamentoRequest, AgendamentoResponse>>();
 builder.Services.AddScoped<IUseCaseGeneric<FornecedorEmpresaRequest, FornecedorEmpresaResponse>, UseCaseGeneric<FornecedorEmpresa, FornecedorEmpresaRequest, FornecedorEmpresaResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<FuncionarioRequest, FuncionarioResponse>, UseCaseGeneric<Funcionario, FuncionarioRequest, FuncionarioResponse>>();
+builder.Services.AddScoped<IUseCaseGeneric<ControleDePontoRequest, ControleDePontoResponse>, UseCaseGeneric<ControleDePonto, ControleDePontoRequest, ControleDePontoResponse>>();
+
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProfileMapper>());
 builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddScoped(typeof(IServiceGeneric<>), typeof(ServiceGeneric<>));
 builder.Services.AddMediatR(typeof(UploadMultiplosArquivosCommandHandler).Assembly);
+builder.Services.AddMediatR(typeof(UploadMultiplosArquivosCommandComprovante).Assembly);
 builder.Services.AddIdentity<Usuarios, IdentityRole>()
     .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultTokenProviders();

@@ -77,7 +77,12 @@ namespace Application.UseCases
                 return default;
             }
             return _mapper.Map<TResponse>(entidade);
+        }
 
+        public async Task SalvarLista(List<TRequest> requests)
+        {
+            var entities = _mapper.Map<List<TEntity>>(requests);
+            await _serviceGeneric.SalvarLista(entities);
         }
     }
 }

@@ -12,5 +12,6 @@ namespace Application.DTOs.Usuarios
         public string NomeDoUsuario { get; set; }
         public string SenhaDoUsuario { get; set; }
         public bool IsAdmin { get; set; }
+        public int TipoUsuario { get; set; }
     }
 }

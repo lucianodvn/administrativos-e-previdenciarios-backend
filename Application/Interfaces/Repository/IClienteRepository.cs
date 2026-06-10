@@ -14,5 +14,6 @@ namespace Application.Interfaces.Repository
         Task<List<ClienteResponse>> ConsultarTodosAsync();
         Task<ClienteResponse> ConsultarPorId(int id);
         Task<ClienteResponse> ConsultarPorNome(string nome);
+        Task<List<ClienteResponse>> BuscarClientesPorEtapaServico(List<int> etapaServicoIds);
     }
 }

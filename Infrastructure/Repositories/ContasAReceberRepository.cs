@@ -6,6 +6,7 @@ using Domain.Entities;
 using Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Infrastructure.Repositories
 {
@@ -24,6 +25,8 @@ namespace Infrastructure.Repositories
         {
             var response = await _context.ContasAReceber
                 .Include(x => x.Cliente)
+                .ThenInclude(c => c.Beneficio)
+                .OrderBy(x => x.DataVencimento)
                 .ToListAsync();
 
             if (response == null)
@@ -39,6 +42,7 @@ namespace Infrastructure.Repositories
         {
             var response = await _context.ContasAReceber
                .Include(x => x.Cliente)
+               .ThenInclude(c => c.Beneficio)
                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (response == null)
@@ -53,6 +57,7 @@ namespace Infrastructure.Repositories
         {
             var response = await _context.ContasAReceber
                  .Include(v => v.Cliente)
+                 .ThenInclude(c => c.Beneficio)
                  .Where(v => v.ClienteId == id)
                  .ToListAsync();
 
@@ -86,6 +91,7 @@ namespace Infrastructure.Repositories
 
             var response = await _context.ContasAReceber
                  .Include(v => v.Cliente)
+                 .ThenInclude(c => c.Beneficio)
                  .ToListAsync();
             if (response == null)
             {
@@ -97,12 +103,8 @@ namespace Infrastructure.Repositories
                 case 1:
                     break;
                 case 2:
-                    response = response
-                        .Where(v => v.StatusPagamento == false
-                                 && v.DataVencimento.HasValue
-                                 && v.DataVencimento.Value < inicioProximoMes)
-                        .ToList();
-
+                    response = response.Where(v => v.DataVencimento.HasValue &&
+                    v.DataVencimento.Value.Month == DateTime.Now.Month).ToList();
                     break;
                 case 3:
                     response = response
@@ -115,10 +117,55 @@ namespace Infrastructure.Repositories
                 case 4:
                     response = response.Where(v => v.StatusPagamento == true).ToList();
                     break;
+                case 5:
+                    response = response.Where(v => v.DataVencimento.HasValue &&
+                    v.DataVencimento.Value.Month == DateTime.Now.Month).ToList();
+                    break;
             }
 
             var dto = _mapper.Map<List<ContasAReceberResponse>>(response);
             return dto;
+        }
+
+        public async Task<double> SomaTotalAReceber()
+        {
+            var total = await _context.ContasAReceber
+                .SumAsync(x => x.ValorDevido);
+
+            return total ?? 0;
+        }
+
+        public async Task<double> ValorRecebidoNoMesAtual()
+        {
+            var inicioMesAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var ultimoDiaDoMes = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            var fimDoMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, ultimoDiaDoMes);
+
+            var totalRecebido = await _context.ContasAReceber
+                .Where(x => x.StatusPagamento == true
+                         && x.DataVencimento.HasValue
+                         && x.DataVencimento.Value >= inicioMesAtual
+                         && x.DataVencimento.Value <= fimDoMes)
+                .SumAsync(x => x.ValorDevido);
+            return totalRecebido ?? 0;
+        }
+
+        public async Task<List<ContasAReceberResponse>> ConsultarContasAMigrar(int id, int mes, int ano)
+        {
+            var response = await _context.ContasAReceber
+                .Include(v => v.Cliente)
+                .ThenInclude(c => c.Beneficio)
+                .Where(v => v.DataVencimento.HasValue
+                         && v.DataVencimento.Value.Month == mes
+                         && v.DataVencimento.Value.Year == ano)
+                .OrderBy(v => v.DataVencimento)
+                .ToListAsync();
+            if (response == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<List<ContasAReceberResponse>>(response);
         }
     }
 }

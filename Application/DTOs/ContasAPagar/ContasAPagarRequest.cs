@@ -9,5 +9,6 @@
         public int? IdFornecedorEmpresa { get; set; }
         public int? IdFornecedor { get; set; }
         public bool? IsPago { get; set; }
+        public double? ValorPago { get; set; }
     }
 }

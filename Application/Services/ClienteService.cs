@@ -83,6 +83,26 @@ namespace Application.Services
                 throw new Exception("Erro interno ao consultar Cliente.");
             }
         }
+
+        public async Task<List<ClienteResponse>> BuscarClientesPorEtapaServico(List<int> etapaIds)
+        {
+            try
+            {
+                var response = await _repository.BuscarClientesPorEtapaServico(etapaIds);
+                if (response == null || !response.Any())
+                {
+                    _logger.LogWarn("Nenhum cliente encontrado para o etapa de serviço");
+                    return null;
+                }
+                _logger.LogInfo($"Clientes encontrados para o etapa de serviço {etapaIds}: {response.Count}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar Clientes por etapa de serviço: {ex.Message}");
+                throw new Exception("Erro interno ao consultar Clientes de serviço.");
+            }
+        }
     }
 }
 

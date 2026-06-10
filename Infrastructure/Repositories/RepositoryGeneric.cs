@@ -99,5 +99,11 @@ namespace Infrastructure.Repositories
             var lambda = Expression.Lambda<Func<T, bool>>(equality, parameter);
             return await _dbSet.AnyAsync(lambda);
         }
+
+        async Task IRepositoryGeneric<T>.SalvarLista(List<T> entities)
+        {
+            await _dbSet.AddRangeAsync(entities);
+            await _context.SaveChangesAsync();
+        }
     }
 }

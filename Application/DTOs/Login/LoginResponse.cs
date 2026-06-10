@@ -10,5 +10,6 @@ namespace Application.DTOs.Login
     {
         public string Token { get; set; }
         public bool isAdmin { get; set; }
+        public int TipoUsuario { get; set; }
     }
 }

@@ -4,9 +4,11 @@ using Application.DTOs.Clientes;
 using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
 using Application.DTOs.Contrato;
+using Application.DTOs.ControleDePonto;
 using Application.DTOs.EtapaServico;
 using Application.DTOs.Fornecedor;
 using Application.DTOs.FornecedorEmpresa;
+using Application.DTOs.Funcionario;
 using Application.DTOs.Parceiro;
 using Application.DTOs.Recibo;
 using Application.DTOs.Usuarios;
@@ -71,6 +73,11 @@ namespace Application.Mappings
             CreateMap<ContasAReceberRequest, ContasAReceber>();
             CreateMap<ContasAReceber, ContasAReceberResponse>()
                 .ForMember(dest => dest.Cliente, opt => opt.MapFrom(src => src.Cliente));
+            CreateMap<FuncionarioRequest, Funcionario>();
+            CreateMap<Funcionario, FuncionarioResponse>();
+                CreateMap<ControleDePontoRequest, ControleDePonto>();
+                CreateMap<ControleDePonto, ControleDePontoResponse>()
+                    .ForMember(dest => dest.Funcionario, opt => opt.MapFrom(src => src.Funcionario));
         }
     }
 }

@@ -60,6 +60,7 @@ namespace Application.Services
             LoginResponse loginResponse = new LoginResponse
             {
                 isAdmin = usuario.IsAdmin,
+                TipoUsuario = usuario.TipoUsuario,
                 Token = token
             };
 

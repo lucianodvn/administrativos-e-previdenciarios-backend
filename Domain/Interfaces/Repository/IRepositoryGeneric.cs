@@ -14,5 +14,6 @@ namespace Domain.Interfaces.Repository
         Task AlterarSomenteNecessario<T>(T entity, object id);
         Task Excluir(T entity);
         Task<bool> Existe(string numeroRecibo);
+        Task SalvarLista(List<T> entities);
     }
 }

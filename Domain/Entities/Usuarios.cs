@@ -6,5 +6,6 @@ namespace Domain.Entities
     {
         public Usuarios() : base() { }
         public bool IsAdmin { get; set; }
+        public int TipoUsuario { get; set; }
     }
 }

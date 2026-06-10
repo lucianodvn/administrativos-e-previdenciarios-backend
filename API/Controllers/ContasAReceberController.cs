@@ -1,7 +1,9 @@
 ﻿using Application.DTOs.ContasAPagar;
 using Application.DTOs.ContasAReceber;
+using Application.Interfaces.Logging;
 using Application.Interfaces.UseCase;
 using Application.Services;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +16,13 @@ namespace API.Controllers
     {
         private readonly IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> _useCaseGeneric;
         private ContasAReceberService _contasAReceberService;
+        private readonly ILoggerManager _logger;
 
-        public ContasAReceberController(ContasAReceberService contasAReceberService, IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> useCaseGeneric)
+        public ContasAReceberController(ContasAReceberService contasAReceberService, IUseCaseGeneric<ContasAReceberRequest, ContasAReceberResponse> useCaseGeneric, ILoggerManager logger)
         {
             _useCaseGeneric = useCaseGeneric;
             _contasAReceberService = contasAReceberService;
+            _logger = logger;
         }
 
         [HttpPut("alterar")]
@@ -116,6 +120,67 @@ namespace API.Controllers
                 return NotFound("Nenhuma Conta a Receber encontrada para o tipo especificado.");
             }
             return Ok(contasAReceberResponse);
+        }
+
+        [HttpGet("somatotal")]
+        public async Task<IActionResult> SomarTotalContasAReceber()
+        {
+            var total = await _contasAReceberService.SomaTotalAReceber();
+            return Ok(total);
+        }
+
+        [HttpGet("valor-recebido-mes-atual")]
+        public async Task<IActionResult> ValorRecebidoNoMesAtual()
+        {
+            var valor = await _contasAReceberService.ValorRecebidoNoMesAtual();
+            return Ok(valor);
+        }
+
+        [HttpGet("contas-para-migrar/{idEmpresa}/{mes}/{ano}")]
+        public async Task<IActionResult> ConsultarContasAMigrar(int idEmpresa, int mes, int ano)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta Contas a Migrar");
+
+            try
+            {
+                var contasAMigrar = await _contasAReceberService.ConsultarContasAMigrar(idEmpresa, mes, ano);
+                if (contasAMigrar == null || !contasAMigrar.Any())
+                {
+                    _logger.LogWarn("Nenhuma conta a receber encontrada para migrar");
+                    return NotFound("Nenhuma conta a receber encontrada para migrar.");
+                }
+                _logger.LogInfo("Obtido Contas a Migrar");
+                return Ok(contasAMigrar);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar contas a migrar: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar contas a migrar.");
+            }
+        }
+
+        [HttpPost("migrar-contas")]
+        public async Task<IActionResult> MigrarContas([FromBody] List<ContasAReceberRequest> contasAReceberRequest)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Migração de Contas a Receber");
+            if (contasAReceberRequest == null || !contasAReceberRequest.Any())
+            {
+                _logger.LogWarn("Lista de contas a receber para migração é inválida");
+                return BadRequest("Lista de contas a receber para migração é inválida.");
+            }
+            try
+            {
+                await _contasAReceberService.SalvarTodos(contasAReceberRequest);
+                _logger.LogInfo("Migração de Contas a Receber concluída com sucesso");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao migrar contas a receber: {ex.Message}");
+                return StatusCode(500, "Erro interno ao migrar contas a receber.");
+            }
         }
     }
 }

@@ -93,12 +93,16 @@ namespace Infrastructure.Context
                 .HasOne(p => p.Cliente)
                 .WithMany()
                 .HasForeignKey(p => p.IdCliente);
+
+            modelBuilder.Entity<ControleDePonto>()
+                .HasOne(p => p.Funcionario)
+                .WithMany()
+                .HasForeignKey(p => p.FuncionarioId);
         }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Contrato> Contrato { get; set; }
         public DbSet<Parceiro> Parceiros { get; set; }
-        //public DbSet<ContasAReceber> ContasAReceber { get; set; }
         public DbSet<Recibo> Recibos { get; set; }
         public DbSet<BeneficiosServicos> BeneficiosServicos { get; set; }
         public DbSet<EtapaServico> EtapaServico { get; set; }
@@ -109,7 +113,8 @@ namespace Infrastructure.Context
         public DbSet<Fornecedor> Fornecedor { get; set; }
         public DbSet<ContratoJudicial> ContratoJudicial { get; set; }
         public DbSet<FornecedorEmpresa> FornecedorEmpresa { get; set; }
-
         public DbSet<ContasAReceber> ContasAReceber { get; set; }
-        }
+        public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<ControleDePonto> ControleDePonto { get; set; }
+    }
 }

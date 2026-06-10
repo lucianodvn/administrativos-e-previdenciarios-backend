@@ -35,5 +35,4 @@ namespace Application.Arquivos
             return resultados;
         }
     }
-
 }

@@ -12,5 +12,7 @@ namespace Domain.Interfaces.Service
     {
         Task<(string url, string nomeArquivo)> SalvarArquivoComSubpastaAsync(IFormFile arquivo, string nomeCliente);
         Task<IEnumerable<ArquivoDto>> ListarArquivosPorClienteAsync(string nomeCliente);
+        Task<(string url, string nomeArquivo)> SalvarArquivoComSubpastaComprovanteAsync(IFormFile arquivo, string nomeCliente, string id);
+        Task<IEnumerable<ArquivoDto>> ListarArquivosPorComprovanteAsync(string nomeCliente, string mesAno, string id);
     }
 }

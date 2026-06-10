@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using MediatR;
 
 namespace Application.Interfaces.Service
 {
@@ -12,5 +13,6 @@ namespace Application.Interfaces.Service
         Task AlterarSomenteNecessario<T>(T entity, object id);
         Task Excluir(T entity);
         Task<bool> Existe(string numeroRecibo);
+        Task SalvarLista(List<T> requests);
     }
 }

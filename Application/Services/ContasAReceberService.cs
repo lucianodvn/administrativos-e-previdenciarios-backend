@@ -115,5 +115,66 @@ namespace Application.Services
                 throw new Exception("Erro interno ao consultar contas a receber para esse tipo.");
             }
         }
+
+        public async Task<double> SomaTotalAReceber()
+        {
+            try
+            {
+                var response = await _repository.SomaTotalAReceber();
+                if (response == 0)
+                {
+                    _logger.LogWarn("Nenhuma conta a receber encontrada para calcular a soma total.");
+                    return 0;
+                }
+
+                _logger.LogInfo($"Soma total a receber: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao calcular a soma total a receber: {ex.Message}");
+                throw new Exception("Erro interno ao calcular a soma total a receber.");
+            }
+        }
+
+        public async Task<double> ValorRecebidoNoMesAtual()
+        {
+            try
+            {
+                var response = await _repository.ValorRecebidoNoMesAtual();
+                if (response == 0)
+                {
+                    _logger.LogWarn("Nenhuma conta a receber encontrada para calcular o valor recebido no mês atual.");
+                    return 0;
+                }
+                _logger.LogInfo($"Valor recebido no mês atual: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao calcular o valor recebido no mês atual: {ex.Message}");
+                throw new Exception("Erro interno ao calcular o valor recebido no mês atual.");
+            }
+        }
+
+        public async Task<List<ContasAReceberResponse>> ConsultarContasAMigrar(int idEmpresa, int mes, int ano)
+        {
+            try
+            {
+                var response = await _repository.ConsultarContasAMigrar(idEmpresa, mes, ano);
+                if (response == null || !response.Any())
+                {
+                    _logger.LogWarn("Nenhuma conta a receber encontrada");
+                    return null;
+                }
+                _logger.LogInfo($"Consulta Contas a Receber: {response}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar contas a receber: {ex.Message}");
+                throw new Exception("Erro interno ao consultar contas a receber.");
+            }
+        }
     }
 }

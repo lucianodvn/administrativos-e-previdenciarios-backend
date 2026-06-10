@@ -221,6 +221,22 @@
   },
   {
     "ContainingType": "API.Controllers.ClienteController",
+    "Method": "BuscarClientesPorEtapaServico",
+    "RelativePath": "cliente/buscar-por-etapa-servico",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "etapaId",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ClienteController",
     "Method": "BuscarClientePorId",
     "RelativePath": "cliente/buscar/{id}",
     "HttpMethod": "GET",
@@ -317,6 +333,32 @@
   },
   {
     "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "ConsultarContasAMigrar",
+    "RelativePath": "contas-a-pagar/contas-para-migrar/{idEmpresa}/{mes}/{ano}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpresa",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "mes",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ano",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
     "Method": "VerficarContasVenceHoje",
     "RelativePath": "contas-a-pagar/contas-vencendo-hoje",
     "HttpMethod": "GET",
@@ -335,6 +377,64 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "ListarContasDoAnoAnterior",
+    "RelativePath": "contas-a-pagar/empresa/buscar/contas-ano-anterior/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "BuscarContaAPagarPorEmpresaIdPorMesAno",
+    "RelativePath": "contas-a-pagar/empresa/buscarpormesano/{id}/{mes}/{ano}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "mes",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ano",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "SomaTotalContasApgarAnoAnterior",
+    "RelativePath": "contas-a-pagar/empresa/totalpago-ano-anterior/{idEmpresa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpresa",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -369,6 +469,22 @@
   },
   {
     "ContainingType": "API.Controllers.ContasAPagarController",
+    "Method": "MigrarContas",
+    "RelativePath": "contas-a-pagar/migrar-contas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAPagarRequests",
+        "Type": "System.Collections.Generic.List\u00601[[Application.DTOs.ContasAPagar.ContasAPagarRequest, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAPagarController",
     "Method": "SalvarContaAPagar",
     "RelativePath": "contas-a-pagar/salvar",
     "HttpMethod": "POST",
@@ -386,13 +502,18 @@
   {
     "ContainingType": "API.Controllers.ContasAPagarController",
     "Method": "ObterValoresAPagar",
-    "RelativePath": "contas-a-pagar/total/{idEmpresa}",
+    "RelativePath": "contas-a-pagar/total/{idEmpresa}/mes/{mes}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "idEmpresa",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "mes",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -465,6 +586,32 @@
   },
   {
     "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "ConsultarContasAMigrar",
+    "RelativePath": "contas-a-receber/contas-para-migrar/{idEmpresa}/{mes}/{ano}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEmpresa",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "mes",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ano",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
     "Method": "ExcluirContasAReceber",
     "RelativePath": "contas-a-receber/excluir/{id}",
     "HttpMethod": "DELETE",
@@ -487,6 +634,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "MigrarContas",
+    "RelativePath": "contas-a-receber/migrar-contas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contasAReceberRequest",
+        "Type": "System.Collections.Generic.List\u00601[[Application.DTOs.ContasAReceber.ContasAReceberRequest, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -519,6 +682,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "SomarTotalContasAReceber",
+    "RelativePath": "contas-a-receber/somatotal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ContasAReceberController",
+    "Method": "ValorRecebidoNoMesAtual",
+    "RelativePath": "contas-a-receber/valor-recebido-mes-atual",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -696,6 +879,80 @@
       {
         "Name": "request",
         "Type": "Application.DTOs.Contrato.ContratoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControleDePontoController",
+    "Method": "AlterarControleDePonto",
+    "RelativePath": "controle-de-ponto/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "controleDePontoRequest",
+        "Type": "Application.DTOs.ControleDePonto.ControleDePontoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControleDePontoController",
+    "Method": "BuscarControleDePontoPorId",
+    "RelativePath": "controle-de-ponto/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControleDePontoController",
+    "Method": "ExcluirControleDePonto",
+    "RelativePath": "controle-de-ponto/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControleDePontoController",
+    "Method": "ListarTodos",
+    "RelativePath": "controle-de-ponto/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ControleDePontoController",
+    "Method": "SalvarControleDePonto",
+    "RelativePath": "controle-de-ponto/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "controleDePontoRequest",
+        "Type": "Application.DTOs.ControleDePonto.ControleDePontoRequest",
         "IsRequired": true
       }
     ],
@@ -940,6 +1197,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.FuncionarioController",
+    "Method": "AlterarFuncionario",
+    "RelativePath": "funcionario/alterar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "funcionarioRequest",
+        "Type": "Application.DTOs.Funcionario.FuncionarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FuncionarioController",
+    "Method": "BuscarFuncionarioPorId",
+    "RelativePath": "funcionario/buscar/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FuncionarioController",
+    "Method": "ExcluirFuncionario",
+    "RelativePath": "funcionario/excluir/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FuncionarioController",
+    "Method": "ListarTodos",
+    "RelativePath": "funcionario/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FuncionarioController",
+    "Method": "SalvarFuncionario",
+    "RelativePath": "funcionario/salvar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "funcionarioRequest",
+        "Type": "Application.DTOs.Funcionario.FuncionarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.LoginController",
     "Method": "LoginAsync",
     "RelativePath": "login/acesso",
@@ -1131,6 +1462,32 @@
   },
   {
     "ContainingType": "API.Controllers.UploadController",
+    "Method": "ListarArquivosComprovantes",
+    "RelativePath": "upload/listararquivoscomprovantes/{cliente}/{mesAno}/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cliente",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "mesAno",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UploadController",
     "Method": "UploadMultiplos",
     "RelativePath": "upload/salvararquivos",
     "HttpMethod": "POST",
@@ -1145,6 +1502,32 @@
       {
         "Name": "nomeCliente",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UploadController",
+    "Method": "UploadMultiplosComprovante",
+    "RelativePath": "upload/salvarcomprovante",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "arquivos",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "nomeCliente",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

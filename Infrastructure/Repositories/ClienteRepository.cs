@@ -67,5 +67,20 @@ namespace Infrastructure.Repositories
 
             return _mapper.Map<List<ClienteResponse>>(response);
         }
+
+        public async Task<List<ClienteResponse>> BuscarClientesPorEtapaServico(List<int> etapaServicoIds)
+        {
+            var response = await _context.Clientes
+                .Include(v => v.Beneficio)
+                .Include(v => v.Etapa)
+                .Where(c => etapaServicoIds.Contains(c.Etapa.Id))
+                .OrderBy(x => x.NomeCompleto)
+                .ToListAsync();
+            if (response == null || !response.Any())
+            {
+                return new List<ClienteResponse>();
+            }
+            return _mapper.Map<List<ClienteResponse>>(response);
+        }
     }
 }

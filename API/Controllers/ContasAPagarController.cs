@@ -96,6 +96,41 @@ namespace API.Controllers
             return Ok(contasAPagarResponse);
         }
 
+        [HttpGet("empresa/buscar/contas-ano-anterior/{id}")]
+        public async Task<IActionResult> ListarContasDoAnoAnterior(int id)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta Contas a Pagar");
+
+            var contasAPagarResponse = await _contasAPagar.ListarContasDoAnoAnterior(id);
+            if (contasAPagarResponse == null)
+            {
+                return NotFound("Nenhuma conta a pagar encontrada.");
+            }
+            return Ok(contasAPagarResponse);
+        }
+
+        [HttpGet("empresa/buscarpormesano/{id}/{mes}/{ano}")]
+        public async Task<IActionResult> BuscarContaAPagarPorEmpresaIdPorMesAno(int id, int mes, int ano)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta Contas a Pagar");
+
+            if (mes > DateTime.Now.Month)
+            {
+                return Ok("Nenhuma conta a pagar encontrada.");
+            }
+
+            var contasAPagarResponse = await _contasAPagar.ConsultarPorEmpresaIdMesAnos(id, mes, ano);
+            if (contasAPagarResponse == null)
+            {
+                return NotFound("Nenhuma conta a pagar encontrada.");
+            }
+            return Ok(contasAPagarResponse);
+        }
+
         [HttpPut("alterar")]
         public async Task<IActionResult> AlterarContaAPagar([FromBody] ContasAPagarRequest contasAPagarRequest)
         {
@@ -143,14 +178,21 @@ namespace API.Controllers
             return Ok(possuiContasVencendoHoje);
         }
 
-        [HttpGet("total/{idEmpresa}")]
-        public async Task<IActionResult> ObterValoresAPagar(int idEmpresa)
+        [HttpGet("total/{idEmpresa}/mes/{mes}")]
+        public async Task<IActionResult> ObterValoresAPagar(int idEmpresa, int mes)
         {
             var username = User.FindFirst("username")?.Value;
             _logger.LogInfo($"Usuário {username}: Iniciando Obter Valores a Pagar");
+
+            if (mes > DateTime.Now.Month)
+            {
+                _logger.LogInfo($"Usuário {username}: Iniciando Obter Valores a Pagar mês clicado maior que o atual.");
+                return Ok(0);
+            }
+
             try
             {
-                var valorAPagar = await _contasAPagar.ObterValoresAPagar(idEmpresa);
+                var valorAPagar = await _contasAPagar.ObterValoresAPagar(idEmpresa, mes);
                 _logger.LogInfo("Obtido Valores a Pagar");
                 return Ok(valorAPagar);
             }
@@ -161,5 +203,70 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("empresa/totalpago-ano-anterior/{idEmpresa}")]
+        public async Task<IActionResult> SomaTotalContasApgarAnoAnterior(int idEmpresa)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Soma Total Contas a Pagar Ano Anterior");
+            try
+            {
+                var valorAPagar = await _contasAPagar.SomaTotalContasApgarAnoAnterior(idEmpresa);
+                _logger.LogInfo("Obtido Soma Total Contas a Pagar Ano Anterior");
+                return Ok(valorAPagar);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao obter soma total contas a pagar ano anterior: {ex.Message}");
+                return StatusCode(500, "Erro interno ao obter soma total contas a pagar ano anterior.");
+            }
+        }
+
+        [HttpGet("contas-para-migrar/{idEmpresa}/{mes}/{ano}")]
+        public async Task<IActionResult> ConsultarContasAMigrar(int idEmpresa, int mes, int ano)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta Contas a Migrar");
+
+            try
+            {
+                var contasAMigrar = await _contasAPagar.ConsultarContasAMigrar(idEmpresa, mes, ano);
+                if (contasAMigrar == null || !contasAMigrar.Any())
+                {
+                    _logger.LogWarn("Nenhuma conta a pagar encontrada para migrar");
+                    return NotFound("Nenhuma conta a pagar encontrada para migrar.");
+                }
+                _logger.LogInfo("Obtido Contas a Migrar");
+                return Ok(contasAMigrar);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar contas a migrar: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar contas a migrar.");
+            }
+        }
+
+        [HttpPost("migrar-contas")]
+        public async Task<IActionResult> MigrarContas([FromBody] List<ContasAPagarRequest> contasAPagarRequests)
+        {
+            var username = User.FindFirst("username")?.Value;
+            _logger.LogInfo($"Usuário {username}: Iniciando Migração Contas a Pagar");
+            if (contasAPagarRequests == null || !contasAPagarRequests.Any())
+            {
+                _logger.LogWarn("Nenhuma conta a pagar fornecida para migração");
+                return BadRequest("Nenhuma conta a pagar fornecida para migração.");
+            }
+            try
+            {
+                await _useCaseGeneric.SalvarLista(contasAPagarRequests);
+
+                _logger.LogInfo("Migração de Contas a Pagar concluída com sucesso");
+                return Ok(new { mensagem = "Migração de contas a pagar concluída com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao migrar contas a pagar: {ex.Message}");
+                return StatusCode(500, "Erro interno ao migrar contas a pagar.");
+            }
+        }
     }
 }

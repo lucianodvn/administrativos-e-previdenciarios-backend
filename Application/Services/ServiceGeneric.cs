@@ -126,5 +126,20 @@ namespace Application.Services
                 throw new Exception($"Erro interno ao consultar.");
             }
         }
+
+        public async Task SalvarLista(List<T> entities)
+        {
+            try
+            {
+                await _repository.SalvarLista(entities);
+                await Task.CompletedTask;
+                _logger.LogInfo($"Lista de {typeof(T).Name} salva com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao salvar lista: {ex.Message}");
+                throw new Exception($"Erro interno ao salvar lista.");
+            }
+        }
     }
 }

@@ -14,5 +14,6 @@
         public double? ValorDevido { get; set; }
         public double? ValorPago { get; set; }
         public string? NumeroParcela { get; set; }
+        public string? DiaUtil { get; set; }
     }
 }

@@ -186,5 +186,31 @@ namespace API.Controllers
                 return StatusCode(500, "Erro interno ao excluir cliente.");
             }
         }
+
+        [HttpGet("buscar-por-etapa-servico")]
+        public async Task<IActionResult> BuscarClientesPorEtapaServico([FromQuery] List<int> etapaId)
+        {
+            var username = User.FindFirst("username")?.Value;
+
+            _logger.LogInfo($"Usuário {username}: Iniciando Consulta dos Clientes com Etapa de Serviço Contas a Receber.");
+
+            try
+            {
+                var clienteResponse = await _clienteService.BuscarClientesPorEtapaServico(etapaId);
+                if (clienteResponse == null)
+                {
+                    _logger.LogWarn($"Cliente com {etapaId} não encontrado.");
+                    return NotFound("Cliente não encontrado.");
+                }
+
+                _logger.LogInfo($"Consulta do Cliente: {etapaId: clienteResponse}");
+                return Ok(clienteResponse);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Erro ao consultar cliente: {ex.Message}");
+                return StatusCode(500, "Erro interno ao consultar cliente.");
+            }
+        }
     }
 }

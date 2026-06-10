@@ -33,5 +33,19 @@ namespace API.Controllers
             var arquivos = await _arquivoService.ListarArquivosPorClienteAsync(cliente);
             return Ok(arquivos);
         }
+
+        [HttpPost("salvarcomprovante")]
+        public async Task<IActionResult> UploadMultiplosComprovante([FromForm] List<IFormFile> arquivos, [FromForm] string nomeCliente, [FromForm] int id)
+        {
+            var resultado = await _mediator.Send(new UploadMultiplosArquivosCommandComprovante(arquivos, nomeCliente, id.ToString()));
+            return Ok(resultado);
+        }
+
+        [HttpGet("listararquivoscomprovantes/{cliente}/{mesAno}/{id}")]
+        public async Task<IActionResult> ListarArquivosComprovantes(string cliente, string mesAno, int id)
+        {
+            var arquivos = await _arquivoService.ListarArquivosPorComprovanteAsync(cliente, mesAno, id.ToString());
+            return Ok(arquivos);
+        }
     }
 }

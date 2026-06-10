@@ -12,5 +12,6 @@ namespace Application.Interfaces.UseCase
         Task<bool> Existe(string numeroRecibo);
         Task AlterarSomenteNecessario<T>(T entity, object id);
         Task<TResponse> ConsultarPorNome(string nome);
+        Task SalvarLista(List<TRequest> requests);
     }
 }
